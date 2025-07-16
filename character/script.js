@@ -1,8 +1,8 @@
 function saveToFile() {
     const character = {
         name: document.getElementById("charName").value,
-        class: document.getElementById("charClass").value,
         race: document.getElementById("charRace").value,
+        class: document.getElementById("charClass").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
@@ -32,8 +32,8 @@ function loadFromFile(event) {
     reader.onload = function(e) {
         const data = JSON.parse(e.target.result);
         document.getElementById("charName").value = data.name || "";
-        document.getElementById("charClass").value = data.class || "";
         document.getElementById("charRace").value = data.race || "";
+        document.getElementById("charClass").value = data.class || "";
         document.getElementById("charLevel").value = data.level || "";
         document.getElementById("charAlignment").value = data.alignment || "";
         document.getElementById("charBackground").value = data.background || "";
@@ -49,8 +49,8 @@ function loadFromFile(event) {
 function updateShareURL() {
     const character = {
         name: document.getElementById("charName").value,
-        class: document.getElementById("charClass").value,
         race: document.getElementById("charRace").value,
+        class: document.getElementById("charClass").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,

@@ -1,29 +1,226 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <title>DND Character</title>
+        <title>Character Sheet</title>
         <link href="/stylesheets/character.css" rel="stylesheet">
     </head>
     <body>
-        <h1>DND Character</h1>
+        <h1>Character Sheet</h1>
         <form id="characterForm" autocomplete="off">
             <div class="top-field">
                 <!-- Basic Info -->
                 <fieldset>
-                    <legend>Character Info</legend>
+                    <legend>Identification</legend>
                     <div class="basic-info">
                         <div class="form-row">
                             <label for="charName">Name</label>
                             <input type="text" id="charName" name="charName" required>
                         </div>
                         <div class="form-row">
-                            <label for="charClass">Class</label>
-                            <input type="text" id="charClass" name="charClass">
+                            <label for="charRace">Race</label>
+                            <select name="charRace" type="text" id="charRace">
+                                <option value="" selected disabled>&#45;&#45; Select a Class &#45;&#45;</option>
+                                <option value="Aarakocra">Aarakocra</option>
+                                <option value="Aarakocra [MoM]">Aarakocra &#91;MoM&#93;</option>
+                                <optgroup label="Aasimar">
+                                    <option value="Protector Aasimar">Protector Aasimar</option>
+                                    <option value="Scourge Aasimar">Scourge Aasimar</option>
+                                    <option value="Fallen Aasimar">Fallen Aasimar</option>
+                                </optgroup>
+                                <option value="Aasimar [MoM]">Aasimar &#91;MoM&#93;</option>
+                                <option value="Astral Elf [AAG]">Astral Elf &#91;AAG&#93;</option>
+                                <option value="Autognome [AAG]"> Autognome &#91;AAG&#93;</option>
+                                <option value="Bugbear">Bugbear</option>
+                                <option value="Bugbear [MoM]">Bugbear &#91;MoM&#93;</option>
+                                <optgroup label="Catfolk">
+                                    <option value="Ordinary-Breed Catfolk">Ordinary&#45;Breed Catfolk</option>
+                                    <option value="Large-Breed Catfolk">Large&#45;Breed Catfolk</option>
+                                    <option value="Mystic-Breed Catfolk">Mystic&#45;Breed Catfolk</option>
+                                </optgroup>
+                                <option value="Centaur">Centaur</option>
+                                <option value="Centaur [MoM]">Centaur &#91;MoM&#93;</option>
+                                <option value="Changeling">Changeling</option>
+                                <option value="Changeling [EB]">Changeling &#91;EB&#93;</option>
+                                <option value="Changeling [MoM]">Changeling &#91;MoM&#93;</option>
+                                <optgroup label="Chronatic Dragonborn [FTD]">
+                                    <option value="Black Ancestry">Black Ancestry</option>
+                                    <option value="Blue Ancestry">Blue Ancestry</option>
+                                    <option value="Green Ancestry">Green Ancestry</option>
+                                    <option value="Red Ancestry">Red Ancestry</option>
+                                    <option value="White Ancestry">White Ancestry</option>
+                                </optgroup>
+                                <optgroup label="Chronatic Dragonborn [UA]">
+                                    <option value="Chromatic Black">Chromatic Black</option>
+                                    <option value="Chromatic Blue">Chromatic Blue</option>
+                                    <option value="Chromatic Green">Chromatic Green</option>
+                                    <option value="Chromatic Red">Chromatic Red</option>
+                                    <option value="Chromatic White">Chromatic White</option>
+                                </optgroup>
+                                <option value="Deep Gnome [MoM]">Deep Gnome &#91;MoM&#93;</option>
+                                <option value="Dhampir [UA]">Dhampir &#91;UA&#93;</option>
+                                <option value="Dhampir [VRGR]">Dhampir &#91;VRGR&#93;</option>
+                                <optgroup label="Dragonborn">
+                                    <option value="Black">Black</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Brass">Brass</option>
+                                    <option value="Bronze">Bronze</option>
+                                    <option value="Copper">Copper</option>
+                                    <option value="Gold">Gold</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Silver">Silver</option>
+                                    <option value="White">White</option>
+                                </optgroup>
+                                <optgroup label="Dragonborn [Draconblood]">
+                                    <option value="Black Draconblood">Black Draconblood</option>
+                                    <option value="Blue Draconblood">Blue Draconblood</option>
+                                    <option value="Brass Draconblood">Brass Draconblood</option>
+                                    <option value="Bronze Draconblood">Bronze Draconblood</option>
+                                    <option value="Copper Draconblood">Copper Draconblood</option>
+                                    <option value="Gold Draconblood">Gold Draconblood</option>
+                                    <option value="Green Draconblood">Green Draconblood</option>
+                                    <option value="Red Draconblood">Red Draconblood</option>
+                                    <option value="Silver Draconblood">Silver Draconblood</option>
+                                    <option value="White Draconblood">White Draconblood</option>
+                                </optgroup>
+                                <optgroup label="Dragonborn [Ravenite]">
+                                    <option value="Black Ravenite">Black Ravenite</option>
+                                    <option value="Blue Ravenite">Blue Ravenite</option>
+                                    <option value="Brass Ravenite">Brass Ravenite</option>
+                                    <option value="Bronze Ravenite">Bronze Ravenite</option>
+                                    <option value="Copper Ravenite">Copper Ravenite</option>
+                                    <option value="Gold Ravenite">Gold Ravenite</option>
+                                    <option value="Green Ravenite">Green Ravenite</option>
+                                    <option value="Red Ravenite">Red Ravenite</option>
+                                    <option value="Silver Ravenite">Silver Ravenite</option>
+                                    <option value="White Ravenite">White Ravenite</option>
+                                </optgroup>
+                                <option value="Duergar [MoM]">Duergar &#91;MoM&#93;</option>
+                                <optgroup label="Dwarf">
+                                    <option value="Hill Dwarf">Hill Dwarf</option>
+                                    <option value="mountain Dwarf">Mountain Dwarf</option>
+                                    <option value="House Kundarak">House Kundarak</option>
+                                    <option value="Duergar">Duergar</option>
+                                    <option value="Mark of Warding">Mark of Warding</option>
+                                </optgroup>
+                                <option value="Elabrin [MoM]">Elabrin &#91;MoM&#93;</option>
+                                <optgroup label="Elf">
+                                    <option value="High Elf">High Elf</option>
+                                    <option value="Wood Elf">Wood Elf</option>
+                                    <option value="Eladrin (variant)">Eladrin &#40;variant&#41;</option>
+                                    <option value="Sea Elf">Sea Elf</option>
+                                    <option value="Shadar-Kai"> Shadar&#45;Kai</option>
+                                    <option value="The Houses of Shadow">The Houses of Shadow</option>
+                                    <option value="Aerenal High Elf">Aerenal High Elf</option>
+                                    <option value="Valenar High Elf">Valenar High Elf</option>
+                                    <option value="Aerenal Wood Elf">Aerenal Wood Elf</option>
+                                    <option value="Valenar Wood Elf">Valenar Wood Elf</option>
+                                    <option value="Dark Elf (Drow)">Dark Elf &#40;Drow&#41;</option>
+                                    <option value="Palid Elf">Palid Elf</option>
+                                    <option value="Sea Elf [W]">Sea Elf &#91;W&#93;</option>
+                                </optgroup>
+                                <option value="Fairy [MoM]">Fairy &#91;MoM&#93;</option>
+                                <option value="Fairy [UA]">Fairy &#91;UA&#93;</option>
+                                <option value="Fairy [WBtW]">Fairy &#91;WBtW&#93;</option>
+                                <option value="Firbolg">Firbolg</option>
+                                <option value="Firbolg [MoM]">Firbolg &#91;MoM&#93;</option>
+                                <optgroup label="Gem Dragonborn [FTD]">
+                                    <option value="Amethyst Ancentry">Amethyst Ancentry</option>
+                                    <option value="Crystal Ancestry">Crystal Ancestry</option>
+                                    <option value="Emerald Ancestry">Emerald Ancestry</option>
+                                    <option value="Sapphire Ancestry">Sapphire Ancestry</option>
+                                    <option value="Topaz Ancestry">Topaz Ancestry</option>
+                                </optgroup>
+                                <optgroup label="Gem Dragonborn [UA]">
+                                    <option value="Amethyst">Amethyst</option>
+                                    <option value="Crystal">Crystal</option>
+                                    <option value="Emerald">Emerald</option>
+                                    <option value="Sapphire">Sapphire</option>
+                                    <option value="Topaz">Topaz</option>
+                                </optgroup>
+                                <optgroup label="Genasi">
+                                    <option value="Air Genasi">Air Genasi</option>
+                                    <option value="Earth Genasi">Earth Genasi</option>
+                                    <option value="Fire Genasi">Fire Genasi</option>
+                                    <option value="Water Genasi">Water Genasi</option>
+                                </optgroup>
+                                <optgroup label="Genasi [MoM]">
+                                    <option value="Air Genasi [MoM]">Air Genasi &#91;MoM&#93;</option>
+                                    <option value="Earth Genasi [MoM]">Earth Genasi &#91;MoM&#93;</option>
+                                    <option value="Fire Genasi [MoM]">Fire Genasi &#91;MoM&#93;</option>
+                                    <option value="Water Genasi [MoM]">Water Genasi &#91;MoM&#93;</option>
+                                </optgroup>
+                                <option value="Giff [AAG]">Giff &#91;AAG&#93;</option>
+                                <optgroup label="Gith">
+                                    <option value="Githyanki">Githyanki</option>
+                                    <option value="Githzerai">Githzerai</option>
+                                </optgroup>
+                                <option value="Githyanki [MoM]">Githyanki &#91;MoM&#93;</option>
+                                <optgroup label="Gnome">
+                                    <option value="Forest Gnome">Forest Gnome</option>
+                                    <option value="Rock Gnome">Rock Gnome</option>
+                                    <option value="Deep Gnome (Svirfneblin)">Deep Gnome &#40;Svirfneblin&#41;</option>
+                                    <option value="Mark of Scribing Gnome">Mark of Scribing Gnome</option>
+                                </optgroup>
+                                <optgroup label="Goblin">
+                                    <option value="Common Goblin">Common Goblin</option>
+                                    <option value="Grotag">Grotag</option>
+                                    <option value="Ixalan">Ixalan</option>
+                                    <option value="Lavastep">Lavastep</option>
+                                    <option value="TukTuk">TukTuk</option>
+                                    <option value="Greenskin">Greenskin</option>
+                                    <option value="Boggart">Boggart</option>
+                                    <option value="Gremlin">Gemlin</option>
+                                </optgroup>
+                                <option value="Goblin [MoM]">Goblin &#91;MoM&#93;</option>
+                                <option value="Goliath">Goliath</option>
+                                <option value="Goliath [MoM]">Goliath &#91;MoM&#93;</option>
+                                <option value="Hadozee [AAG]"> Hadozee &#91;AAG&#93;</option>
+                                <option value="Half-elf">Half&#45;ELf</option>
+                                <optgroup label="Half-hag">
+                                    <option value="Green Hag">Green Hag</option>
+                                    <option value="Night Hag">Night Hag</option>
+                                    <option value="Sea Hag">Sea Hag</option>
+                                </optgroup>
+                                <option value="Half-Orc">Half&#45;Orc</option>
+                                <optgroup label="halfling">
+                                    <option value="Ghostwise Halfling">Gostwise Halfling</option>
+                                    <option value="Lightfoot Halfling">Lightfoot Halfling</option>
+                                    <option value="Stout Halfling">Stout Halfling</option>
+                                    <option value="Mark of Healing Halfling">Mark of Healing Halfling</option>
+                                    <option value="Mark of Hospitality Halfling">Mark of Hospitality Halfling</option>
+                                    <option value="Lotusden Halfling">Lotusden halfling</option>
+                                </optgroup>
+                                <option value=""></option>
+                            </select>
                         </div>
                         <div class="form-row">
-                            <label for="charRace">Race</label>
-                            <input type="text" id="charRace" name="charRace">
+                            <label for="charClass">Class</label>
+                            <select name="charClass" type="text" id="charClass">
+                                <option value="" selected disabled>&#45; Select a Class</option>
+                                <option value="Artificer">Artificer</option>
+                                <option value="Artificer (Revised)">Artificer &#40;Revised&#41;</option>
+                                <option value="Artificer [EB]">Artificer &#91;EB&#93;</option>
+                                <option value="Barbarian">Barbarian</option>
+                                <option value="Bard">Bard</option>
+                                <option value="Blood Hunter">Blood Hunter</option>
+                                <option value="Blood Hunter [EGW]">Blood Hunter &#91;EGW&#93;</option>
+                                <option value="Cleric">Cleric</option>
+                                <option value="Druid">Druid</option>
+                                <option value="Fighter">Fighter</option>
+                                <option value="Monk">Monk</option>
+                                <option value="Mystic">Mystic</option>
+                                <option value="Paladin">Paladin</option>
+                                <option value="Ranger">Ranger</option>
+                                <option value="Revised Ranhger">Revised Ranger</option>
+                                <option value="Rogue">Rogue</option>
+                                <option value="Sorcerer">Sorcerer</option>
+                                <option value="Warlock">Wizard</option>
+                            </select>
+                            <select name="charClass2" type="text" id="charClass2">
+                                <option value="" selected disabled>&#45; Select a Class</option>
+                            </select>
                         </div>
                         <div class="form-row">
                             <label for="charLevel">Level</label>
@@ -39,6 +236,7 @@
                         </div>
                     </div>
                 </fieldset>
+                <br>
                 <!-- Ability Scores -->
                 <fieldset>
                     <legend>Ability Scores</legend>
@@ -100,12 +298,14 @@
                     </div>
                 </fieldset>
             </div>
+            <br>
+            <!-- Controls -->
             <fieldset>
                 <legend>Controls</legend>
                 <div class="controls">
                     <button class="button" type="button" onclick="saveToFile()">Save</button>
                     <label class="button" for="charUpload" role="button" tabindex="0">Reload</label>
-                    <input type="file" id="charUpload" accept=".json" onchange="loadFromFile(event)" style="display: none;">
+                    <input aria-busy="" type="file" id="charUpload" accept=".json" onchange="loadFromFile(event)" style="display: none">
                     <button class="button" type="button" onclick="updateShareURL()">Share</button>
                 </div>
             </fieldset>
@@ -127,11 +327,11 @@
                 const modSpan = document.getElementById(`${id}-mod`);
                 const score = parseInt(input.value);
                 if (isNaN(score)) {
-                    modSpan.textContent = '';
+                    modSpan.textContent = "";
                     return;
                 }
                 const mod = Math.floor((score - 10) / 2);
-                modSpan.textContent = (mod >= 0 ? `+${mod}` : `${mod}`);
+                modSpan.textContent = mod >= 0 ? `+${mod}` : `${mod}`;
             }
             window.addEventListener("DOMContentLoaded", () => {
                 const params = new URLSearchParams(window.location.search);
@@ -150,7 +350,7 @@
                         document.getElementById("int").value = data.int || 10;
                         document.getElementById("wis").value = data.wis || 10;
                         document.getElementById("cha").value = data.cha || 10;
-                        ['str', 'dex', 'con', 'int', 'wis', 'cha'].forEach(updateModifier);
+                        ["str", "dex", "con", "int", "wis", "cha"].forEach(updateModifier);
                     } catch (e) {
                         console.error("Failed to load character from URL", e);
                     }
