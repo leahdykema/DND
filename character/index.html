@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>DND Character</title>
+        <link href="/stylesheets/character.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>DND Character</h1>
+        <form id="characterForm" autocomplete="off">
+            <div class="top-field">
+                <!-- Basic Info -->
+                <fieldset>
+                    <legend>Character Info</legend>
+                    <div class="basic-info">
+                        <div class="form-row">
+                            <label for="charName">Name</label>
+                            <input type="text" id="charName" name="charName" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="charClass">Class</label>
+                            <input type="text" id="charClass" name="charClass">
+                        </div>
+                        <div class="form-row">
+                            <label for="charRace">Race</label>
+                            <input type="text" id="charRace" name="charRace">
+                        </div>
+                        <div class="form-row">
+                            <label for="charLevel">Level</label>
+                            <input type="number" id="charLevel" name="charLevel" min="1" max="20">
+                        </div>
+                        <div class="form-row">
+                            <label for="charAlignment">Alignment</label>
+                            <input type="text" id="charAlignment" name="charAlignment">
+                        </div>
+                        <div class="form-row">
+                            <label for="charBackground">Background</label>
+                            <input type="text" id="charBackground" name="charBackground">
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- Ability Scores -->
+                <fieldset>
+                    <legend>Ability Scores</legend>
+                    <div class="ability-grid">
+                        <div class="ability-box">
+                            <label for="str">Strength</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('str', -1)">&#45;</button>
+                                <input type="number" id="str" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('str', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="str-mod">+0</div>
+                        </div>
+                        <div class="ability-box">
+                            <label for="dex">Dexterity</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('dex', -1)">&#45;</button>
+                                <input type="number" id="dex" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('dex', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="dex-mod">+0</div>
+                        </div>
+                        <div class="ability-box">
+                            <label for="con">Constitution</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('con', -1)">&#45;</button>
+                                <input type="number" id="con" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('con', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="con-mod">+0</div>
+                        </div>
+                        <div class="ability-box">
+                            <label for="int">Intelligence</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('int', -1)">&#45;</button>
+                                <input type="number" id="int" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('int', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="int-mod">+0</div>
+                        </div>
+                        <div class="ability-box">
+                            <label for="wis">Wisdom</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('wis', -1)">&#45;</button>
+                                <input type="number" id="wis" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('wis', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="wis-mod">+0</div>
+                        </div>
+                        <div class="ability-box">
+                            <label for="cha">Charisma</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('cha', -1)">&#45;</button>
+                                <input type="number" id="cha" value="10" min="1" max="20">
+                                <button type="button" onclick="adjust('cha', 1)">&#43;</button>
+                            </div>
+                            <div class="modifier" id="cha-mod">+0</div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <fieldset>
+                <legend>Controls</legend>
+                <div class="controls">
+                    <button class="button" type="button" onclick="saveToFile()">Save</button>
+                    <label class="button" for="charUpload" role="button" tabindex="0">Reload</label>
+                    <input type="file" id="charUpload" accept=".json" onchange="loadFromFile(event)" style="display: none;">
+                    <button class="button" type="button" onclick="updateShareURL()">Share</button>
+                </div>
+            </fieldset>
+        </form>
+        <br>
+        <a href="/index.html" class="button">Home</a>
+        <script>
+            function adjust(id, amount) {
+                const input = document.getElementById(id);
+                const current = parseInt(input.value) || 0;
+                const min = parseInt(input.min) || -Infinity;
+                const max = parseInt(input.max) || Infinity;
+                const next = Math.min(max, Math.max(min, current + amount));
+                input.value = next;
+                updateModifier(id);
+            }
+            function updateModifier(id) {
+                const input = document.getElementById(id);
+                const modSpan = document.getElementById(`${id}-mod`);
+                const score = parseInt(input.value);
+                if (isNaN(score)) {
+                    modSpan.textContent = '';
+                    return;
+                }
+                const mod = Math.floor((score - 10) / 2);
+                modSpan.textContent = (mod >= 0 ? `+${mod}` : `${mod}`);
+            }
+            window.addEventListener("DOMContentLoaded", () => {
+                const params = new URLSearchParams(window.location.search);
+                if (params.has("c")) {
+                    try {
+                        const data = JSON.parse(atob(decodeURIComponent(params.get("c"))));
+                        document.getElementById("charName").value = data.name || "";
+                        document.getElementById("charClass").value = data.class || "";
+                        document.getElementById("charRace").value = data.race || "";
+                        document.getElementById("charLevel").value = data.level || "";
+                        document.getElementById("charAlignment").value = data.alignment || "";
+                        document.getElementById("charBackground").value = data.background || "";
+                        document.getElementById("str").value = data.str || 10;
+                        document.getElementById("dex").value = data.dex || 10;
+                        document.getElementById("con").value = data.con || 10;
+                        document.getElementById("int").value = data.int || 10;
+                        document.getElementById("wis").value = data.wis || 10;
+                        document.getElementById("cha").value = data.cha || 10;
+                        ['str', 'dex', 'con', 'int', 'wis', 'cha'].forEach(updateModifier);
+                    } catch (e) {
+                        console.error("Failed to load character from URL", e);
+                    }
+                }
+            });
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>
