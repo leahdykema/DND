@@ -3,6 +3,7 @@ function saveToFile() {
         name: document.getElementById("charName").value,
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
+        class2: document.getElementById("charClass2").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
@@ -34,6 +35,7 @@ function loadFromFile(event) {
         document.getElementById("charName").value = data.name || "";
         document.getElementById("charRace").value = data.race || "";
         document.getElementById("charClass").value = data.class || "";
+        document.getElementById("charClass2").value = data.class2 || "";
         document.getElementById("charLevel").value = data.level || "";
         document.getElementById("charAlignment").value = data.alignment || "";
         document.getElementById("charBackground").value = data.background || "";
@@ -51,6 +53,7 @@ function updateShareURL() {
         name: document.getElementById("charName").value,
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
+        class2: document.getElementById("charClass2").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
