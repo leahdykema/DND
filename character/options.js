@@ -54,21 +54,16 @@ function updateLevelFromXP(xp) {
 // Adjust for both XP and ability scores
 function adjust(id, change) {
     const input = document.getElementById(id);
-    const isXP = id === 'xpInput';
-    const step = isXP ? 100 : 1;
-    const current = parseInt(input.value, 10) || 0;
-    const min = parseInt(input.min);
-    const max = parseInt(input.max);
-    const newValue = Math.min(Math.max(current + change * step, min), max);
-    input.value = newValue;
-    // XP: update level
-    if (isXP) {
-        updateLevelFromXP(newValue);
+    let step = 1;
+    if (id === 'xpInput') {
+        step = 100;
     }
-    // Ability score: update modifier
-    if (input.classList.contains('ability-score') || isAbilityScore(id)) {
-        updateModifier(id);
-    }
+    let value = parseInt(input.value, 10) || 0;
+    let min = parseInt(input.min || '0', 10);
+    let max = parseInt(input.max || '9999999', 10);
+    value += change * step;
+    value = Math.max(min, Math.min(max, value));
+    input.value = value;
 }
 // Detect ability scores by ID
 function isAbilityScore(id) {
