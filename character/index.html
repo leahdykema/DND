@@ -777,8 +777,16 @@
                         </div>
                         <div class="form-row">
                             <label for="hitpoints">Hit Points</label>
-                            <input type="number" id="currentHP" name="currentHP">
-                            <input type="number" id="totalHP" name="totalHP">
+                            <div class="hp">
+                                <button type="button" onclick="adjust('currentHP', -1)">&#45;</button>
+                                <input type="number" id="currentHP" value="0">
+                                <button type="button" onclick="adjust('currentHP', 1)">&#43;</button>
+                            </div>
+                            <div class="hp">
+                                <button type="button" onclick="adjust('totalHP', -1)">&#45;</button>
+                                <input type="number" id="totalHP" value="0">
+                                <button type="button" onclick="adjust('totalHP', 1)">&#43;</button>
+                            </div>
                         </div>
                         <div class="form-row">
                             <label for="charAlignment">Alignment</label>

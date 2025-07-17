@@ -145,6 +145,34 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: all 300ms ease;
 }
 
+.hp {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.hp input {
+    width: 40px;
+    text-align: center;
+}
+
+.hp button {
+    background-color: var(--accent);
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 2rem;
+    width: 25px;
+    padding-bottom: 6px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
 .custom-spinner input {
     width: 60px;
     text-align: center;
@@ -255,7 +283,9 @@ input[type="number"]::-webkit-outer-spin-button {
         transform: scale(1.1);
     }
 
-    .custom-spinner button:hover {
+    .custom-spinner button:hover,
+    .exp button:hover,
+    .hp button:hover {
         background-color: var(--accent-hover);
         transform: scale(1.1);
     }
