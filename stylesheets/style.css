@@ -50,7 +50,7 @@ h1 {
     }
 }
 
-@media (max-width: 786px) {
+@media (max-width: 768px) {
     h1 {
         margin-top: 40%;
         font-size: 40px;
