@@ -4,6 +4,7 @@ function saveToFile() {
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
         class2: document.getElementById("charClass2").value,
+        class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
@@ -38,6 +39,7 @@ function loadFromFile(event) {
         document.getElementById("charRace").value = data.race || "";
         document.getElementById("charClass").value = data.class || "";
         document.getElementById("charClass2").value = data.class2 || "";
+        document.getElementById("charClass3").value = data.class3 || "";
         document.getElementById("xpInput").value = data.xpInput || "";
         document.getElementById("charLevel").value = data.level || "";
         document.getElementById("charAlignment").value = data.alignment || "";
@@ -58,6 +60,7 @@ function updateShareURL() {
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
         class2: document.getElementById("charClass2").value,
+        class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
