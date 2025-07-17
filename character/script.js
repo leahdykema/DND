@@ -44,6 +44,8 @@ function loadFromFile(event) {
         document.getElementById("charClass3").value = data.class3 || "";
         document.getElementById("xpInput").value = data.xpInput || "";
         document.getElementById("charLevel").value = data.level || "";
+        document.getElementById("currentHP").value = data.currentHP || "";
+        document.getElementById("totalHP").value = data.totalHP || "";
         document.getElementById("charAlignment").value = data.alignment || "";
         document.getElementById("charBackground").value = data.background || "";
         document.getElementById("str").value = data.str || 10;
@@ -65,6 +67,8 @@ function updateShareURL() {
         class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
+        currentHP: document.getElementById("currentHP").value,
+        totalHP: document.getElementById("totalHP").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
         str: document.getElementById("str").value,
