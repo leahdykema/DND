@@ -4,6 +4,7 @@ function saveToFile() {
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
         class2: document.getElementById("charClass2").value,
+        xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
@@ -13,6 +14,7 @@ function saveToFile() {
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
+        notes: document.getElementById("charNotes").value,
     };
 
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
@@ -36,6 +38,7 @@ function loadFromFile(event) {
         document.getElementById("charRace").value = data.race || "";
         document.getElementById("charClass").value = data.class || "";
         document.getElementById("charClass2").value = data.class2 || "";
+        document.getElementById("xpInput").value = data.xpInput || "";
         document.getElementById("charLevel").value = data.level || "";
         document.getElementById("charAlignment").value = data.alignment || "";
         document.getElementById("charBackground").value = data.background || "";
@@ -45,6 +48,7 @@ function loadFromFile(event) {
         document.getElementById("int").value = data.int || 10;
         document.getElementById("wis").value = data.wis || 10;
         document.getElementById("cha").value = data.cha || 10;
+        document.getElementById("charNotes").value = data.notes || "";
     };
     reader.readAsText(file);
 }
@@ -54,6 +58,7 @@ function updateShareURL() {
         race: document.getElementById("charRace").value,
         class: document.getElementById("charClass").value,
         class2: document.getElementById("charClass2").value,
+        xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
         alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
@@ -63,6 +68,7 @@ function updateShareURL() {
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
+        notes: document.getElementById("charNotes").value,
     };
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));

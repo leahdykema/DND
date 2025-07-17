@@ -471,9 +471,17 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <div class="form-row">
-                            <label for="charLevel">Level</label>
-                            <input type="number" id="charLevel" name="charLevel" min="1" max="20">
+                        <div class="form-row explvl">
+                            <label for="xpInput">Experience</label>
+                            <div class="exp">
+                                <button type="button" onclick="adjust('xpInput', -1)">&#45;</button>
+                                <input type="number" id="xpInput" value="0" min="0" max="355000">
+                                <button type="button" onclick="adjust('xpInput', 1)">&#43;</button>
+                            </div>
+                            <div style="display: block; align-content: center; align-items: center;">
+                                <label for="charLevel" style="margin: 0;" class="lvl">Level</label>
+                                <input type="number" id="charLevel" name="charLevel" min="1" max="20" style=" border: none; text-align: center; width: 40px;" disabled>
+                            </div>
                         </div>
                         <div class="form-row">
                             <label for="charAlignment">Alignment</label>
@@ -545,6 +553,8 @@
                             <div class="modifier" id="cha-mod">+0</div>
                         </div>
                     </div>
+                    <br>
+                    <textarea name="notes" cols="25" rows="4" placeholder="Type out other notes here" id="charNotes"></textarea>
                 </fieldset>
             </div>
             <br>

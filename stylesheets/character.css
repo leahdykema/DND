@@ -117,6 +117,34 @@ input[type="number"]::-webkit-outer-spin-button {
     gap: 0.3rem;
 }
 
+.exp {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.exp input {
+    width: 80px;
+    text-align: center;
+}
+
+.exp button {
+    background-color: var(--accent);
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 2rem;
+    width: 30px;
+    padding-bottom: 6px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
 .custom-spinner input {
     width: 60px;
     text-align: center;
@@ -164,6 +192,13 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-right: 1rem;
 }
 
+.form-row.explvl lvl {
+    flex: 0 0 50px;
+    text-align: right;
+    font-size: 16px;
+    margin-right: 1rem;
+}
+
 .form-row input {
     flex: 1;
     padding: 0.5rem;
@@ -203,6 +238,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .modifier {
     padding-top: 0.5rem;
+}
+
+#charNotes {
+    border: 1px solid #7e786f;
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 20px;
 }
 
 @media (hover: hover) {
@@ -266,7 +308,8 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 
     input,
-    select {
+    select,
+    #charNotes {
         background-color: var(--bg-light);
         color: var(--text-dark);
     }
@@ -280,7 +323,8 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 
     input,
-    select {
+    select,
+    #charNotes {
         background-color: var(--bg);
         color: var(--text-light);
     }
