@@ -58,7 +58,7 @@ a.button {
 fieldset {
     display: block;
     margin: auto;
-    width: 400px;
+    width: 500px;
     border: 1px solid var(--border);
 }
 
@@ -87,8 +87,6 @@ select {
 
 input,
 select {
-    background-color: var(--bg);
-    color: var(--text-light);
     border: 1px solid #7e786f;
     margin: 0;
     padding: 0.5rem;
@@ -224,7 +222,7 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (max-width: 768px) {
     h1 {
         margin-top: 10%;
-        font-size: 40px;
+        font-size: 2rem;
     }
 
     .top-field {
@@ -235,7 +233,7 @@ input[type="number"]::-webkit-outer-spin-button {
     fieldset {
         display: block;
         margin: auto;
-        width: 400px;
+        width: 350px;
     }
 
     legend {
@@ -243,11 +241,14 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 
     .ability-grid {
-        min-width: 400px;
-    }
-
-    .ability-box {
-        width: 100px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        width: 100%;
+        min-width: 200px;
+        margin-top: 1rem;
+        margin: 0 auto;
+        text-align: center;
     }
 
     .controls .button,
@@ -264,7 +265,8 @@ input[type="number"]::-webkit-outer-spin-button {
         color: var(--text-dark);
     }
 
-    input {
+    input,
+    select {
         background-color: var(--bg-light);
         color: var(--text-dark);
     }
@@ -277,7 +279,8 @@ input[type="number"]::-webkit-outer-spin-button {
         color: var(--text-light);
     }
 
-    input {
+    input,
+    select {
         background-color: var(--bg);
         color: var(--text-light);
     }

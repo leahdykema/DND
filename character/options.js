@@ -1,28 +1,22 @@
 const class1 = document.getElementById("charClass");
 const class2 = document.getElementById("charClass2");
 const level = document.getElementById("charLevel");
+const subclass = document.querySelector(".form-row.subclass");
+const originalOptgroups = Array.from(class2.querySelectorAll("optgroup"));
 function updateClass2Dropdown() {
     const selectedClass = class1.value;
     const currentLevel = parseInt(level.value, 10);
     if (currentLevel >= 3) {
-        class2.style.display = "inline-block";
-        class2.disabled = false;
+        subclass.style.display = "flex";
     } else {
-        class2.style.display = "none";
-        class2.disabled = true;
+        subclass.style.display = "none";
         return;
     }
-    const optgroups = class2.querySelectorAll("optgroup");
-    optgroups.forEach(group => {
-        if (group.label === selectedClass) {
-            group.style.display = "block";
-        } else {
-            group.style.display = "none";
-        }
-    });
-    const currentOpt = class2.options[class2.selectedIndex];
-    if (currentOpt && currentOpt.parentElement.style.display === "none") {
-        class2.selectedIndex = 0;
+    class2.innerHTML = "";
+
+    const matchingOptgroup = originalOptgroups.find(group => group.label === selectedClass);
+    if (matchingOptgroup) {
+        class2.appendChild(matchingOptgroup.cloneNode(true));
     }
 }
 class1.addEventListener("change", updateClass2Dropdown);
