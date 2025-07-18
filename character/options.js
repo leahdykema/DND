@@ -54,16 +54,25 @@ function updateLevelFromXP(xp) {
 // Adjust for both XP and ability scores
 function adjust(id, change) {
     const input = document.getElementById(id);
-    let step = 1;
-    if (id === 'xpInput') {
-        step = 100;
-    }
     let value = parseInt(input.value, 10) || 0;
-    let min = parseInt(input.min || '0', 10);
-    let max = parseInt(input.max || '9999999', 10);
+    const min = parseInt(input.min || '0', 10);
+    const max = parseInt(input.max || '9999999', 10);
+    // Determine step size
+    const step = id === 'xpInput' ? 100 : 1;
     value += change * step;
     value = Math.max(min, Math.min(max, value));
     input.value = value;
+    // Update level if it's the XP field
+    if (id === 'xpInput') {
+        updateLevelFromXP(value);
+    }
+    // Check if this is an ability score
+    const abilities = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+    if (abilities.includes(id)) {
+        const modifier = Math.floor((value - 10) / 2);
+        const modDisplay = document.getElementById(`${id}-mod`);
+        modDisplay.textContent = (modifier >= 0 ? '+' : '') + modifier;
+    }
 }
 // Detect ability scores by ID
 function isAbilityScore(id) {
@@ -76,6 +85,7 @@ function updateModifier(statId) {
     const score = parseInt(input.value, 10) || 0;
     const modifier = Math.floor((score - 10) / 2);
     modDiv.textContent = (modifier >= 0 ? "+" : "") + modifier;
+
 }
 // Initialize modifiers on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -115,7 +125,7 @@ function updateSubclass2Visibility() {
     } else {
         charClass2Row.style.display = 'none';
     }
-    updateSubclass3Visibility(); // cascade update
+    updateSubclass3Visibility();
 }
 function updateSubclass3Visibility() {
     const selectedSubclass2 = charClass2.value;
