@@ -32,12 +32,12 @@ function saveToFile() {
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
-        str2: document.getElementById("str-2").value,
-        dex2: document.getElementById("dex-2").value,
-        con2: document.getElementById("con-2").value,
-        int2: document.getElementById("int-2").value,
-        wis2: document.getElementById("wis-2").value,
-        cha2: document.getElementById("cha-2").value,
+        strSaveProf: document.getElementById("strSaveProf").checked,
+        dexSaveProf: document.getElementById("dexSaveProf").checked,
+        conSaveProf: document.getElementById("conSaveProf").checked,
+        intSaveProf: document.getElementById("intSaveProf").checked,
+        wisSaveProf: document.getElementById("wisSaveProf").checked,
+        chaSaveProf: document.getElementById("chaSaveProf").checked,
         notes: document.getElementById("charNotes").value,
     };
 
@@ -90,12 +90,12 @@ function loadFromFile(event) {
         document.getElementById("int").value = data.int || 10;
         document.getElementById("wis").value = data.wis || 10;
         document.getElementById("cha").value = data.cha || 10;
-        document.getElementById("str-2").value = data.str2 || "+0";
-        document.getElementById("dex-2").value = data.dex2 || "+0";
-        document.getElementById("con-2").value = data.con2 || "+0";
-        document.getElementById("int-2").value = data.int2 || "+0";
-        document.getElementById("wis-2").value = data.wis2 || "+0";
-        document.getElementById("cha-2").value = data.cha2 || "+0";
+        document.getElementById("strSaveProf").checked = character.strSaveProf;
+        document.getElementById("dexSaveProf").checked = character.dexSaveProf;
+        document.getElementById("conSaveProf").checked = character.conSaveProf;
+        document.getElementById("intSaveProf").checked = character.intSaveProf;
+        document.getElementById("wisSaveProf").checked = character.wisSaveProf;
+        document.getElementById("chaSaveProf").checked = character.chaSaveProf;
         document.getElementById("charNotes").value = data.notes || "";
     };
     reader.readAsText(file);
@@ -134,12 +134,12 @@ function updateShareURL() {
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
-        str2: document.getElementById("str-2").value,
-        dex2: document.getElementById("dex-2").value,
-        con2: document.getElementById("con-2").value,
-        int2: document.getElementById("int-2").value,
-        wis2: document.getElementById("wis-2").value,
-        cha2: document.getElementById("cha-2").value,
+        strSaveProf: document.getElementById("strSaveProf").checked,
+        dexSaveProf: document.getElementById("dexSaveProf").checked,
+        conSaveProf: document.getElementById("conSaveProf").checked,
+        intSaveProf: document.getElementById("intSaveProf").checked,
+        wisSaveProf: document.getElementById("wisSaveProf").checked,
+        chaSaveProf: document.getElementById("chaSaveProf").checked,
         notes: document.getElementById("charNotes").value,
     };
 
