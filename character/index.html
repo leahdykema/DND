@@ -1240,9 +1240,9 @@
                         <div class="form-row explvl">
                             <label for="xpInput">Experience</label>
                             <div class="exp">
-                                <button type="button" onclick="adjust('xpInput', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('xpInput', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="xpInput" value="0" min="0" max="355000">
-                                <button type="button" onclick="adjust('xpInput', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('xpInput', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div style="display: block; align-content: center; align-items: center;">
                                 <label for="charLevel" style="margin: 0;" class="lvl">Level</label>
@@ -1252,15 +1252,15 @@
                         <div class="form-row">
                             <label for="hitpoints">Hit Points</label>
                             <div class="hp">
-                                <button type="button" onclick="adjust('currentHP', -1)">&#45;</button>
-                                <input type="number" id="currentHP" value="0">
-                                <button type="button" onclick="adjust('currentHP', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('currentHP', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="currentHP" value="0" aria-label="current HP">
+                                <button type="button" onclick="adjust('currentHP', 1)" aria-label="add">&#43;</button>
                             </div>
-                            <p>&#8260;</p>
+                            <p aria-hidden="true">&#8260;</p>
                             <div class="hp">
-                                <button type="button" onclick="adjust('totalHP', -1)">&#45;</button>
-                                <input type="number" id="totalHP" value="0">
-                                <button type="button" onclick="adjust('totalHP', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('totalHP', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="totalHP" value="0" aria-label="total HP">
+                                <button type="button" onclick="adjust('totalHP', 1)" aria-label="add">&#43;</button>
                             </div>
                         </div>
                         <div class="form-row">
@@ -1421,9 +1421,9 @@
                     </div>
                     <div class="box" id="speedSwitcher">
                         <div class="speedNavigator">
-                            <button class="carArrows" type="button" onclick="cycleSpeed(-1)">&#8592;</button>
-                            <label id="speedLabel" for="speed"><span id="speedTypeLabel">Speed</span></label>
-                            <button class="carArrows" type="button" onclick="cycleSpeed(1)">&#8594;</button>
+                            <button class="carArrows" type="button" onclick="cycleSpeed(-1)" aria-label="previous speed type">&#8592;</button>
+                            <label id="speedLabel" for="speed" aria-hidden="true"><span id="speedTypeLabel">Speed</span></label>
+                            <button class="carArrows" type="button" onclick="cycleSpeed(1)" aria-label="next speed type">&#8594;</button>
                         </div>
                         <input type="number" id="speed" class="speedInput" value="30">
                         <input type="number" id="fly" class="speedInput" value="0" style="display: none;">
@@ -1440,7 +1440,7 @@
                         <input type="text" id="proficiencyBonus" value="" readonly>
                     </div>
                     <div class="box">
-                        <label for="hitDice">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
+                        <label for="hitDice" aria-hidden="true">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
                         <input type="text" id="hitDice" readonly>
                     </div>
                 </div>
@@ -1453,54 +1453,54 @@
                         <div class="box">
                             <label for="str">Strength</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('str', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('str', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="str" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('str', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('str', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="str-mod">+0</div>
                         </div>
                         <div class="box">
                             <label for="dex">Dexterity</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('dex', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('dex', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="dex" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('dex', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('dex', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="dex-mod">+0</div>
                         </div>
                         <div class="box">
                             <label for="con">Constitution</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('con', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('con', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="con" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('con', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('con', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="con-mod">+0</div>
                         </div>
                         <div class="box">
                             <label for="int">Intelligence</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('int', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('int', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="int" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('int', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('int', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="int-mod">+0</div>
                         </div>
                         <div class="box">
                             <label for="wis">Wisdom</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('wis', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('wis', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="wis" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('wis', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('wis', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="wis-mod">+0</div>
                         </div>
                         <div class="box">
                             <label for="cha">Charisma</label>
                             <div class="custom-spinner">
-                                <button type="button" onclick="adjust('cha', -1)">&#45;</button>
+                                <button type="button" onclick="adjust('cha', -1)" aria-label="subtract">&#45;</button>
                                 <input type="number" id="cha" value="10" min="1" max="20">
-                                <button type="button" onclick="adjust('cha', 1)">&#43;</button>
+                                <button type="button" onclick="adjust('cha', 1)" aria-label="add">&#43;</button>
                             </div>
                             <div class="modifier" id="cha-mod">+0</div>
                         </div>
@@ -1554,10 +1554,6 @@
                         </div>
                     </div>
                 </fieldset>
-            </div>
-            <br>
-            <div class="section-field">
-
             </div>
             <!-- Controls -->
             <fieldset>
