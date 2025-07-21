@@ -9,7 +9,7 @@
     <body>
         <h1>Character Sheet</h1>
         <form id="characterForm" autocomplete="off">
-            <div class="top-field">
+            <div class="section-field">
                 <!-- Basic Info -->
                 <fieldset>
                     <legend>Identification</legend>
@@ -1246,7 +1246,7 @@
                             </div>
                             <div style="display: block; align-content: center; align-items: center;">
                                 <label for="charLevel" style="margin: 0;" class="lvl">Level</label>
-                                <input type="number" id="charLevel" name="charLevel" min="1" max="20" style=" border: none; text-align: center; width: 40px;" disabled>
+                                <input type="number" id="charLevel" name="charLevel" min="1" max="20" style=" border: none; text-align: center; width: 40px;" readonly>
                             </div>
                         </div>
                         <div class="form-row">
@@ -1264,21 +1264,190 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <label for="charAlignment">Alignment</label>
-                            <input type="text" id="charAlignment" name="charAlignment">
+                            <label for="charBackground">Background</label>
+                            <select name="charBackground" type="text" id="charBackground">
+                                <option value="" selected disabled>&#45;&#45; Select a Background &#45;&#45;</option>
+                                <option value="Acolyte">Acolyte</option>
+                                <option value="Anthropologist">Anthropologist</option>
+                                <option value="Athlete [MOT]">Athlete &#91;MOT&#93;
+                                </option>
+                                <option value="Augen Trust (Spy) [MOT]">Augen Trust &#40;Spy&#41; &#91;MOT&#93;</option>
+                                <option value="Azorius Functionary [GGR]">Azorius Functionary &#91;GGR&#93;</option>
+                                <option value="Caravan Specialist">Caravan Specialist</option>
+                                <option value="Charlatan">Charlatan</option>
+                                <option value="City Watch">City Watch</option>
+                                <option value="Clan Crafter">Clan Crafter</option>
+                                <option value="Cloistered Scholar">Cloistered Scholar</option>
+                                <option value="Cormanthor Refugee">Cormanthor Refugee</option>
+                                <option value="Courtier">Courtier</option>
+                                <option value="Criminal">Criminal</option>
+                                <option value="Dimir Operative [GGR]">Dimir Operative &#91;GGR&#93;</option>
+                                <option value="Dissenter">Dissenter</option>
+                                <option value="Dragon Casualty">Dragon Casualty</option>
+                                <option value="Earthspur Miner">Earthspur Miner</option>
+                                <option value="Entertainer">Entertainer</option>
+                                <option value="Faceless">Faceless</option>
+                                <option value="Faction Agent">Faction Agent</option>
+                                <option value="Far Traveler">Far Traveler</option>
+                                <option value="Feylost [WBtW]">Feylost &#91;WBtW&#93;</option>
+                                <option value="Fisher">Fisher</option>
+                                <option value="Folk Hero">Folk Hero</option>
+                                <option value="Gate Urchin">Gate Urchin</option>
+                                <option value="Gate Warden [SatO]">Gate Warden &#91;SatO&#93;</option>
+                                <option value="Giant Founding [BGG]">Giant Founding &#91;BGG&#93;</option>
+                                <option value="Gladiator">Gladiator</option>
+                                <option value="Golgari Agent [GGR]">Golgari Agent &#91;GGR&#93;</option>
+                                <option value="Grinner [EGW]">Grinner &#91;EGW&#93;</option>
+                                <option value="Gruul Anarch [GGR]">Gruul Anarch &#91;GGR&#93;</option>
+                                <option value="Guild Artisan">Guild Artisan</option>
+                                <option value="Harborfolk">Harborfolk</option>
+                                <option value="Haunted One">Haunted One</option>
+                                <option value="Haunted One [VRGR]">Haunted One &#91;VRGR&#93;</option>
+                                <option value="Hermit">Hermit</option>
+                                <option value="Hillsfar Merchant">Hillsfar Merchant</option>
+                                <option value="Hillsfar Smuggler">Hillsfar Smuggler</option>
+                                <option value="House Agent">House Agent</option>
+                                <option value="Inheritor">Inheritor</option>
+                                <option value="Initiate">Initiate</option>
+                                <option value="Inquisitor">Inquisitor</option>
+                                <option value="Investigator">Investigator</option>
+                                <option value="Investigator [VRGR]">Investigator &#91;VRGR&#93;</option>
+                                <option value="Iron Route Bandit">Iron Route Bandit</option>
+                                <option value="Izzet Engineer [GGR]">Izzet Engineer &#91;GGR&#93;</option>
+                                <option value="Knight">Knight</option>
+                                <option value="Knight of Solamnia [DSDQ]">Knight of Solamnia &#91;DSDQ&#93;</option>
+                                <option value="Knight of The Order">Knight of The Order</option>
+                                <option value="Lorehold Student [SCC]">Lorehold Student &#91;SCC&#93;</option>
+                                <option value="Mage of High Sorcery [DSDQ]">Mage of High Sorcery &#91;DSDQ&#93;</option>
+                                <option value="Marine">Marine</option>
+                                <option value="Mercenary Veteran">Mercenary Veteran</option>
+                                <option value="Merchant">Marchant</option>
+                                <option value="Mulmaster Aristocrat">Mulmaster Aristocrat</option>
+                                <option value="Noble">Noble</option>
+                                <option value="Orzhov Representative">Orzhov Representative</option>
+                                <option value="Outlander">Outlander</option>
+                                <option value="Phlan Insurgent">Phlan Insurgent</option>
+                                <option value="Phlan Refugee">Phlan Refugee</option>
+                                <option value="Pirate">Pirate</option>
+                                <option value="Planar Philosopher [SatO]">Planar Philosopher &#91;SatO&#93;</option>
+                                <option value="Prismari Student [SCC]">Prismari Student &#91;SCC&#93;</option>
+                                <option value="Quandrix Student [SCC]">Quandrix Student</option>
+                                <option value="Rakdos Cultist [GGR]">Rakdos Cultist</option>
+                                <option value="Rewarded [BMT]">Rewarded &#91;BMT&#93;</option>
+                                <option value="Ruined [BMT]">Ruined &#91;BMT&#93;</option>
+                                <option value="Rune Carver [BGG]">Rune Carver &#91;BGG&#93;</option>
+                                <option value="Sage">Sage</option>
+                                <option value="Sailor">Sailor</option>
+                                <option value="Secret Identity">Secret Identity</option>
+                                <option value="Selesnya Initiate">Selesnya Initiate</option>
+                                <option value="Shade Fanatic">Shade Fanatic</option>
+                                <option value="Shipwright">Shipwright</option>
+                                <option value="Silverquill Student [SCC]">Silverquill Student &#91;SCC&#93;</option>
+                                <option value="Sinic Scientist [GGR]">Sinic Scientist &#91;GGR&#93;</option>
+                                <option value="Smuggler">Smuggler</option>
+                                <option value="Soldier">Soldier</option>
+                                <option value="Spy">Spy</option>
+                                <option value="Stojanow Prisoner">Stojanow Prisoner</option>
+                                <option value="Ticklebelly Nomad">Ticklebelly Nomad</option>
+                                <option value="Trade Sheriff">Trade Sheriff</option>
+                                <option value="Urban Bounty Hunter">Urban Bounty Hunter</option>
+                                <option value="Urchin">Urchin</option>
+                                <option value="Uthgardt Tribe Member">Uthgardt Tribe Member</option>
+                                <option value="Vizier">Vizier</option>
+                                <option value="Volstrucker Agent [EGW]">Volstrucker Agent &#91;EGW&#93;</option>
+                                <option value="Waterdhavian Noble">Waterdhavian Noble</option>
+                                <option value="Witchlight Hand [WBtW]">Witchlight Hand &#91;WBtW&#93;</option>
+                                <option value="Witherbloom Student [SCC]">Witherbloom Student &#91;SCC&#93;</option>
+                            </select>
                         </div>
                         <div class="form-row">
-                            <label for="charBackground">Background</label>
-                            <input type="text" id="charBackground" name="charBackground">
+                            <label for="charAlignment">Alignment</label>
+                            <select name="charAlignment" type="text" id="charAlignment">
+                                <option value="" selected disabled>&#45;&#45; Select an Alignment &#45;&#45;</option>
+                                <option value="Lawful Good">Lawful Good</option>
+                                <option value="Neutral Good">Neutral Good</option>
+                                <option value="Chaotic Good">Chaotic Good</option>
+                                <option value="Lawful Neutral">Lawful Neutral</option>
+                                <option value="True Neutral">True Neutral</option>
+                                <option value="Chaotic Neutral">Chaotic Neutral</option>
+                                <option value="Lawful Evil">Lawful Evil</option>
+                                <option value="Neutral Evil">Neutral Evil</option>
+                                <option value="Chaotic Evil">Chaotic Evil</option>
+                            </select>
                         </div>
                     </div>
                 </fieldset>
-                <br>
-                <!-- Ability Scores -->
+                <!-- Character Details -->
                 <fieldset>
-                    <legend>Ability Scores</legend>
-                    <div class="ability-grid">
-                        <div class="ability-box">
+                    <legend>Character Details</legend>
+                    <div class="basic-info">
+                        <div class="form-row">
+                            <label for="charTraits">Personality Traits</label>
+                            <input type="text" id="charTraits" name="charTraits">
+                        </div>
+                        <div class="form-row">
+                            <label for="charIdeals">Ideals</label>
+                            <input type="text" id="charIdeals" name="charIdeals">
+                        </div>
+                        <div class="form-row">
+                            <label for="charBonds">Bonds</label>
+                            <input type="text" id="charBonds" name="charBonds">
+                        </div>
+                        <div class="form-row">
+                            <label for="charFlaws">Flaws</label>
+                            <input type="text" id="charFlaws" name="charFlaws">
+                        </div>
+                        <div class="form-row">
+                            <label for="charAbout">About</label>
+                            <input type="text" id="charAbout" name="charAbout">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- Core Stats -->
+            <fieldset>
+                <legend>Core Stats</legend>
+                <div class="grid">
+                    <div class="box">
+                        <label for="armorClass">Armor Class</label>
+                        <input type="number" id="armorClass" value="10">
+                    </div>
+                    <div class="box">
+                        <label for="initiative">Initiative</label>
+                        <input type="number" id="initiative" readonly>
+                    </div>
+                    <div class="box" id="speedSwitcher">
+                        <div class="speedNavigator">
+                            <button class="carArrows" type="button" onclick="cycleSpeed(-1)">&#8592;</button>
+                            <label id="speedLabel" for="speed"><span id="speedTypeLabel">Speed</span></label>
+                            <button class="carArrows" type="button" onclick="cycleSpeed(1)">&#8594;</button>
+                        </div>
+                        <input type="number" id="speed" class="speedInput" value="30">
+                        <input type="number" id="fly" class="speedInput" value="0" style="display: none;">
+                        <input type="number" id="climb" class="speedInput" value="0" style="display: none;">
+                        <input type="number" id="swim" class="speedInput" value="0" style="display: none;">
+                        <input type="number" id="burrow" class="speedInput" value="0" style="display: none;">
+                    </div>
+                    <div class="box">
+                        <label for="passivePerception">Passive Perception</label>
+                        <input type="number" id="passivePerception" value="" readonly>
+                    </div>
+                    <div class="box">
+                        <label for="proficiencyBonus">Proficiency Bonus</label>
+                        <input type="text" id="proficiencyBonus" value="" readonly>
+                    </div>
+                    <div class="box">
+                        <label for="hitDice">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
+                        <input type="text" id="hitDice" readonly>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="section-field">
+                <!-- Ability Modifiers -->
+                <fieldset>
+                    <legend>Ability Modifiers</legend>
+                    <div class="grid">
+                        <div class="box">
                             <label for="str">Strength</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('str', -1)">&#45;</button>
@@ -1287,7 +1456,7 @@
                             </div>
                             <div class="modifier" id="str-mod">+0</div>
                         </div>
-                        <div class="ability-box">
+                        <div class="box">
                             <label for="dex">Dexterity</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('dex', -1)">&#45;</button>
@@ -1296,7 +1465,7 @@
                             </div>
                             <div class="modifier" id="dex-mod">+0</div>
                         </div>
-                        <div class="ability-box">
+                        <div class="box">
                             <label for="con">Constitution</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('con', -1)">&#45;</button>
@@ -1305,7 +1474,7 @@
                             </div>
                             <div class="modifier" id="con-mod">+0</div>
                         </div>
-                        <div class="ability-box">
+                        <div class="box">
                             <label for="int">Intelligence</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('int', -1)">&#45;</button>
@@ -1314,7 +1483,7 @@
                             </div>
                             <div class="modifier" id="int-mod">+0</div>
                         </div>
-                        <div class="ability-box">
+                        <div class="box">
                             <label for="wis">Wisdom</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('wis', -1)">&#45;</button>
@@ -1323,7 +1492,7 @@
                             </div>
                             <div class="modifier" id="wis-mod">+0</div>
                         </div>
-                        <div class="ability-box">
+                        <div class="box">
                             <label for="cha">Charisma</label>
                             <div class="custom-spinner">
                                 <button type="button" onclick="adjust('cha', -1)">&#45;</button>
@@ -1333,11 +1502,62 @@
                             <div class="modifier" id="cha-mod">+0</div>
                         </div>
                     </div>
-                    <br>
-                    <textarea name="notes" cols="25" rows="4" placeholder="Type out other notes here" id="charNotes"></textarea>
+                </fieldset>
+                <!-- Saving Throws -->
+                <fieldset>
+                    <legend>Saving Throws</legend>
+                    <div class="grid">
+                        <div class="box">
+                            <label for="str-2">Strength</label>
+                            <div class="saving-throws">
+                               <input type="checkbox" class="checkbox" id="strSaveProf">
+                                <input type="text" id="str-2" readonly>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="dex-2">Dexterity</label>
+                            <div class="saving-throws">
+                                <input type="checkbox" id="dexSaveProf">
+                                <input type="text" id="dex-2" readonly>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="con-2">Constitution</label>
+                            <div class="saving-throws">
+                                <input type="checkbox" id="conSaveProf">
+                                <input type="text" id="con-2" readonly>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="int-2">Intelligence</label>
+                            <div class="saving-throws">
+                               <input type="checkbox" id="intSaveProf">
+                                <input type="text" id="int-2" readonly>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="wis-2">Wisdom</label>
+                            <div class="saving-throws">
+                                <input type="checkbox" id="wisSaveProf">
+                                <input type="text" id="wis-2" readonly>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="cha-2">Charisma</label>
+                            <div class="saving-throws">
+                                <input type="checkbox" id="chaSaveProf">
+                                <input type="text" id="cha-2" readonly>
+                            </div>
+                        </div>
+                    </div>
                 </fieldset>
             </div>
             <br>
+            <textarea name="notes" cols="25" rows="4" placeholder="Type out other notes here" id="charNotes"></textarea>
+            <br>
+            <div class="section-field">
+
+            </div>
             <!-- Controls -->
             <fieldset>
                 <legend>Controls</legend>
@@ -1399,7 +1619,39 @@
                 }
             });
         </script>
+        <script>
+            const speedTypes = ["speed", "fly", "climb", "swim", "burrow"];
+            const speedLabels = {
+                speed: "Speed",
+                fly: "Fly",
+                climb: "Climb",
+                swim: "Swim",
+                burrow: "Burrow"
+            };
+            let currentSpeedIndex = 0;
+            function cycleSpeed(direction) {
+                // Hide current input
+                const currentId = speedTypes[currentSpeedIndex];
+                document.getElementById(currentId).style.display = "none";
+                // Move index
+                currentSpeedIndex = (currentSpeedIndex + direction + speedTypes.length) % speedTypes.length;
+                // Show new input
+                const newId = speedTypes[currentSpeedIndex];
+                document.getElementById(newId).style.display = "inline";
+                // Update label and for
+                const label = document.getElementById("speedLabel");
+                label.setAttribute("for", newId);
+                document.getElementById("speedTypeLabel").textContent = speedLabels[newId];
+            }
+            // On load, ensure only the first one is shown
+            document.addEventListener("DOMContentLoaded", () => {
+                speedTypes.forEach((id, index) => {
+                    document.getElementById(id).style.display = index === 0 ? "inline" : "none";
+                    });
+                cycleSpeed(0); // refresh label and for
+            });
+        </script>
         <script src="script.js"></script>
-        <script src="options.js"></script>
+        <script src="calculate.js"></script>
     </body>
 </html>

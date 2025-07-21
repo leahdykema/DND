@@ -20,26 +20,38 @@ const xpToLevel = [
     305000, // Level 19
     355000  // Level 20
 ];
+// Map class names to hit die types
+const classHitDiceMap = {
+    Barbarian: 'd12',
+    Fighter: 'd10',
+    Paladin: 'd10',
+    Ranger: 'd10',
+    Bard: 'd8',
+    Cleric: 'd8',
+    Druid: 'd8',
+    Monk: 'd8',
+    Rogue: 'd8',
+    Warlock: 'd8',
+    Artificer: 'd8',
+    BloodHunter: 'd10',
+    Sorcerer: 'd6',
+    Wizard: 'd6'
+};
 const xpInput = document.getElementById('xpInput');
 const charLevel = document.getElementById('charLevel');
+const proficiencyBonus = document.getElementById('proficiencyBonus');
 // Set XP input to 0 initially
 xpInput.value = 0;
 updateLevelFromXP(0);
-// Listen for XP input manually typed
-xpInput.addEventListener('input', () => {
-    const xp = parseInt(xpInput.value, 10) || 0;
-    updateLevelFromXP(xp);
-});
-// Adjust XP only by 100
-function adjustXP(amount) {
-    let current = parseInt(xpInput.value, 10) || 0;
-    const min = parseInt(xpInput.min);
-    const max = parseInt(xpInput.max);
-    const newValue = Math.min(Math.max(current + amount, min), max);
-    xpInput.value = newValue;
-    updateLevelFromXP(newValue);
+// Proficiency bonus lookup
+function getProficiencyBonus(level) {
+    if (level >= 17) return 6;
+    if (level >= 13) return 5;
+    if (level >= 9) return 4;
+    if (level >= 5) return 3;
+    return 2;
 }
-// Update level based on XP
+// Update level and proficiency bonus based on XP
 function updateLevelFromXP(xp) {
     let level = 1;
     for (let i = 0; i < xpToLevel.length; i++) {
@@ -50,6 +62,35 @@ function updateLevelFromXP(xp) {
         }
     }
     charLevel.value = level;
+    if (proficiencyBonus) {
+        const bonus = getProficiencyBonus(level);
+        proficiencyBonus.value = `+${bonus}`;
+    }
+}
+function updateHitDice() {
+    const className = charClass.value;
+    const level = parseInt(charLevel.value, 10) || 1;
+    const diceType = classHitDiceMap[className] || 'd8';
+    const hitDiceTypeSpan = document.getElementById('hitDiceType');
+    const hitDiceInput = document.getElementById('hitDice');
+    if (hitDiceTypeSpan) hitDiceTypeSpan.textContent = diceType;
+    if (hitDiceInput) hitDiceInput.value = level;
+}
+function updatePassivePerception() {
+    const wis = parseInt(document.getElementById('wis')?.value, 10) || 10;
+    const wisMod = Math.floor((wis - 10) / 2);
+    const passivePerception = 10 + wisMod;
+    const passiveInput = document.getElementById('passivePerception');
+    if (passiveInput) passiveInput.value = passivePerception;
+}
+// Adjust XP only by 100
+function adjustXP(amount) {
+    let current = parseInt(xpInput.value, 10) || 0;
+    const min = parseInt(xpInput.min);
+    const max = parseInt(xpInput.max);
+    const newValue = Math.min(Math.max(current + amount, min), max);
+    xpInput.value = newValue;
+    updateLevelFromXP(newValue);
 }
 // Adjust for both XP and ability scores
 function adjust(id, change) {
@@ -72,6 +113,8 @@ function adjust(id, change) {
         const modifier = Math.floor((value - 10) / 2);
         const modDisplay = document.getElementById(`${id}-mod`);
         modDisplay.textContent = (modifier >= 0 ? '+' : '') + modifier;
+        if (id === 'wis') updatePassivePerception();
+        updateModifier(id);
     }
 }
 // Detect ability scores by ID
@@ -85,14 +128,55 @@ function updateModifier(statId) {
     const score = parseInt(input.value, 10) || 0;
     const modifier = Math.floor((score - 10) / 2);
     modDiv.textContent = (modifier >= 0 ? "+" : "") + modifier;
-
+    if (statId === 'dex') {
+        const initiativeField = document.getElementById('initiative');
+        if (initiativeField) {
+            initiativeField.value = modifier;
+        }
+    }
+}
+function getModifier(score) {
+    return Math.floor((score - 10) / 2);
+}
+function updateSavingThrows() {
+    const proficiency = parseInt(
+        (document.getElementById('proficiencyBonus')?.value || '2').replace('+', ''),
+        10
+    );
+    const abilities = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+    abilities.forEach(ability => {
+        const score = parseInt(document.getElementById(ability)?.value || 10);
+        const mod = getModifier(score);
+        const isProficient = document.getElementById(`${ability}SaveProf`)?.checked;
+        const saveValue = mod + (isProficient ? proficiency : 0);
+        const formatted = (saveValue >= 0 ? '+' : '') + saveValue;
+        const saveInput = document.getElementById(`${ability}-2`);
+        if (saveInput) {
+            saveInput.value = formatted;
+        }
+    });
 }
 // Initialize modifiers on page load
 window.addEventListener('DOMContentLoaded', () => {
     ['str', 'dex', 'con', 'int', 'wis', 'cha'].forEach(stat => {
         updateModifier(stat);
     });
+    updateLevelFromXP(parseInt(xpInput.value, 10) || 0); // Ensure bonus is set
 });
+['str', 'dex', 'con', 'int', 'wis', 'cha'].forEach(ability => {
+    const input = document.getElementById(ability);
+    const checkbox = document.getElementById(`${ability}SaveProf`);
+
+    if (input) {
+        input.addEventListener('input', updateSavingThrows);
+    }
+    if (checkbox) {
+        checkbox.addEventListener('change', updateSavingThrows);
+    }
+});
+// Also update on page load and when proficiency changes
+document.getElementById('proficiencyBonus')?.addEventListener('input', updateSavingThrows);
+window.addEventListener('DOMContentLoaded', updateSavingThrows);
 // Classes
 const charClass = document.getElementById('charClass');
 const charClass2 = document.getElementById('charClass2');
@@ -115,7 +199,6 @@ function updateSubclass2Visibility() {
         if (matchingGroup) {
             charClass2.appendChild(matchingGroup);
             charClass2Row.style.display = '';
-            // Auto-select first option
             if (matchingGroup.children.length > 0) {
                 charClass2.value = matchingGroup.children[0].value;
             }
@@ -134,7 +217,6 @@ function updateSubclass3Visibility() {
     if (matchingGroup) {
         charClass3.appendChild(matchingGroup);
         charClass3Row.style.display = '';
-        // Auto-select first option
         if (matchingGroup.children.length > 0) {
             charClass3.value = matchingGroup.children[0].value;
         }
@@ -142,8 +224,30 @@ function updateSubclass3Visibility() {
         charClass3Row.style.display = 'none';
     }
 }
+function getModifier(score) {
+    return Math.floor((score - 10) / 2);
+}
 // Event listeners
+xpInput.addEventListener('input', () => {
+    const xp = parseInt(xpInput.value, 10) || 0;
+    updateLevelFromXP(xp);
+    updateHitDice();
+});
+charClass.addEventListener('change', () => {
+    updateSubclass2Visibility();
+    updateHitDice();
+});
+window.addEventListener('DOMContentLoaded', () => {
+    ['str', 'dex', 'con', 'int', 'wis', 'cha'].forEach(stat => {
+        updateModifier(stat);
+    });
+    updateLevelFromXP(parseInt(xpInput.value, 10) || 0);
+    updateHitDice();
+    updatePassivePerception();
+    updateSavingThrows();
+});
 charClass.addEventListener('change', updateSubclass2Visibility);
 charLevel.addEventListener('input', updateSubclass2Visibility);
 charClass2.addEventListener('change', updateSubclass3Visibility);
 updateSubclass2Visibility();
+updateSavingThrows();

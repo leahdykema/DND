@@ -9,14 +9,35 @@ function saveToFile() {
         level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById9("totalHP").value,
-        alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
+        alignment: document.getElementById("charAlignment").value,
+        traits: document.getElementById("charTraits").value,
+        ideals: document.getElementById("charIdeals").value,
+        bonds: document.getElementById("charBonds").value,
+        flaws: document.getElementById("charFlaws").value,
+        about: document.getElementById("charAbout").value,
+        armor: document.getElementById("armorClass").value,
+        initiative: document.getElementById("initiative").value,
+        speed: document.getElementById("speed").value,
+        fly: document.getElementById("fly").value,
+        climb: document.getElementById("climb").value,
+        swim: document.getElementById("swim").value,
+        burrow: document.getElementById("burrow").value,
+        pp: document.getElementById("passivePerception").value,
+        pb: document.getElementById("proficiencyBonus").value,
+        hd: document.getElementById("hitDice").value,
         str: document.getElementById("str").value,
         dex: document.getElementById("dex").value,
         con: document.getElementById("con").value,
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
+        str2: document.getElementById("str-2").value,
+        dex2: document.getElementById("dex-2").value,
+        con2: document.getElementById("con-2").value,
+        int2: document.getElementById("int-2").value,
+        wis2: document.getElementById("wis-2").value,
+        cha2: document.getElementById("cha-2").value,
         notes: document.getElementById("charNotes").value,
     };
 
@@ -46,14 +67,35 @@ function loadFromFile(event) {
         document.getElementById("charLevel").value = data.level || "";
         document.getElementById("currentHP").value = data.currentHP || "";
         document.getElementById("totalHP").value = data.totalHP || "";
-        document.getElementById("charAlignment").value = data.alignment || "";
         document.getElementById("charBackground").value = data.background || "";
+        document.getElementById("charAlignment").value = data.alignment || "";
+        document.getElementById("charTraits").value = data.traits || "";
+        document.getElementById("charIdeals").value = data.ideals || "";
+        document.getElementById("charBonds").value = data.bonds || "";
+        document.getElementById("charFlaws").value = data.flaws || "";
+        document.getElementById("charAbout").value = data.about || "";
+        document.getElementById("armorClass").value = data.armor || 10;
+        document.getElementById("initiative").value = data.initiative || 0;
+        document.getElementById("speed").value = data.speed || 30;
+        document.getElementById("fly").value = data.fly || 0;
+        document.getElementById("climb").value = data.climb || 0;
+        document.getElementById("swim").value = data.swim || 0;
+        document.getElementById("burrow").value = data.burrow || 0;
+        document.getElementById("passivePerception").value = data.pp || 10;
+        document.getElementById("proficiencyBonus").value = data.pb || "+2";
+        document.getElementById("hitDice").value = data.hd || 1;
         document.getElementById("str").value = data.str || 10;
         document.getElementById("dex").value = data.dex || 10;
         document.getElementById("con").value = data.con || 10;
         document.getElementById("int").value = data.int || 10;
         document.getElementById("wis").value = data.wis || 10;
         document.getElementById("cha").value = data.cha || 10;
+        document.getElementById("str-2").value = data.str2 || "+0";
+        document.getElementById("dex-2").value = data.dex2 || "+0";
+        document.getElementById("con-2").value = data.con2 || "+0";
+        document.getElementById("int-2").value = data.int2 || "+0";
+        document.getElementById("wis-2").value = data.wis2 || "+0";
+        document.getElementById("cha-2").value = data.cha2 || "+0";
         document.getElementById("charNotes").value = data.notes || "";
     };
     reader.readAsText(file);
@@ -69,14 +111,35 @@ function updateShareURL() {
         level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById("totalHP").value,
-        alignment: document.getElementById("charAlignment").value,
         background: document.getElementById("charBackground").value,
+        alignment: document.getElementById("charAlignment").value,
+        traits: document.getElementById("charTraits").value,
+        ideals: document.getElementById("charIdeals").value,
+        bonds: document.getElementById("charBonds").value,
+        flaws: document.getElementById("charFlaws").value,
+        about: document.getElementById("charAbout").value,
+        armor: document.getElementById("armorClass").value,
+        initiative: document.getElementById("initiative").value,
+        speed: document.getElementById("speed").value,
+        fly: document.getElementById("fly").value,
+        climb: document.getElementById("climb").value,
+        swim: document.getElementById("swim").value,
+        burrow: document.getElementById("burrow").value,
+        pp: document.getElementById("passivePerception").value,
+        pb: document.getElementById("proficiencyBonus").value,
+        hd: document.getElementById("hitDice").value,
         str: document.getElementById("str").value,
         dex: document.getElementById("dex").value,
         con: document.getElementById("con").value,
         int: document.getElementById("int").value,
         wis: document.getElementById("wis").value,
         cha: document.getElementById("cha").value,
+        str2: document.getElementById("str-2").value,
+        dex2: document.getElementById("dex-2").value,
+        con2: document.getElementById("con-2").value,
+        int2: document.getElementById("int-2").value,
+        wis2: document.getElementById("wis-2").value,
+        cha2: document.getElementById("cha-2").value,
         notes: document.getElementById("charNotes").value,
     };
 
