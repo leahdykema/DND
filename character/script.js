@@ -8,7 +8,7 @@ function saveToFile() {
         xpInput: document.getElementById("xpInput").value,
         level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
-        totalHP: document.getElementById9("totalHP").value,
+        totalHP: document.getElementById("totalHP").value,
         background: document.getElementById("charBackground").value,
         alignment: document.getElementById("charAlignment").value,
         traits: document.getElementById("charTraits").value,
