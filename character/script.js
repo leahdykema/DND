@@ -54,6 +54,42 @@ function saveToFile() {
         wisSaveProf: document.getElementById("wisSaveProf").checked,
         chaSaveProf: document.getElementById("chaSaveProf").checked,
         notes: document.getElementById("charNotes").value,
+        acroSaveProf: document.getElementById("acroSaveProf").checked,
+        acroExpertise: document.getElementById("acroExpertise").checked,
+        aniHanSaveProf: document.getElementById("aniHanSaveProf").checked,
+        aniHanExpertise: document.getElementById("aniHanExpertise").checked,
+        arcaSaveProf: document.getElementById("arcaSaveProf").checked,
+        arcaExpertise: document.getElementById("arcaExpertise").checked,
+        athlSaveProf: document.getElementById("athlSaveProf").checked,
+        athlExpertise: document.getElementById("athlExpertise").checked,
+        deceSaveProf: document.getElementById("deceSaveProf").checked,
+        deceExpertise: document.getElementById("deceExpertise").checked,
+        histSaveProf: document.getElementById("histSaveProf").checked,
+        histExpertise: document.getElementById("histExpertise").checked,
+        insiSaveProf: document.getElementById("insiSaveProf").checked,
+        insiExpertise: document.getElementById("insiExpertise").checked,
+        intiSaveProf: document.getElementById("intiSaveProf").checked,
+        intiExpertise: document.getElementById("intiExpertise").checked,
+        inveSaveProf: document.getElementById("inveSaveProf").checked,
+        inveExpertise: document.getElementById("inveExpertise").checked,
+        mediSaveProf: document.getElementById("mediSaveProf").checked,
+        mediExpertise: document.getElementById("mediExpertise").checked,
+        natuSaveProf: document.getElementById("natuSaveProf").checked,
+        natuExpertise: document.getElementById("natuExpertise").checked,
+        percSaveProf: document.getElementById("percSaveProf").checked,
+        percExpertise: document.getElementById("percExpertise").checked,
+        perfSaveProf: document.getElementById("perfSaveProf").checked,
+        perfExpertise: document.getElementById("perfExpertise").checked,
+        persSaveProf: document.getElementById("persSaveProf").checked,
+        persExpertise: document.getElementById("persExpertise").checked,
+        reliSaveProf: document.getElementById("reliSaveProf").checked,
+        reliExpertise: document.getElementById("reliExpertise").checked,
+        sleHanSaveProf: document.getElementById("sleHanSaveProf").checked,
+        sleightHandExpertise: document.getElementById("sleightHandExpertise").checked,
+        steaSaveProf: document.getElementById("steaSaveProf").checked,
+        steaExpertise: document.getElementById("steaExpertise").checked,
+        survSaveProf: document.getElementById("survSaveProf").checked,
+        survExpertise: document.getElementById("survExpertise").checked,
     };
 
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
@@ -127,6 +163,42 @@ function loadFromFile(event) {
         document.getElementById("wisSaveProf").checked = character.wisSaveProf;
         document.getElementById("chaSaveProf").checked = character.chaSaveProf;
         document.getElementById("charNotes").value = data.notes || "";
+        document.getElementById("acroSaveProf").checked = character.acroSaveProf;
+        document.getElementById("acroExpertise").checked = character.acroExpertise;
+        document.getElementById("aniHanSaveProf").checked = character.aniHanSaveProf;
+        document.getElementById("aniHanExpertise").checked = character.aniHanExpertise;
+        document.getElementById("arcaSaveProf").checked = character.arcaSaveProf;
+        document.getElementById("arcaExpertise").checked = character.arcaExpertise;
+        document.getElementById("athlSaveProf").checked = character.athlSaveProf;
+        document.getElementById("athlExpertise").checked = character.athlExpertise;
+        document.getElementById("deceSaveProf").checked = character.deceSaveProf;
+        document.getElementById("deceExpertise").checked = character.deceExpertise;
+        document.getElementById("histSaveProf").checked = character.histSaveProf;
+        document.getElementById("histExpertise").checked = character.histExpertise;
+        document.getElementById("insiSaveProf").checked = character.insiSaveProf;
+        document.getElementById("insiExpertise").checked = character.insiExpertise;
+        document.getElementById("intiSaveProf").checked = character.intiSaveProf;
+        document.getElementById("intiExpertise").checked = character.intiExpertise;
+        document.getElementById("inveSaveProf").checked = character.inveSaveProf;
+        document.getElementById("inveExpertise").checked = character.inveExpertise;
+        document.getElementById("mediSaveProf").checked = character.mediSaveProf;
+        document.getElementById("mediExpertise").checked = character.mediExpertise;
+        document.getElementById("natuSaveProf").checked = character.natuSaveProf;
+        document.getElementById("natuExpertise").checked = character.natuExpertise;
+        document.getElementById("percSaveProf").checked = character.percSaveProf;
+        document.getElementById("percExpertise").checked = character.percExpertise;
+        document.getElementById("perfSaveProf").checked = character.perfSaveProf;
+        document.getElementById("perfExpertise").checked = character.perfExpertise;
+        document.getElementById("persSaveProf").checked = character.persSaveProf;
+        document.getElementById("persExpertise").checked = character.persExpertise;
+        document.getElementById("reliSaveProf").checked = character.reliSaveProf;
+        document.getElementById("reliExpertise").checked = character.reliExpertise;
+        document.getElementById("sleHanSaveProf").checked = character.sleHanSaveProf;
+        document.getElementById("sleightHandExpertise").checked = character.sleightHandExpertise;
+        document.getElementById("steaSaveProf").checked = character.steaSaveProf;
+        document.getElementById("steaExpertise").checked = character.steaExpertise;
+        document.getElementById("survSaveProf").checked = character.survSaveProf;
+        document.getElementById("survExpertise").checked = character.survExpertise;
     };
     reader.readAsText(file);
 }
@@ -186,6 +258,42 @@ function updateShareURL() {
         wisSaveProf: document.getElementById("wisSaveProf").checked,
         chaSaveProf: document.getElementById("chaSaveProf").checked,
         notes: document.getElementById("charNotes").value,
+        acroSaveProf: document.getElementById("acroSaveProf").checked,
+        acroExpertise: document.getElementById("acroExpertise").checked,
+        aniHanSaveProf: document.getElementById("aniHanSaveProf").checked,
+        aniHanExpertise: document.getElementById("aniHanExpertise").checked,
+        arcaSaveProf: document.getElementById("arcaSaveProf").checked,
+        arcaExpertise: document.getElementById("arcaExpertise").checked,
+        athlSaveProf: document.getElementById("athlSaveProf").checked,
+        athlExpertise: document.getElementById("athlExpertise").checked,
+        deceSaveProf: document.getElementById("deceSaveProf").checked,
+        deceExpertise: document.getElementById("deceExpertise").checked,
+        histSaveProf: document.getElementById("histSaveProf").checked,
+        histExpertise: document.getElementById("histExpertise").checked,
+        insiSaveProf: document.getElementById("insiSaveProf").checked,
+        insiExpertise: document.getElementById("insiExpertise").checked,
+        intiSaveProf: document.getElementById("intiSaveProf").checked,
+        intiExpertise: document.getElementById("intiExpertise").checked,
+        inveSaveProf: document.getElementById("inveSaveProf").checked,
+        inveExpertise: document.getElementById("inveExpertise").checked,
+        mediSaveProf: document.getElementById("mediSaveProf").checked,
+        mediExpertise: document.getElementById("mediExpertise").checked,
+        natuSaveProf: document.getElementById("natuSaveProf").checked,
+        natuExpertise: document.getElementById("natuExpertise").checked,
+        percSaveProf: document.getElementById("percSaveProf").checked,
+        percExpertise: document.getElementById("percExpertise").checked,
+        perfSaveProf: document.getElementById("perfSaveProf").checked,
+        perfExpertise: document.getElementById("perfExpertise").checked,
+        persSaveProf: document.getElementById("persSaveProf").checked,
+        persExpertise: document.getElementById("persExpertise").checked,
+        reliSaveProf: document.getElementById("reliSaveProf").checked,
+        reliExpertise: document.getElementById("reliExpertise").checked,
+        sleHanSaveProf: document.getElementById("sleHanSaveProf").checked,
+        sleightHandExpertise: document.getElementById("sleightHandExpertise").checked,
+        steaSaveProf: document.getElementById("steaSaveProf").checked,
+        steaExpertise: document.getElementById("steaExpertise").checked,
+        survSaveProf: document.getElementById("survSaveProf").checked,
+        survExpertise: document.getElementById("survExpertise").checked,
     };
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));

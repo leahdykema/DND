@@ -300,15 +300,18 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: bold;
 }
 
-.saving-throws {
+.saving-throws,
+.skills {
     display: flex;
     margin: auto;
     align-items: center;
     align-content: center;
+    justify-content: space-evenly;
     gap: 0.1em;
 }
 
-.saving-throws input[type="text"] {
+.saving-throws input[type="text"],
+.skills input[type="text"] {
     width: 3em;
     text-align: center;
     font-weight: bold;
@@ -316,13 +319,13 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 4px;
 }
 
-.saving-throws input[type="checkbox"] {
+.saving-throws input[type="checkbox"],
+.skills input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     width: 1.5em;
     height: 1.5em;
-    margin-left: 20px;
-    margin-right: 10px;
+    margin: 0;
     border: 1px solid var(--danger);
     border-radius: 4px;
     display: inline-block;
@@ -350,13 +353,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .saving-throws input[type="checkbox"]:checked,
+.skills input[type="checkbox"]:checked,
 .condition-checkbox:checked {
     background-color: var(--success);
     border-color: var(--success);
 }
 
 /* Draw checkmark */
-.saving-throws input[type="checkbox"]::after {
+.saving-throws input[type="checkbox"]::after,
+.skills input[type="checkbox"]::after {
     content: '';
     position: absolute;
     top: 6px;
@@ -384,6 +389,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .saving-throws input[type="checkbox"]:checked::after,
+.skills input[type="checkbox"]:checked::after,
 .condition-checkbox:checked::after {
     opacity: 1;
 }
