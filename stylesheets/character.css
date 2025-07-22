@@ -277,6 +277,22 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
 }
 
+.con-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.con-box label {
+    line-height: 1.2;
+    margin: 0;
+    font-weight: bold;
+}
+
 .saving-throws {
     display: flex;
     margin: auto;
@@ -309,7 +325,25 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: background-color 0.2s, border-color 0.2s;
 }
 
-.saving-throws input[type="checkbox"]:checked {
+.condition-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid var(--danger);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.saving-throws input[type="checkbox"]:checked,
+.condition-checkbox:checked {
     background-color: var(--success);
     border-color: var(--success);
 }
@@ -329,7 +363,21 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: opacity 0.2s;
 }
 
-.saving-throws input[type="checkbox"]:checked::after {
+.condition-checkbox::after {
+    content: "";
+    position: absolute;
+    left: 0.30em;
+    top: 0.1em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid #fff;
+    border-width: 0 0.15em 0.15em 0;
+    opacity: 0;
+    transform: rotate(45deg);
+}
+
+.saving-throws input[type="checkbox"]:checked::after,
+.condition-checkbox:checked::after {
     opacity: 1;
 }
 

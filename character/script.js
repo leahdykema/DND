@@ -26,6 +26,21 @@ function saveToFile() {
         pp: document.getElementById("passivePerception").value,
         pb: document.getElementById("proficiencyBonus").value,
         hd: document.getElementById("hitDice").value,
+        blinded: document.getElementById("blinded").value,
+        charmed: document.getElementById("charmed").value,
+        deafened: document.getElementById("deafened").value,
+        frightened: document.getElementById("frightened").value,
+        grappled: document.getElementById("grappled").value,
+        incapacitated: document.getElementById("incapacitated").value,
+        invisible: document.getElementById("invisible").value,
+        paralyzed: document.getElementById("paralyzed").value,
+        petrified: document.getElementById("petrified").value,
+        poisened: document.getElementById("poisoned").value,
+        prone: document.getElementById("prone").value,
+        restrained: document.getElementById("restrained").value,
+        stunned: document.getElementById("stunned").value,
+        unconscious: document.getElementById("unconscious").value,
+        exhaustion: document.getElementById("exhaustion").value,
         str: document.getElementById("str").value,
         dex: document.getElementById("dex").value,
         con: document.getElementById("con").value,
@@ -84,6 +99,21 @@ function loadFromFile(event) {
         document.getElementById("passivePerception").value = data.pp || 10;
         document.getElementById("proficiencyBonus").value = data.pb || "+2";
         document.getElementById("hitDice").value = data.hd || 1;
+        document.getElementById("blinded").checked = character.blinded;
+        document.getElementById("charmed").checked = character.charmed;
+        document.getElementById("deafened").checked = character.deafened;
+        document.getElementById("frightened").checked = character.frightened;
+        document.getElementById("grappled").checked = character.grappled;
+        document.getElementById("incapacitated").checked = character.incapacitated;
+        document.getElementById("invisible").checked = character.invisible;
+        document.getElementById("paralyzed").checked = character.paralyzed;
+        document.getElementById("petrified").checked = character.petrified;
+        document.getElementById("poisoned").checked = character.poisoned;
+        document.getElementById("prone").checked = character.prone;
+        document.getElementById("restrained").checked = character.restrained;
+        document.getElementById("stunned").checked = character.stunned;
+        document.getElementById("unconscious").checked = character.unconscious;
+        document.getElementById("exhaustion").checked = character.exhaustion;
         document.getElementById("str").value = data.str || 10;
         document.getElementById("dex").value = data.dex || 10;
         document.getElementById("con").value = data.con || 10;
@@ -128,6 +158,21 @@ function updateShareURL() {
         pp: document.getElementById("passivePerception").value,
         pb: document.getElementById("proficiencyBonus").value,
         hd: document.getElementById("hitDice").value,
+        blinded: document.getElementById("blinded").value,
+        charmed: document.getElementById("charmed").value,
+        deafened: document.getElementById("deafened").value,
+        frightened: document.getElementById("frightened").value,
+        grappled: document.getElementById("grappled").value,
+        incapacitated: document.getElementById("incapacitated").value,
+        invisible: document.getElementById("invisible").value,
+        paralyzed: document.getElementById("paralyzed").value,
+        petrified: document.getElementById("petrified").value,
+        poisened: document.getElementById("poisoned").value,
+        prone: document.getElementById("prone").value,
+        restrained: document.getElementById("restrained").value,
+        stunned: document.getElementById("stunned").value,
+        unconscious: document.getElementById("unconscious").value,
+        exhaustion: document.getElementById("exhaustion").value,
         str: document.getElementById("str").value,
         dex: document.getElementById("dex").value,
         con: document.getElementById("con").value,

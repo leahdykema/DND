@@ -1550,49 +1550,117 @@
                             <input type="text" id="charAbout" name="charAbout">
                         </div>
                         <div class="form-row">
-                            <textarea name="notes" cols="25" rows="4" placeholder="Type out other notes here" id="charNotes" style="display: block; margin: auto;"></textarea>
+                            <textarea name="notes" cols="25" rows="2" placeholder="Type out other notes here" id="charNotes" style="display: block; margin: auto;"></textarea>
                         </div>
                     </div>
                 </fieldset>
             </div>
-            <!-- Core Stats -->
-            <fieldset>
-                <legend>Core Stats</legend>
-                <div class="grid">
-                    <div class="box">
-                        <label for="armorClass">Armor Class</label>
-                        <input type="number" id="armorClass" value="10">
-                    </div>
-                    <div class="box">
-                        <label for="initiative">Initiative</label>
-                        <input type="number" id="initiative" readonly>
-                    </div>
-                    <div class="box" id="speedSwitcher">
-                        <div class="speedNavigator">
-                            <button class="carArrows" type="button" onclick="cycleSpeed(-1)" aria-label="previous speed type">&#8592;</button>
-                            <label id="speedLabel" for="speed" aria-hidden="true"><span id="speedTypeLabel">Speed</span></label>
-                            <button class="carArrows" type="button" onclick="cycleSpeed(1)" aria-label="next speed type">&#8594;</button>
+            <div class="section-field">
+                <!-- Core Stats -->
+                <fieldset>
+                    <legend>Core Stats</legend>
+                    <div class="grid">
+                        <div class="box">
+                            <label for="armorClass">Armor Class</label>
+                            <input type="number" id="armorClass" value="10">
                         </div>
-                        <input type="number" id="speed" class="speedInput" value="30">
-                        <input type="number" id="fly" class="speedInput" value="0" style="display: none;">
-                        <input type="number" id="climb" class="speedInput" value="0" style="display: none;">
-                        <input type="number" id="swim" class="speedInput" value="0" style="display: none;">
-                        <input type="number" id="burrow" class="speedInput" value="0" style="display: none;">
+                        <div class="box">
+                            <label for="initiative">Initiative</label>
+                            <input type="number" id="initiative" readonly>
+                        </div>
+                        <div class="box" id="speedSwitcher">
+                            <div class="speedNavigator">
+                                <button class="carArrows" type="button" onclick="cycleSpeed(-1)" aria-label="previous speed type">&#8592;</button>
+                                <label id="speedLabel" for="speed" aria-hidden="true"><span id="speedTypeLabel">Speed</span></label>
+                                <button class="carArrows" type="button" onclick="cycleSpeed(1)" aria-label="next speed type">&#8594;</button>
+                            </div>
+                            <input type="number" id="speed" class="speedInput" value="30">
+                            <input type="number" id="fly" class="speedInput" value="0" style="display: none;">
+                            <input type="number" id="climb" class="speedInput" value="0" style="display: none;">
+                            <input type="number" id="swim" class="speedInput" value="0" style="display: none;">
+                            <input type="number" id="burrow" class="speedInput" value="0" style="display: none;">
+                        </div>
+                        <div class="box">
+                            <label for="passivePerception">Passive Perception</label>
+                            <input type="number" id="passivePerception" value="" readonly>
+                        </div>
+                        <div class="box">
+                            <label for="proficiencyBonus">Proficiency Bonus</label>
+                            <input type="text" id="proficiencyBonus" value="" readonly>
+                        </div>
+                        <div class="box">
+                            <label for="hitDice" aria-hidden="true">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
+                            <input type="text" id="hitDice" readonly>
+                        </div>
                     </div>
-                    <div class="box">
-                        <label for="passivePerception">Passive Perception</label>
-                        <input type="number" id="passivePerception" value="" readonly>
+                </fieldset>
+                <!-- Conditions-->
+                <fieldset>
+                    <legend>Conditions</legend>
+                    <div class="grid">
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="blinded">
+                            <label for="blinded">Blinded</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="charmed">
+                            <label for="charmed">Charmed</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="deafened">
+                            <label for="deafened">Deafened</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="frightened">
+                            <label for="frightened">Frightened</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="grappled">
+                            <label for="grappled">Grappled</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="incapacitated">
+                            <label for="incapacitated">Incapacitated</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="invisible">
+                            <label for="invisible">Invisible</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="paralyzed">
+                            <label for="paralyzed">Paralyzed</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="petrified">
+                            <label for="petrified">Petrified</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="poisoned">
+                            <label for="poisoned">Poisoned</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="prone">
+                            <label for="prone">Prone</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="restrained">
+                            <label for="restrained">Restrained</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="stunned">
+                            <label for="stunned">Stunned</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="unconscious">
+                            <label for="unconscious">Unconscious</label>
+                        </div>
+                        <div class="con-box">
+                            <input class="condition-checkbox" type="checkbox" id="exhaustion">
+                            <label for="exhaustion">Exhaustion</label>
+                        </div>
                     </div>
-                    <div class="box">
-                        <label for="proficiencyBonus">Proficiency Bonus</label>
-                        <input type="text" id="proficiencyBonus" value="" readonly>
-                    </div>
-                    <div class="box">
-                        <label for="hitDice" aria-hidden="true">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
-                        <input type="text" id="hitDice" readonly>
-                    </div>
-                </div>
-            </fieldset>
+                </fieldset>
+            </div>
             <div class="section-field">
                 <!-- Ability Modifiers -->
                 <fieldset>
@@ -1771,6 +1839,21 @@
                         document.getElementById("passivePerception").value = data.pp || 10;
                         document.getElementById("proficiencyBonus").value = data.pb || "+2";
                         document.getElementById("hitDice").value = data.hd || 1;
+                        document.getElementById("blinded").checked = character.blinded;
+                        document.getElementById("charmed").checked = character.charmed;
+                        document.getElementById("deafened").checked = character.deafened;
+                        document.getElementById("frightened").checked = character.frightened;
+                        document.getElementById("grappled").checked = character.grappled;
+                        document.getElementById("incapacitated").checked = character.incapacitated;
+                        document.getElementById("invisible").checked = character.invisible;
+                        document.getElementById("paralyzed").checked = character.paralyzed;
+                        document.getElementById("petrified").checked = character.petrified;
+                        document.getElementById("poisoned").checked = character.poisoned;
+                        document.getElementById("prone").checked = character.prone;
+                        document.getElementById("restrained").checked = character.restrained;
+                        document.getElementById("stunned").checked = character.stunned;
+                        document.getElementById("unconscious").checked = character.unconscious;
+                        document.getElementById("exhaustion").checked = character.exhaustion;
                         document.getElementById("str").value = data.str || 10;
                         document.getElementById("dex").value = data.dex || 10;
                         document.getElementById("con").value = data.con || 10;
