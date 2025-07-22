@@ -70,6 +70,12 @@ legend {
     padding-right: 20px;
 }
 
+input[type="text"]:read-only,
+input[type="number"]:read-only {
+    border-color: var(--border);
+    cursor: default;
+}
+
 .controls {
     display: flex;
     margin: auto;
