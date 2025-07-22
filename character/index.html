@@ -1783,10 +1783,18 @@
             </fieldset>
         </form>
         <br>
-        <div style="display: flex; margin: auto; max-width: 400px;">
-            <a href="../dice/index.html" class="button">Dice</a>
-            <a href="../index.html" class="button">Home</a>
+        <div class="nav" style="display: flex; margin: auto; max-width: 400px;">
+            <button class="button" type="button" onclick="dicePage()">Dice</button>
+            <button class="button" type="button" onclick="homePage()">Home</button>
         </div>
+        <script>
+            function dicePage() {
+                window.location.href = '../dice/index.html';
+            }
+            function homePage() {
+                window.location.href = '../index.html';
+            }
+        </script>
         <script>
             function adjust(id, amount) {
                 const input = document.getElementById(id);

@@ -30,7 +30,8 @@ h1 {
 
 .controls .button,
 .controls button,
-a.button {
+.nav .button,
+.nav button {
     margin: 20px auto;
     font-size: 25px;
     width: 100px;
