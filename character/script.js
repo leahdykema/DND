@@ -6,7 +6,6 @@ function saveToFile() {
         class2: document.getElementById("charClass2").value,
         class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
-        level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById("totalHP").value,
         background: document.getElementById("charBackground").value,
@@ -26,21 +25,21 @@ function saveToFile() {
         pp: document.getElementById("passivePerception").value,
         pb: document.getElementById("proficiencyBonus").value,
         hd: document.getElementById("hitDice").value,
-        blinded: document.getElementById("blinded").value,
-        charmed: document.getElementById("charmed").value,
-        deafened: document.getElementById("deafened").value,
-        frightened: document.getElementById("frightened").value,
-        grappled: document.getElementById("grappled").value,
-        incapacitated: document.getElementById("incapacitated").value,
-        invisible: document.getElementById("invisible").value,
-        paralyzed: document.getElementById("paralyzed").value,
-        petrified: document.getElementById("petrified").value,
-        poisened: document.getElementById("poisoned").value,
-        prone: document.getElementById("prone").value,
-        restrained: document.getElementById("restrained").value,
-        stunned: document.getElementById("stunned").value,
-        unconscious: document.getElementById("unconscious").value,
-        exhaustion: document.getElementById("exhaustion").value,
+        blinded: document.getElementById("blinded").checked,
+        charmed: document.getElementById("charmed").checked,
+        deafened: document.getElementById("deafened").checked,
+        frightened: document.getElementById("frightened").checked,
+        grappled: document.getElementById("grappled").checked,
+        incapacitated: document.getElementById("incapacitated").checked,
+        invisible: document.getElementById("invisible").checked,
+        paralyzed: document.getElementById("paralyzed").checked,
+        petrified: document.getElementById("petrified").checked,
+        poisened: document.getElementById("poisoned").checked,
+        prone: document.getElementById("prone").checked,
+        restrained: document.getElementById("restrained").checked,
+        stunned: document.getElementById("stunned").checked,
+        unconscious: document.getElementById("unconscious").checked,
+        exhaustion: document.getElementById("exhaustion").checked,
         str: document.getElementById("str").value,
         dex: document.getElementById("dex").value,
         con: document.getElementById("con").value,
@@ -115,7 +114,6 @@ function loadFromFile(event) {
         document.getElementById("charClass2").value = data.class2 || "";
         document.getElementById("charClass3").value = data.class3 || "";
         document.getElementById("xpInput").value = data.xpInput || "";
-        document.getElementById("charLevel").value = data.level || "";
         document.getElementById("currentHP").value = data.currentHP || "";
         document.getElementById("totalHP").value = data.totalHP || "";
         document.getElementById("charBackground").value = data.background || "";
@@ -135,70 +133,76 @@ function loadFromFile(event) {
         document.getElementById("passivePerception").value = data.pp || 10;
         document.getElementById("proficiencyBonus").value = data.pb || "+2";
         document.getElementById("hitDice").value = data.hd || 1;
-        document.getElementById("blinded").checked = character.blinded;
-        document.getElementById("charmed").checked = character.charmed;
-        document.getElementById("deafened").checked = character.deafened;
-        document.getElementById("frightened").checked = character.frightened;
-        document.getElementById("grappled").checked = character.grappled;
-        document.getElementById("incapacitated").checked = character.incapacitated;
-        document.getElementById("invisible").checked = character.invisible;
-        document.getElementById("paralyzed").checked = character.paralyzed;
-        document.getElementById("petrified").checked = character.petrified;
-        document.getElementById("poisoned").checked = character.poisoned;
-        document.getElementById("prone").checked = character.prone;
-        document.getElementById("restrained").checked = character.restrained;
-        document.getElementById("stunned").checked = character.stunned;
-        document.getElementById("unconscious").checked = character.unconscious;
-        document.getElementById("exhaustion").checked = character.exhaustion;
+        document.getElementById("blinded").checked = data.blinded;
+        document.getElementById("charmed").checked = data.charmed;
+        document.getElementById("deafened").checked = data.deafened;
+        document.getElementById("frightened").checked = data.frightened;
+        document.getElementById("grappled").checked = data.grappled;
+        document.getElementById("incapacitated").checked = data.incapacitated;
+        document.getElementById("invisible").checked = data.invisible;
+        document.getElementById("paralyzed").checked = data.paralyzed;
+        document.getElementById("petrified").checked = data.petrified;
+        document.getElementById("poisoned").checked = data.poisoned;
+        document.getElementById("prone").checked = data.prone;
+        document.getElementById("restrained").checked = data.restrained;
+        document.getElementById("stunned").checked = data.stunned;
+        document.getElementById("unconscious").checked = data.unconscious;
+        document.getElementById("exhaustion").checked = data.exhaustion;
         document.getElementById("str").value = data.str || 10;
         document.getElementById("dex").value = data.dex || 10;
         document.getElementById("con").value = data.con || 10;
         document.getElementById("int").value = data.int || 10;
         document.getElementById("wis").value = data.wis || 10;
         document.getElementById("cha").value = data.cha || 10;
-        document.getElementById("strSaveProf").checked = character.strSaveProf;
-        document.getElementById("dexSaveProf").checked = character.dexSaveProf;
-        document.getElementById("conSaveProf").checked = character.conSaveProf;
-        document.getElementById("intSaveProf").checked = character.intSaveProf;
-        document.getElementById("wisSaveProf").checked = character.wisSaveProf;
-        document.getElementById("chaSaveProf").checked = character.chaSaveProf;
+        document.getElementById("strSaveProf").checked = data.strSaveProf;
+        document.getElementById("dexSaveProf").checked = data.dexSaveProf;
+        document.getElementById("conSaveProf").checked = data.conSaveProf;
+        document.getElementById("intSaveProf").checked = data.intSaveProf;
+        document.getElementById("wisSaveProf").checked = data.wisSaveProf;
+        document.getElementById("chaSaveProf").checked = data.chaSaveProf;
         document.getElementById("charNotes").value = data.notes || "";
-        document.getElementById("acroSaveProf").checked = character.acroSaveProf;
-        document.getElementById("acroExpertise").checked = character.acroExpertise;
-        document.getElementById("aniHanSaveProf").checked = character.aniHanSaveProf;
-        document.getElementById("aniHanExpertise").checked = character.aniHanExpertise;
-        document.getElementById("arcaSaveProf").checked = character.arcaSaveProf;
-        document.getElementById("arcaExpertise").checked = character.arcaExpertise;
-        document.getElementById("athlSaveProf").checked = character.athlSaveProf;
-        document.getElementById("athlExpertise").checked = character.athlExpertise;
-        document.getElementById("deceSaveProf").checked = character.deceSaveProf;
-        document.getElementById("deceExpertise").checked = character.deceExpertise;
-        document.getElementById("histSaveProf").checked = character.histSaveProf;
-        document.getElementById("histExpertise").checked = character.histExpertise;
-        document.getElementById("insiSaveProf").checked = character.insiSaveProf;
-        document.getElementById("insiExpertise").checked = character.insiExpertise;
-        document.getElementById("intiSaveProf").checked = character.intiSaveProf;
-        document.getElementById("intiExpertise").checked = character.intiExpertise;
-        document.getElementById("inveSaveProf").checked = character.inveSaveProf;
-        document.getElementById("inveExpertise").checked = character.inveExpertise;
-        document.getElementById("mediSaveProf").checked = character.mediSaveProf;
-        document.getElementById("mediExpertise").checked = character.mediExpertise;
-        document.getElementById("natuSaveProf").checked = character.natuSaveProf;
-        document.getElementById("natuExpertise").checked = character.natuExpertise;
-        document.getElementById("percSaveProf").checked = character.percSaveProf;
-        document.getElementById("percExpertise").checked = character.percExpertise;
-        document.getElementById("perfSaveProf").checked = character.perfSaveProf;
-        document.getElementById("perfExpertise").checked = character.perfExpertise;
-        document.getElementById("persSaveProf").checked = character.persSaveProf;
-        document.getElementById("persExpertise").checked = character.persExpertise;
-        document.getElementById("reliSaveProf").checked = character.reliSaveProf;
-        document.getElementById("reliExpertise").checked = character.reliExpertise;
-        document.getElementById("sleHanSaveProf").checked = character.sleHanSaveProf;
-        document.getElementById("sleightHandExpertise").checked = character.sleightHandExpertise;
-        document.getElementById("steaSaveProf").checked = character.steaSaveProf;
-        document.getElementById("steaExpertise").checked = character.steaExpertise;
-        document.getElementById("survSaveProf").checked = character.survSaveProf;
-        document.getElementById("survExpertise").checked = character.survExpertise;
+        document.getElementById("acroSaveProf").checked = data.acroSaveProf;
+        document.getElementById("acroExpertise").checked = data.acroExpertise;
+        document.getElementById("aniHanSaveProf").checked = data.aniHanSaveProf;
+        document.getElementById("aniHanExpertise").checked = data.aniHanExpertise;
+        document.getElementById("arcaSaveProf").checked = data.arcaSaveProf;
+        document.getElementById("arcaExpertise").checked = data.arcaExpertise;
+        document.getElementById("athlSaveProf").checked = data.athlSaveProf;
+        document.getElementById("athlExpertise").checked = data.athlExpertise;
+        document.getElementById("deceSaveProf").checked = data.deceSaveProf;
+        document.getElementById("deceExpertise").checked = data.deceExpertise;
+        document.getElementById("histSaveProf").checked = data.histSaveProf;
+        document.getElementById("histExpertise").checked = data.histExpertise;
+        document.getElementById("insiSaveProf").checked = data.insiSaveProf;
+        document.getElementById("insiExpertise").checked = data.insiExpertise;
+        document.getElementById("intiSaveProf").checked = data.intiSaveProf;
+        document.getElementById("intiExpertise").checked = data.intiExpertise;
+        document.getElementById("inveSaveProf").checked = data.inveSaveProf;
+        document.getElementById("inveExpertise").checked = data.inveExpertise;
+        document.getElementById("mediSaveProf").checked = data.mediSaveProf;
+        document.getElementById("mediExpertise").checked = data.mediExpertise;
+        document.getElementById("natuSaveProf").checked = data.natuSaveProf;
+        document.getElementById("natuExpertise").checked = data.natuExpertise;
+        document.getElementById("percSaveProf").checked = data.percSaveProf;
+        document.getElementById("percExpertise").checked = data.percExpertise;
+        document.getElementById("perfSaveProf").checked = data.perfSaveProf;
+        document.getElementById("perfExpertise").checked = data.perfExpertise;
+        document.getElementById("persSaveProf").checked = data.persSaveProf;
+        document.getElementById("persExpertise").checked = data.persExpertise;
+        document.getElementById("reliSaveProf").checked = data.reliSaveProf;
+        document.getElementById("reliExpertise").checked = data.reliExpertise;
+        document.getElementById("sleHanSaveProf").checked = data.sleHanSaveProf;
+        document.getElementById("sleightHandExpertise").checked = data.sleightHandExpertise;
+        document.getElementById("steaSaveProf").checked = data.steaSaveProf;
+        document.getElementById("steaExpertise").checked = data.steaExpertise;
+        document.getElementById("survSaveProf").checked = data.survSaveProf;
+        document.getElementById("survExpertise").checked = data.survExpertise;
+        updateSavingThrows();
+        updateSkills();
+        updateHitDice();
+        updatePassivePerception();
+        updateSubclass2Visibility();
+        updateSubclass3Visibility();
     };
     reader.readAsText(file);
 }
@@ -210,7 +214,6 @@ function updateShareURL() {
         class2: document.getElementById("charClass2").value,
         class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
-        level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById("totalHP").value,
         background: document.getElementById("charBackground").value,
