@@ -506,3 +506,21 @@ input[type="number"]::-webkit-outer-spin-button {
         color: var(--text-light);
     }
 }
+
+@media (prefers-more-contrast: more) {
+    /* Light Theme */
+    @media (prefers-color-scheme: light) {
+        html {
+            background-color: #fff;
+            color: #000;
+        }
+    }
+
+    /* Dark Theme */
+    @media (prefers-color-scheme: dark) {
+        html {
+            background-color: #000;
+            color: #fff;
+        }
+    }
+}

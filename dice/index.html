@@ -3,7 +3,91 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Title</title>
+        <title>Dice</title>
+        <link href="../stylesheets/dice.css" rel="stylesheet">
     </head>
-    <body></body>
+    <body>
+        <h1>DND Dice</h1>
+        <fieldset>
+            <legend>Select Dice</legend>
+            <div class="grid">
+                <!-- d4 -->
+                <div class="box">
+                    <label for="d4">d4</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d4', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d4-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d4', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d6 -->
+                <div class="box">
+                    <label for="d6">d6</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d6', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d6-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d6', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d8 -->
+                <div class="box">
+                    <label for="d8">d8</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d8', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d8-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d8', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d10 -->
+                <div class="box">
+                    <label for="d10">d10</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d10', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d10-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d10', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d12 -->
+                <div class="box">
+                    <label for="d12">d12</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d12', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d12-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d12', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d20 -->
+                <div class="box">
+                    <label for="d20">d20</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d20', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d20-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d20', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+                <!-- d100 -->
+                <div class="box">
+                    <label for="d100">d100</label>
+                    <div class="custom-spinner">
+                        <button type="button" onclick="changeDiceCount('d100', -1)" aria-label="subtract">&#45;</button>
+                        <span class="count" id="d100-count">0</span>
+                        <button type="button" onclick="changeDiceCount('d100', 1)" aria-label="add">&#43;</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button onclick="rollAllDice()">Roll</button>
+        <table id="diceResults"></table>
+        <button class="button" type="button" onclick="characterPage()">Character</button>
+        <button class="button" type="button" onclick="homePage()">Home</button>
+        <script>
+            function characterPage() {
+                window.location.href = '../character/index.html';
+            }
+            function homePage() {
+                window.location.href = '../index.html';
+            }
+        </script>
+        <script src="script.js"></script>
+    </body>
 </html>
