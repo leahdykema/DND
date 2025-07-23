@@ -35,9 +35,9 @@ h2 {
     font-weight: 200;
 }
 
-.button {
+button {
     display: block;
-    margin: auto;
+    margin: 50px auto;
     background-color: var(--accent);
     color: var(--text-light);
     border: none;
@@ -51,8 +51,8 @@ h2 {
 }
 
 @media (hover: hover) {
-    .button:hover,
-    .button:focus {
+    button:hover,
+    button:focus {
         background-color: var(--accent-hover);
         color: var(--text-muted);
         transform: scale(1.1);
@@ -61,8 +61,12 @@ h2 {
 
 @media (max-width: 768px) {
     h1 {
+        display: block;
+        margin: auto;
         margin-top: 40%;
+        width: 370px;
         font-size: 40px;
+        text-align: center;
     }
 
     h2 {
@@ -72,7 +76,7 @@ h2 {
         font-weight: 200;
     }
 
-    .button {
+    button {
         font-size: 18px;
     }
 }

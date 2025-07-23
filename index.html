@@ -7,10 +7,17 @@
         <link href="stylesheets/style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>D&amp;D 5e Companion</h1>
-        <h2>Visually Accessible</h2>
-        <a href="character/index.html" class="button">Characters</a>
-        <br>
-        <a href="/dice/index.html" class="button">Dice</a>
+        <h1>Dungeons &amp; Dragons</h1>
+        <h2>A Visually Accessible 5e Companion</h2>
+        <button class="button" type="button" onclick="characterPage()">Character</button>
+        <button class="button" type="button" onclick="dicePage()">Dice</button>
+        <script>
+            function characterPage() {
+                window.location.href = 'character/index.html';
+            }
+            function dicePage() {
+                window.location.href = 'dice/index.html';
+            }
+        </script>
     </body>
 </html>
