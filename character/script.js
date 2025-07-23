@@ -89,6 +89,15 @@ function saveToFile() {
         steaExpertise: document.getElementById("steaExpertise").checked,
         survSaveProf: document.getElementById("survSaveProf").checked,
         survExpertise: document.getElementById("survExpertise").checked,
+        first: document.getElementById("1st").value,
+        second: document.getElementById("2nd").value,
+        third: document.getElementById("3rd").value,
+        fourth: document.getElementById("4th").value,
+        fifth: document.getElementById("5th").value,
+        sixth: document.getElementById("6th").value,
+        seventh: document.getElementById("7th").value,
+        eighth: document.getElementById("8th").value,
+        nineth: document.getElementById("9th").value,
     };
 
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
@@ -197,6 +206,15 @@ function loadFromFile(event) {
         document.getElementById("steaExpertise").checked = data.steaExpertise;
         document.getElementById("survSaveProf").checked = data.survSaveProf;
         document.getElementById("survExpertise").checked = data.survExpertise;
+        document.getElementById("1st").value = data.first || 0;
+        document.getElementById("2nd").value = data.second || 0;
+        document.getElementById("3rd").value = data.third || 0;
+        document.getElementById("4th").value = data.fourth || 0;
+        document.getElementById("5th").value = data.fifth || 0;
+        document.getElementById("6th").value = data.sixth || 0;
+        document.getElementById("7th").value = data.seventh || 0;
+        document.getElementById("8th").value = data.eighth || 0;
+        document.getElementById("9th").value = data.nineth || 0;
         updateSavingThrows();
         updateSkills();
         updateHitDice();
@@ -297,6 +315,15 @@ function updateShareURL() {
         steaExpertise: document.getElementById("steaExpertise").checked,
         survSaveProf: document.getElementById("survSaveProf").checked,
         survExpertise: document.getElementById("survExpertise").checked,
+        first: document.getElementById("1st").value,
+        second: document.getElementById("2nd").value,
+        third: document.getElementById("3rd").value,
+        fourth: document.getElementById("4th").value,
+        fifth: document.getElementById("5th").value,
+        sixth: document.getElementById("6th").value,
+        seventh: document.getElementById("7th").value,
+        eighth: document.getElementById("8th").value,
+        nineth: document.getElementById("9th").value,
     };
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));

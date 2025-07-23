@@ -1922,6 +1922,84 @@
                         </div>
                     </div>
                 </fieldset>
+                <!-- Spell Slots -->
+                <fieldset>
+                    <legend>Spell Slots</legend>
+                    <div class="grid">
+                        <div class="box">
+                            <label for="1st">1st</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('1st', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="1st" value="0" min="0" max="4">
+                                <button type="button" onclick="adjust('1st', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="2nd">2nd</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('2nd', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="2nd" value="0" min="0" max="3">
+                                <button type="button" onclick="adjust('2nd', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="3rd">3rd</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('3rd', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="3rd" value="0" min="0" max="3">
+                                <button type="button" onclick="adjust('3rd', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="4th">4th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('4th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="4th" value="0" min="0" max="3">
+                                <button type="button" onclick="adjust('4th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="5th">5th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('5th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="5th" value="0" min="0" max="3">
+                                <button type="button" onclick="adjust('5th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="6th">6th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('6th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="6th" value="0" min="0" max="2">
+                                <button type="button" onclick="adjust('6th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="7th">7th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('7th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="7th" value="0" min="0" max="2">
+                                <button type="button" onclick="adjust('7th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="8th">8th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('8th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="8th" value="0" min="0" max="1">
+                                <button type="button" onclick="adjust('8th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <label for="9th">9th</label>
+                            <div class="custom-spinner">
+                                <button type="button" onclick="adjust('9th', -1)" aria-label="subtract">&#45;</button>
+                                <input type="number" id="9th" value="0" min="0" max="1">
+                                <button type="button" onclick="adjust('9th', 1)" aria-label="add">&#43;</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
             <!-- Controls -->
             <fieldset>
@@ -2062,6 +2140,15 @@
                         document.getElementById("steaExpertise").checked = character.steaExpertise;
                         document.getElementById("survSaveProf").checked = character.survSaveProf;
                         document.getElementById("survExpertise").checked = character.survExpertise;
+                        document.getElementById("1st").value = data.first || 0;
+                        document.getElementById("2nd").value = data.second || 0;
+                        document.getElementById("3rd").value = data.third || 0;
+                        document.getElementById("4th").value = data.fourth || 0;
+                        document.getElementById("5th").value = data.fifth || 0;
+                        document.getElementById("6th").value = data.sixth || 0;
+                        document.getElementById("7th").value = data.seventh || 0;
+                        document.getElementById("8th").value = data.eighth || 0;
+                        document.getElementById("9th").value = data.nineth || 0;
                         ["str", "dex", "con", "int", "wis", "cha"].forEach(updateModifier);
                     } catch (e) {
                         console.error("Failed to load character from URL", e);

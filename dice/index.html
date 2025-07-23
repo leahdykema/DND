@@ -78,8 +78,10 @@
         </fieldset>
         <button onclick="rollAllDice()">Roll</button>
         <table id="diceResults"></table>
-        <button class="button" type="button" onclick="characterPage()">Character</button>
-        <button class="button" type="button" onclick="homePage()">Home</button>
+        <div class="nav" style="display: flex; margin: auto; max-width: 250px; justify-content: space-between;">
+            <button class="button" type="button" onclick="characterPage()">Character</button>
+            <button class="button" type="button" onclick="homePage()">Home</button>
+        </div>
         <script>
             function characterPage() {
                 window.location.href = '../character/index.html';
