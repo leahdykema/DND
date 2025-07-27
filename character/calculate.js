@@ -190,8 +190,95 @@ function adjust(id, change) {
     }
 }
 
+function getMaxSpellsForClassAndLevel(className, level) {
+    if (!className) return 0;
+
+    const classSpellTable = {
+        Wizard:    [3, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30, 30],
+        Sorcerer:  [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 28, 28, 28, 28, 28, 28],
+        Warlock:   [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+        Bard:      [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
+        Cleric:    [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
+        Druid:     [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
+        Paladin:   [0, 0, 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20],
+        Ranger:    [0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        Artificer: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 28, 28, 28, 28, 28, 28],
+        BloodHunter: [0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    };
+    return classSpellTable[className]?.[level - 1] ?? 0;
+}
+
+function updateVisibleSpells() {
+    const selectedClass = document.getElementById("charClass")?.value;
+    const level = parseInt(document.getElementById("charLevel")?.value, 10) || 1;
+    const totalSlots = 30;
+    let maxSpells = getMaxSpellsForClassAndLevel(selectedClass, level);
+    maxSpells = Math.max(1, maxSpells);
+    for (let i = 1; i <= totalSlots; i++) {
+        const row = document.getElementById(`spellSlot${i}-row`);
+        if (row) {
+            row.style.display = i <= maxSpells ? '' : 'none';
+        }
+    }
+}
+
+function getOptgroupLevel(label) {
+    if (label.toLowerCase().includes("cantrip")) return 0;
+    const match = label.match(/^(\d)[a-z]{2}-level spells$/i);
+    return match ? parseInt(match[1], 10) : 10; // default fallback
+}
+
+function filterSpellsByClassAndLevel(selectedClass, maxLevel) {
+    for (let i = 1; i <= 30; i++) {
+        const select = document.getElementById(`spellselect${i}`);
+        if (!select || !select.allGroups) continue;
+        const placeholderOption = Array.from(select.options).find(opt =>
+            opt.value === "" && opt.parentElement.tagName !== "OPTGROUP"
+        );
+        select.innerHTML = "";
+        if (placeholderOption) {
+            select.appendChild(placeholderOption.cloneNode(true));
+        }
+        for (let g = 0; g < select.allGroups.length; g++) {
+            const group = select.allGroups[g];
+            const spellLevel = getOptgroupLevel(group.label);
+            if (spellLevel > maxLevel) continue;
+            const newGroup = document.createElement("optgroup");
+            newGroup.label = group.label;
+            const children = group.children;
+            for (let j = 0; j < children.length; j++) {
+                const option = children[j];
+                const classList = (option.dataset.classes || "")
+                    .toLowerCase()
+                    .split(",")
+                    .map(function (c) {
+                        return c.trim();
+                    });
+                if (option.value === "" || classList.includes(selectedClass.toLowerCase())) {
+                    const newOption = option.cloneNode(true);
+                    newGroup.appendChild(newOption);
+                }
+            }
+            if (newGroup.children.length > 0) {
+                select.appendChild(newGroup);
+            }
+        }
+    }
+}
+
+function updateSpells() {
+    const selectedClass = document.getElementById("charClass")?.value;
+    const level = parseInt(document.getElementById("charLevel")?.value, 10) || 1;
+    updateVisibleSpells();
+    rebuildSpellSelects(selectedClass, level);
+}
+
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("charClass")?.addEventListener("change", updateVisibleSpells);
+    document.getElementById("charLevel")?.addEventListener("input", updateVisibleSpells);
+    document.getElementById("charClass")?.addEventListener("change", updateSpells);
+    document.getElementById("charLevel")?.addEventListener("input", updateSpells);
     updateLevelFromXP(parseInt(xpInput.value, 10) || 0);
     updateHitDice();
     abilities.forEach(stat => {
@@ -206,6 +293,23 @@ window.addEventListener('DOMContentLoaded', () => {
     updateSavingThrows();
     updatePassivePerception();
     updateSkills();
+    updateSpells();
+    updateVisibleSpells();
+    const currentLevel = parseInt(charLevel.value, 10) || 1;
+    filterSpellsByClassAndLevel(charClass.value, currentLevel);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    for (let i = 1; i <= 30; i++) {
+        const select = document.getElementById(`spellselect${i}`);
+        if (!select) continue;
+        if (!select.allGroups) {
+            select.allGroups = Array.from(select.querySelectorAll("optgroup")).map(group => {
+                const clone = group.cloneNode(true);
+                return clone;
+            });
+        }
+    }
 });
 
 xpInput.addEventListener('input', () => {
@@ -221,11 +325,15 @@ proficiencyBonus.addEventListener('input', () => {
 charLevel.addEventListener('input', () => {
     updateSubclass2Visibility();
     updateHitDice();
+    const level = parseInt(charLevel.value, 10) || 1;
+    filterSpellsByClassAndLevel(charClass.value, level);
 });
 
 charClass.addEventListener('change', () => {
     updateSubclass2Visibility();
     updateHitDice();
+    const level = parseInt(charLevel.value, 10) || 1;
+    filterSpellsByClassAndLevel(charClass.value, level);
 });
 
 charClass2.addEventListener('change', updateSubclass3Visibility);

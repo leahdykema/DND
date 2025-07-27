@@ -98,6 +98,36 @@ function saveToFile() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
+        spell1: document.getElementById("spellselect1").value,
+        spell2: document.getElementById("spellselect2").value,
+        spell3: document.getElementById("spellselect3").value,
+        spell4: document.getElementById("spellselect4").value,
+        spell5: document.getElementById("spellselect5").value,
+        spell6: document.getElementById("spellselect6").value,
+        spell7: document.getElementById("spellselect7").value,
+        spell8: document.getElementById("spellselect8").value,
+        spell9: document.getElementById("spellselect9").value,
+        spell10: document.getElementById("spellselect10").value,
+        spell11: document.getElementById("spellselect11").value,
+        spell12: document.getElementById("spellselect12").value,
+        spell13: document.getElementById("spellselect13").value,
+        spell14: document.getElementById("spellselect14").value,
+        spell15: document.getElementById("spellselect15").value,
+        spell16: document.getElementById("spellselect16").value,
+        spell17: document.getElementById("spellselect17").value,
+        spell18: document.getElementById("spellselect18").value,
+        spell19: document.getElementById("spellselect19").value,
+        spell20: document.getElementById("spellselect20").value,
+        spell21: document.getElementById("spellselect21").value,
+        spell22: document.getElementById("spellselect22").value,
+        spell23: document.getElementById("spellselect23").value,
+        spell24: document.getElementById("spellselect24").value,
+        spell25: document.getElementById("spellselect25").value,
+        spell26: document.getElementById("spellselect26").value,
+        spell27: document.getElementById("spellselect27").value,
+        spell28: document.getElementById("spellselect28").value,
+        spell29: document.getElementById("spellselect29").value,
+        spell30: document.getElementById("spellselect30").value,
     };
 
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
@@ -215,12 +245,43 @@ function loadFromFile(event) {
         document.getElementById("7th").value = data.seventh || 0;
         document.getElementById("8th").value = data.eighth || 0;
         document.getElementById("9th").value = data.nineth || 0;
+        document.getElementById("spellselect1").value = data.spell1 || "";
+        document.getElementById("spellselect2").value = data.spell2 || "";
+        document.getElementById("spellselect3").value = data.spell3 || "";
+        document.getElementById("spellselect4").value = data.spell4 || "";
+        document.getElementById("spellselect5").value = data.spell5 || "";
+        document.getElementById("spellselect6").value = data.spell6 || "";
+        document.getElementById("spellselect7").value = data.spell7 || "";
+        document.getElementById("spellselect8").value = data.spell8 || "";
+        document.getElementById("spellselect9").value = data.spell9 || "";
+        document.getElementById("spellselect10").value = data.spell10 || "";
+        document.getElementById("spellselect11").value = data.spell11 || "";
+        document.getElementById("spellselect12").value = data.spell12 || "";
+        document.getElementById("spellselect13").value = data.spell13 || "";
+        document.getElementById("spellselect14").value = data.spell14 || "";
+        document.getElementById("spellselect15").value = data.spell15 || "";
+        document.getElementById("spellselect16").value = data.spell16 || "";
+        document.getElementById("spellselect17").value = data.spell17 || "";
+        document.getElementById("spellselect18").value = data.spell18 || "";
+        document.getElementById("spellselect19").value = data.spell19 || "";
+        document.getElementById("spellselect20").value = data.spell20 || "";
+        document.getElementById("spellselect21").value = data.spell21 || "";
+        document.getElementById("spellselect22").value = data.spell22 || "";
+        document.getElementById("spellselect23").value = data.spell23 || "";
+        document.getElementById("spellselect24").value = data.spell24 || "";
+        document.getElementById("spellselect25").value = data.spell25 || "";
+        document.getElementById("spellselect26").value = data.spell26 || "";
+        document.getElementById("spellselect27").value = data.spell27 || "";
+        document.getElementById("spellselect28").value = data.spell28 || "";
+        document.getElementById("spellselect29").value = data.spell29 || "";
+        document.getElementById("spellselect30").value = data.spell30 || "";
         updateSavingThrows();
         updateSkills();
         updateHitDice();
         updatePassivePerception();
         updateSubclass2Visibility();
         updateSubclass3Visibility();
+        updateVisibleSpells();
     };
     reader.readAsText(file);
 }
@@ -324,6 +385,36 @@ function updateShareURL() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
+        spell1: document.getElementById("spellselect1").value,
+        spell2: document.getElementById("spellselect2").value,
+        spell3: document.getElementById("spellselect3").value,
+        spell4: document.getElementById("spellselect4").value,
+        spell5: document.getElementById("spellselect5").value,
+        spell6: document.getElementById("spellselect6").value,
+        spell7: document.getElementById("spellselect7").value,
+        spell8: document.getElementById("spellselect8").value,
+        spell9: document.getElementById("spellselect9").value,
+        spell10: document.getElementById("spellselect10").value,
+        spell11: document.getElementById("spellselect11").value,
+        spell12: document.getElementById("spellselect12").value,
+        spell13: document.getElementById("spellselect13").value,
+        spell14: document.getElementById("spellselect14").value,
+        spell15: document.getElementById("spellselect15").value,
+        spell16: document.getElementById("spellselect16").value,
+        spell17: document.getElementById("spellselect17").value,
+        spell18: document.getElementById("spellselect18").value,
+        spell19: document.getElementById("spellselect19").value,
+        spell20: document.getElementById("spellselect20").value,
+        spell21: document.getElementById("spellselect21").value,
+        spell22: document.getElementById("spellselect22").value,
+        spell23: document.getElementById("spellselect23").value,
+        spell24: document.getElementById("spellselect24").value,
+        spell25: document.getElementById("spellselect25").value,
+        spell26: document.getElementById("spellselect26").value,
+        spell27: document.getElementById("spellselect27").value,
+        spell28: document.getElementById("spellselect28").value,
+        spell29: document.getElementById("spellselect29").value,
+        spell30: document.getElementById("spellselect30").value,
     };
 
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));
