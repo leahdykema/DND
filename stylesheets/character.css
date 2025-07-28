@@ -63,6 +63,11 @@ fieldset {
     border: 1px solid var(--border);
 }
 
+.multi-fieldsets {
+    display: block;
+    margin: auto;
+}
+
 legend {
     font-size: 20px;
     padding-top: 10px;
@@ -256,6 +261,18 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
 }
 
+.armor-grid,
+.weapon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 50%;
+    min-width: 500px;
+    margin-top: 1rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .box {
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -301,7 +318,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .saving-throws,
-.skills {
+.skills,
+.armor-boxes {
     display: flex;
     margin: auto;
     align-items: center;
@@ -320,7 +338,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .saving-throws input[type="checkbox"],
-.skills input[type="checkbox"] {
+.skills input[type="checkbox"],
+.armor-boxes input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     width: 1.5em;
@@ -354,6 +373,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .saving-throws input[type="checkbox"]:checked,
 .skills input[type="checkbox"]:checked,
+.armor-boxes input[type="checkbox"]:checked,
 .condition-checkbox:checked {
     background-color: var(--success);
     border-color: var(--success);
@@ -361,7 +381,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Draw checkmark */
 .saving-throws input[type="checkbox"]::after,
-.skills input[type="checkbox"]::after {
+.skills input[type="checkbox"]::after,
+.armor-boxes input[type="checkbox"]::after {
     content: '';
     position: absolute;
     top: 6px;
@@ -390,6 +411,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .saving-throws input[type="checkbox"]:checked::after,
 .skills input[type="checkbox"]:checked::after,
+.armor-boxes input[type="checkbox"]:checked::after,
 .condition-checkbox:checked::after {
     opacity: 1;
 }
@@ -455,11 +477,18 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 350px;
     }
 
+    .multi-fieldsets {
+        display: block;
+        margin: auto;
+    }
+
     legend {
         font-size: 15px;
     }
 
-    .grid {
+    .grid,
+    .armor-grid,
+    .weapon-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;

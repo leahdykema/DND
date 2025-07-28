@@ -89,6 +89,11 @@ function saveToFile() {
         steaExpertise: document.getElementById("steaExpertise").checked,
         survSaveProf: document.getElementById("survSaveProf").checked,
         survExpertise: document.getElementById("survExpertise").checked,
+        armorType: document.getElementById("armorType").value,
+        shield: document.getElementById("shield").checked,
+        weapon1: document.getElementById("weapon1").value,
+        weapon2: document.getElementById("weapon2").value,
+        weapon3: document.getElementById("weapon3").value,
         first: document.getElementById("1st").value,
         second: document.getElementById("2nd").value,
         third: document.getElementById("3rd").value,
@@ -236,6 +241,11 @@ function loadFromFile(event) {
         document.getElementById("steaExpertise").checked = data.steaExpertise;
         document.getElementById("survSaveProf").checked = data.survSaveProf;
         document.getElementById("survExpertise").checked = data.survExpertise;
+        document.getElementById("armorType").value = data.armorType || "";
+        document.getElementById("shield").checked = data.shield ;
+        document.getElementById("weapon1").value = data.weapon1 || "";
+        document.getElementById("weapon2").value = data.weapon2 || "";
+        document.getElementById("weapon3").value = data.weapon3 || "";
         document.getElementById("1st").value = data.first || 0;
         document.getElementById("2nd").value = data.second || 0;
         document.getElementById("3rd").value = data.third || 0;
@@ -282,6 +292,8 @@ function loadFromFile(event) {
         updateSubclass2Visibility();
         updateSubclass3Visibility();
         updateVisibleSpells();
+        updateArmorStats();
+        ["weapon1", "weapon2", "weapon3"].forEach(updateWeaponInfo);
     };
     reader.readAsText(file);
 }
@@ -376,6 +388,11 @@ function updateShareURL() {
         steaExpertise: document.getElementById("steaExpertise").checked,
         survSaveProf: document.getElementById("survSaveProf").checked,
         survExpertise: document.getElementById("survExpertise").checked,
+        armorType: document.getElementById("armorType").value,
+        shield: document.getElementById("shield").checked,
+        weapon1: document.getElementById("weapon1").value,
+        weapon2: document.getElementById("weapon2").value,
+        weapon3: document.getElementById("weapon3").value,
         first: document.getElementById("1st").value,
         second: document.getElementById("2nd").value,
         third: document.getElementById("3rd").value,

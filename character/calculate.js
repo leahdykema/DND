@@ -225,7 +225,7 @@ function updateVisibleSpells() {
 function getOptgroupLevel(label) {
     if (label.toLowerCase().includes("cantrip")) return 0;
     const match = label.match(/^(\d)[a-z]{2}-level spells$/i);
-    return match ? parseInt(match[1], 10) : 10; // default fallback
+    return match ? parseInt(match[1], 10) : 10;
 }
 
 function filterSpellsByClassAndLevel(selectedClass, maxLevel) {
@@ -273,12 +273,55 @@ function updateSpells() {
     rebuildSpellSelects(selectedClass, level);
 }
 
+function updateArmorStats() {
+    const armorSelect = document.getElementById("armorType");
+    const shield = document.getElementById("shield").checked;
+    const dex = parseInt(document.getElementById("dex").value, 10) || 10;
+    const dexMod = Math.floor((dex - 10) / 2);
+    const selected = armorSelect.options[armorSelect.selectedIndex];
+    const base = parseInt(selected.dataset.base || "10", 10);
+    const dexType = selected.dataset.dex;
+    const disadvantage = selected.dataset.disadvantage === "true";
+    const strReq = selected.dataset.str || "—";
+    let dexBonus = 0;
+    if (dexType === "yes") {
+        dexBonus = dexMod;
+    } else if (dexType === "limit2") {
+        dexBonus = Math.min(2, dexMod);
+    }
+    const shieldBonus = shield ? 2 : 0;
+    const totalAC = base + dexBonus + shieldBonus;
+    document.getElementById("totalAC").textContent = totalAC;
+    document.getElementById("stealth2").textContent = disadvantage ? "Disadvantage" : "Normal";
+    document.getElementById("strReq").textContent = strReq;
+}
+
+function updateWeaponInfo(selectId) {
+    const select = document.getElementById(selectId);
+    const selected = select.options[select.selectedIndex];
+    const damage = selected.dataset.damage || "-";
+    const type = selected.dataset.type || "-";
+    const stat = selected.dataset.stat || "";
+    const statMod = stat ? parseInt(document.getElementById(`${stat}-mod`).textContent) || 0 : 0;
+    const properties = selected.dataset.properties || "-";
+    document.getElementById(`${selectId}Damage`).textContent = damage;
+    document.getElementById(`${selectId}Type`).textContent = type;
+    document.getElementById(`${selectId}Bonus`).textContent = stat ? (statMod >= 0 ? `+${statMod}` : `${statMod}`) : "+0";
+    document.getElementById(`${selectId}Properties`).textContent = properties;
+}
+["weapon1", "weapon2", "weapon3"].forEach(id => {
+    document.getElementById(id).addEventListener("change", () => updateWeaponInfo(id));
+});
+
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("charClass")?.addEventListener("change", updateVisibleSpells);
     document.getElementById("charLevel")?.addEventListener("input", updateVisibleSpells);
     document.getElementById("charClass")?.addEventListener("change", updateSpells);
     document.getElementById("charLevel")?.addEventListener("input", updateSpells);
+    document.getElementById("armorType").addEventListener("change", updateArmorStats);
+    document.getElementById("shield").addEventListener("change", updateArmorStats);
+    document.getElementById("dex").addEventListener("input", updateArmorStats);
     updateLevelFromXP(parseInt(xpInput.value, 10) || 0);
     updateHitDice();
     abilities.forEach(stat => {
@@ -290,16 +333,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById(`${stat}SaveProf`)?.addEventListener('change', updateSavingThrows);
     });
-    updateSavingThrows();
-    updatePassivePerception();
-    updateSkills();
-    updateSpells();
-    updateVisibleSpells();
     const currentLevel = parseInt(charLevel.value, 10) || 1;
-    filterSpellsByClassAndLevel(charClass.value, currentLevel);
-});
-
-window.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; i <= 30; i++) {
         const select = document.getElementById(`spellselect${i}`);
         if (!select) continue;
@@ -310,6 +344,13 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+    updateSavingThrows();
+    updatePassivePerception();
+    updateSkills();
+    updateSpells();
+    updateVisibleSpells();
+    updateArmorStats();
+    filterSpellsByClassAndLevel(charClass.value, currentLevel);
 });
 
 xpInput.addEventListener('input', () => {
