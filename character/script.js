@@ -1,4 +1,10 @@
+// Save as .json
 function saveToFile() {
+    const spells = [];
+    for (let i = 1; i <= 30; i++) {
+        const el = document.getElementById(`spellselect${i}`);
+        if (el) spells.push(el.value);
+    }
     const character = {
         name: document.getElementById("charName").value,
         race: document.getElementById("charRace").value,
@@ -103,52 +109,21 @@ function saveToFile() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
-        spell1: document.getElementById("spellselect1").value,
-        spell2: document.getElementById("spellselect2").value,
-        spell3: document.getElementById("spellselect3").value,
-        spell4: document.getElementById("spellselect4").value,
-        spell5: document.getElementById("spellselect5").value,
-        spell6: document.getElementById("spellselect6").value,
-        spell7: document.getElementById("spellselect7").value,
-        spell8: document.getElementById("spellselect8").value,
-        spell9: document.getElementById("spellselect9").value,
-        spell10: document.getElementById("spellselect10").value,
-        spell11: document.getElementById("spellselect11").value,
-        spell12: document.getElementById("spellselect12").value,
-        spell13: document.getElementById("spellselect13").value,
-        spell14: document.getElementById("spellselect14").value,
-        spell15: document.getElementById("spellselect15").value,
-        spell16: document.getElementById("spellselect16").value,
-        spell17: document.getElementById("spellselect17").value,
-        spell18: document.getElementById("spellselect18").value,
-        spell19: document.getElementById("spellselect19").value,
-        spell20: document.getElementById("spellselect20").value,
-        spell21: document.getElementById("spellselect21").value,
-        spell22: document.getElementById("spellselect22").value,
-        spell23: document.getElementById("spellselect23").value,
-        spell24: document.getElementById("spellselect24").value,
-        spell25: document.getElementById("spellselect25").value,
-        spell26: document.getElementById("spellselect26").value,
-        spell27: document.getElementById("spellselect27").value,
-        spell28: document.getElementById("spellselect28").value,
-        spell29: document.getElementById("spellselect29").value,
-        spell30: document.getElementById("spellselect30").value,
+        spells: spells
     };
-
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
     a.download = `${character.name || "character"}.json`;
     a.click();
-
     URL.revokeObjectURL(url);
 }
+
+// Load from File
 function loadFromFile(event) {
     const file = event.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = function(e) {
         const data = JSON.parse(e.target.result);
@@ -255,36 +230,13 @@ function loadFromFile(event) {
         document.getElementById("7th").value = data.seventh || 0;
         document.getElementById("8th").value = data.eighth || 0;
         document.getElementById("9th").value = data.nineth || 0;
-        document.getElementById("spellselect1").value = data.spell1 || "";
-        document.getElementById("spellselect2").value = data.spell2 || "";
-        document.getElementById("spellselect3").value = data.spell3 || "";
-        document.getElementById("spellselect4").value = data.spell4 || "";
-        document.getElementById("spellselect5").value = data.spell5 || "";
-        document.getElementById("spellselect6").value = data.spell6 || "";
-        document.getElementById("spellselect7").value = data.spell7 || "";
-        document.getElementById("spellselect8").value = data.spell8 || "";
-        document.getElementById("spellselect9").value = data.spell9 || "";
-        document.getElementById("spellselect10").value = data.spell10 || "";
-        document.getElementById("spellselect11").value = data.spell11 || "";
-        document.getElementById("spellselect12").value = data.spell12 || "";
-        document.getElementById("spellselect13").value = data.spell13 || "";
-        document.getElementById("spellselect14").value = data.spell14 || "";
-        document.getElementById("spellselect15").value = data.spell15 || "";
-        document.getElementById("spellselect16").value = data.spell16 || "";
-        document.getElementById("spellselect17").value = data.spell17 || "";
-        document.getElementById("spellselect18").value = data.spell18 || "";
-        document.getElementById("spellselect19").value = data.spell19 || "";
-        document.getElementById("spellselect20").value = data.spell20 || "";
-        document.getElementById("spellselect21").value = data.spell21 || "";
-        document.getElementById("spellselect22").value = data.spell22 || "";
-        document.getElementById("spellselect23").value = data.spell23 || "";
-        document.getElementById("spellselect24").value = data.spell24 || "";
-        document.getElementById("spellselect25").value = data.spell25 || "";
-        document.getElementById("spellselect26").value = data.spell26 || "";
-        document.getElementById("spellselect27").value = data.spell27 || "";
-        document.getElementById("spellselect28").value = data.spell28 || "";
-        document.getElementById("spellselect29").value = data.spell29 || "";
-        document.getElementById("spellselect30").value = data.spell30 || "";
+        const container = document.getElementById("spellContainer");
+        container.innerHTML = "";
+        data.spells.forEach((spellVal, i) => {
+            addSpellSlot();
+            const select = document.getElementById(`spellselect${i + 1}`);
+            if (select) select.value = spellVal;
+        });
         updateSavingThrows();
         updateSkills();
         updateHitDice();
@@ -292,12 +244,20 @@ function loadFromFile(event) {
         updateSubclass2Visibility();
         updateSubclass3Visibility();
         updateVisibleSpells();
+        updateSpells();
         updateArmorStats();
         ["weapon1", "weapon2", "weapon3"].forEach(updateWeaponInfo);
     };
     reader.readAsText(file);
 }
+
+// Save Via URL
 function updateShareURL() {
+    const spells = [];
+    for (let i = 1; i <= 30; i++) {
+        const el = document.getElementById(`spellselect${i}`);
+        if (el) spells.push(el.value);
+    }
     const character = {
         name: document.getElementById("charName").value,
         race: document.getElementById("charRace").value,
@@ -402,39 +362,169 @@ function updateShareURL() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
-        spell1: document.getElementById("spellselect1").value,
-        spell2: document.getElementById("spellselect2").value,
-        spell3: document.getElementById("spellselect3").value,
-        spell4: document.getElementById("spellselect4").value,
-        spell5: document.getElementById("spellselect5").value,
-        spell6: document.getElementById("spellselect6").value,
-        spell7: document.getElementById("spellselect7").value,
-        spell8: document.getElementById("spellselect8").value,
-        spell9: document.getElementById("spellselect9").value,
-        spell10: document.getElementById("spellselect10").value,
-        spell11: document.getElementById("spellselect11").value,
-        spell12: document.getElementById("spellselect12").value,
-        spell13: document.getElementById("spellselect13").value,
-        spell14: document.getElementById("spellselect14").value,
-        spell15: document.getElementById("spellselect15").value,
-        spell16: document.getElementById("spellselect16").value,
-        spell17: document.getElementById("spellselect17").value,
-        spell18: document.getElementById("spellselect18").value,
-        spell19: document.getElementById("spellselect19").value,
-        spell20: document.getElementById("spellselect20").value,
-        spell21: document.getElementById("spellselect21").value,
-        spell22: document.getElementById("spellselect22").value,
-        spell23: document.getElementById("spellselect23").value,
-        spell24: document.getElementById("spellselect24").value,
-        spell25: document.getElementById("spellselect25").value,
-        spell26: document.getElementById("spellselect26").value,
-        spell27: document.getElementById("spellselect27").value,
-        spell28: document.getElementById("spellselect28").value,
-        spell29: document.getElementById("spellselect29").value,
-        spell30: document.getElementById("spellselect30").value,
+        spells: spells
     };
-
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));
     const url = `${location.origin}${location.pathname}?c=${encoded}`;
     navigator.clipboard.writeText(url).then(() => alert("Shareable URL copied!"));
 }
+
+// Load from URl
+function adjust(id, amount) {
+    const input = document.getElementById(id);
+    const current = parseInt(input.value) || 0;
+    const min = parseInt(input.min) || -Infinity;
+    const max = parseInt(input.max) || Infinity;
+    const next = Math.min(max, Math.max(min, current + amount));
+    input.value = next;
+    updateModifier(id);
+}
+
+function updateModifier(id) {
+    const input = document.getElementById(id);
+    const modSpan = document.getElementById(`${id}-mod`);
+    const score = parseInt(input.value);
+    if (isNaN(score)) {
+        modSpan.textContent = "";
+        return;
+    }
+    const mod = Math.floor((score - 10) / 2);
+    modSpan.textContent = mod >= 0 ? `+${mod}` : `${mod}`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("c")) {
+        try {
+            const data = JSON.parse(atob(decodeURIComponent(params.get("c"))));
+            document.getElementById("charName").value = data.name || "";
+            document.getElementById("charRace").value = data.race || "";
+            document.getElementById("charClass").value = data.class || "";
+            document.getElementById("charClass2").value = data.class2 || "";
+            document.getElementById("charClass3").value = data.class3 || "";
+            document.getElementById("xpInput").value = data.xpInput || "";
+            document.getElementById("charLevel").value = data.level || "";
+            document.getElementById("currentHP").value = data.currentHP || "";
+            document.getElementById("totalHP").value = data.totalHP || "";
+            document.getElementById("charBackground").value = data.background || "";
+            document.getElementById("charAlignment").value = data.alignment || "";
+            document.getElementById("charTraits").value = data.traits || "";
+            document.getElementById("charIdeals").value = data.ideals || "";
+            document.getElementById("charBonds").value = data.bonds || "";
+            document.getElementById("charFlaws").value = data.flaws || "";
+            document.getElementById("charAbout").value = data.about || "";
+            document.getElementById("armorClass").value = data.armor || 10;
+            document.getElementById("initiative").value = data.initiative || 0;
+            document.getElementById("speed").value = data.speed || 30;
+            document.getElementById("fly").value = data.fly || 0;
+            document.getElementById("climb").value = data.climb || 0;
+            document.getElementById("swim").value = data.swim || 0;
+            document.getElementById("burrow").value = data.burrow || 0;
+            document.getElementById("passivePerception").value = data.pp || 10;
+            document.getElementById("proficiencyBonus").value = data.pb || "+2";
+            document.getElementById("hitDice").value = data.hd || 1;
+            document.getElementById("blinded").checked = data.blinded || false;
+            document.getElementById("charmed").checked = data.charmed || false;
+            document.getElementById("deafened").checked = data.deafened || false;
+            document.getElementById("frightened").checked = data.frightened || false;
+            document.getElementById("grappled").checked = data.grappled || false;
+            document.getElementById("incapacitated").checked = data.incapacitated || false;
+            document.getElementById("invisible").checked = data.invisible || false;
+            document.getElementById("paralyzed").checked = data.paralyzed || false;
+            document.getElementById("petrified").checked = data.petrified || false;
+            document.getElementById("poisoned").checked = data.poisoned || false;
+            document.getElementById("prone").checked = data.prone || false;
+            document.getElementById("restrained").checked = data.restrained || false;
+            document.getElementById("stunned").checked = data.stunned || false;
+            document.getElementById("unconscious").checked = data.unconscious || false;
+            document.getElementById("exhaustion").checked = data.exhaustion || false;
+            document.getElementById("str").value = data.str || 10;
+            document.getElementById("dex").value = data.dex || 10;
+            document.getElementById("con").value = data.con || 10;
+            document.getElementById("int").value = data.int || 10;
+            document.getElementById("wis").value = data.wis || 10;
+            document.getElementById("cha").value = data.cha || 10;
+            document.getElementById("strSaveProf").checked = data.strSaveProf || false;
+            document.getElementById("dexSaveProf").checked = data.dexSaveProf || false;
+            document.getElementById("conSaveProf").checked = data.conSaveProf || false;
+            document.getElementById("intSaveProf").checked = data.intSaveProf || false;
+            document.getElementById("wisSaveProf").checked = data.wisSaveProf || false;
+            document.getElementById("chaSaveProf").checked = data.chaSaveProf || false;
+            document.getElementById("charNotes").value = data.notes || "";
+            document.getElementById("acroSaveProf").checked = data.acroSaveProf || false;
+            document.getElementById("acroExpertise").checked = data.acroExpertise || false;
+            document.getElementById("aniHanSaveProf").checked = data.aniHanSaveProf || false;
+            document.getElementById("aniHanExpertise").checked = data.aniHanExpertise || false;
+            document.getElementById("arcaSaveProf").checked = data.arcaSaveProf || false;
+            document.getElementById("arcaExpertise").checked = data.arcaExpertise || false;
+            document.getElementById("athlSaveProf").checked = data.athlSaveProf || false;
+            document.getElementById("athlExpertise").checked = data.athlExpertise || false;
+            document.getElementById("deceSaveProf").checked = data.deceSaveProf || false;
+            document.getElementById("deceExpertise").checked = data.deceExpertise || false;
+            document.getElementById("histSaveProf").checked = data.histSaveProf || false;
+            document.getElementById("histExpertise").checked = data.histExpertise || false;
+            document.getElementById("insiSaveProf").checked = data.insiSaveProf || false;
+            document.getElementById("insiExpertise").checked = data.insiExpertise || false;
+            document.getElementById("intiSaveProf").checked = data.intiSaveProf || false;
+            document.getElementById("intiExpertise").checked = data.intiExpertise || false;
+            document.getElementById("inveSaveProf").checked = data.inveSaveProf || false;
+            document.getElementById("inveExpertise").checked = data.inveExpertise || false;
+            document.getElementById("mediSaveProf").checked = data.mediSaveProf || false;
+            document.getElementById("mediExpertise").checked = data.mediExpertise || false;
+            document.getElementById("natuSaveProf").checked = data.natuSaveProf || false;
+            document.getElementById("natuExpertise").checked = data.natuExpertise || false;
+            document.getElementById("percSaveProf").checked = data.percSaveProf || false;
+            document.getElementById("percExpertise").checked = data.percExpertise || false;
+            document.getElementById("perfSaveProf").checked = data.perfSaveProf || false;
+            document.getElementById("perfExpertise").checked = data.perfExpertise || false;
+            document.getElementById("persSaveProf").checked = data.persSaveProf || false;
+            document.getElementById("persExpertise").checked = data.persExpertise || false;
+            document.getElementById("reliSaveProf").checked = data.reliSaveProf || false;
+            document.getElementById("reliExpertise").checked = data.reliExpertise || false;
+            document.getElementById("sleHanSaveProf").checked = data.sleHanSaveProf || false;
+            document.getElementById("sleightHandExpertise").checked = data.sleightHandExpertise || false;
+            document.getElementById("steaSaveProf").checked = data.steaSaveProf || false;
+            document.getElementById("steaExpertise").checked = data.steaExpertise || false;
+            document.getElementById("survSaveProf").checked = data.survSaveProf || false;
+            document.getElementById("survExpertise").checked = data.survExpertise || false;
+            document.getElementById("armorType").value = data.armorType || "";
+            document.getElementById("shield").checked = data.shield || false;
+            document.getElementById("weapon1").value = data.weapon1 || "";
+            document.getElementById("weapon2").value = data.weapon2 || "";
+            document.getElementById("weapon3").value = data.weapon3 || "";
+            document.getElementById("1st").value = data.first || 0;
+            document.getElementById("2nd").value = data.second || 0;
+            document.getElementById("3rd").value = data.third || 0;
+            document.getElementById("4th").value = data.fourth || 0;
+            document.getElementById("5th").value = data.fifth || 0;
+            document.getElementById("6th").value = data.sixth || 0;
+            document.getElementById("7th").value = data.seventh || 0;
+            document.getElementById("8th").value = data.eighth || 0;
+            document.getElementById("9th").value = data.nineth || 0;
+            const container = document.getElementById("spellContainer");
+            container.innerHTML = "";
+            if (Array.isArray(data.spells)) {
+                data.spells.forEach((spellVal, i) => {
+                    addSpellSlot();
+                    const select = document.getElementById(`spellselect${i + 1}`);
+                    if (select) select.value = spellVal;
+                });
+            }
+            ["str", "dex", "con", "int", "wis", "cha"].forEach(updateModifier);
+            if (typeof updateSavingThrows === "function") updateSavingThrows();
+            if (typeof updateSkills === "function") updateSkills();
+            if (typeof updateHitDice === "function") updateHitDice();
+            if (typeof updatePassivePerception === "function") updatePassivePerception();
+            if (typeof updateSubclass2Visibility === "function") updateSubclass2Visibility();
+            if (typeof updateSubclass3Visibility === "function") updateSubclass3Visibility();
+            if (typeof updateVisibleSpells === "function") updateVisibleSpells();
+            if (typeof updateSpells === "function") updateSpells();
+            if (typeof updateArmorStats === "function") updateArmorStats();
+            ["weapon1", "weapon2", "weapon3"].forEach(name => {
+                if (typeof updateWeaponInfo === "function") updateWeaponInfo(name);
+            });
+        } catch (e) {
+            console.error("Failed to load character from URL", e);
+        }
+    }
+});

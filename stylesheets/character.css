@@ -379,7 +379,6 @@ input[type="number"]::-webkit-outer-spin-button {
     border-color: var(--success);
 }
 
-/* Draw checkmark */
 .saving-throws input[type="checkbox"]::after,
 .skills input[type="checkbox"]::after,
 .armor-boxes input[type="checkbox"]::after {

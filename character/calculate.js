@@ -190,48 +190,33 @@ function adjust(id, change) {
     }
 }
 
-function getMaxSpellsForClassAndLevel(className, level) {
-    if (!className) return 0;
-
-    const classSpellTable = {
-        Wizard:    [3, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30, 30],
-        Sorcerer:  [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 28, 28, 28, 28, 28, 28],
-        Warlock:   [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-        Bard:      [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
-        Cleric:    [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
-        Druid:     [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 30, 30, 30, 30, 30],
-        Paladin:   [0, 0, 0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20],
-        Ranger:    [0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-        Artificer: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 28, 28, 28, 28, 28, 28],
-        BloodHunter: [0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
-    };
-    return classSpellTable[className]?.[level - 1] ?? 0;
+function toggleRemoveButtons() {
+    const rows = document.querySelectorAll("#spellContainer .form-row");
+    rows.forEach((row, index) => {
+        const btn = row.querySelector("button");
+        btn.style.marginLeft = "20px";
+        btn.className = "button";
+        if (btn) btn.style.display = rows.length > 1 ? "inline-block" : "none";
+    });
 }
 
-function updateVisibleSpells() {
-    const selectedClass = document.getElementById("charClass")?.value;
-    const level = parseInt(document.getElementById("charLevel")?.value, 10) || 1;
-    const totalSlots = 30;
-    let maxSpells = getMaxSpellsForClassAndLevel(selectedClass, level);
-    maxSpells = Math.max(1, maxSpells);
-    for (let i = 1; i <= totalSlots; i++) {
-        const row = document.getElementById(`spellSlot${i}-row`);
-        if (row) {
-            row.style.display = i <= maxSpells ? '' : 'none';
-        }
+function removeLastSpellSlot() {
+    const container = document.getElementById("spellContainer");
+    if (container.children.length > 1) {
+        container.lastChild.remove();
     }
+    toggleRemoveButtons();
 }
 
 function getOptgroupLevel(label) {
-    if (label.toLowerCase().includes("cantrip")) return 0;
-    const match = label.match(/^(\d)[a-z]{2}-level spells$/i);
-    return match ? parseInt(match[1], 10) : 10;
+    const match = label.match(/(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
 }
 
-function filterSpellsByClassAndLevel(selectedClass, maxLevel) {
-    for (let i = 1; i <= 30; i++) {
-        const select = document.getElementById(`spellselect${i}`);
-        if (!select || !select.allGroups) continue;
+function rebuildSpellSelects(selectedClass, maxLevel) {
+    const selects = document.querySelectorAll("#spellContainer select");
+    selects.forEach(select => {
+        if (!select.allGroups) return;
         const placeholderOption = Array.from(select.options).find(opt =>
             opt.value === "" && opt.parentElement.tagName !== "OPTGROUP"
         );
@@ -239,38 +224,96 @@ function filterSpellsByClassAndLevel(selectedClass, maxLevel) {
         if (placeholderOption) {
             select.appendChild(placeholderOption.cloneNode(true));
         }
-        for (let g = 0; g < select.allGroups.length; g++) {
-            const group = select.allGroups[g];
+        select.allGroups.forEach(group => {
             const spellLevel = getOptgroupLevel(group.label);
-            if (spellLevel > maxLevel) continue;
+            if (spellLevel > maxLevel) return;
             const newGroup = document.createElement("optgroup");
             newGroup.label = group.label;
-            const children = group.children;
-            for (let j = 0; j < children.length; j++) {
-                const option = children[j];
+            Array.from(group.children).forEach(option => {
                 const classList = (option.dataset.classes || "")
                     .toLowerCase()
                     .split(",")
-                    .map(function (c) {
-                        return c.trim();
-                    });
+                    .map(c => c.trim());
                 if (option.value === "" || classList.includes(selectedClass.toLowerCase())) {
-                    const newOption = option.cloneNode(true);
-                    newGroup.appendChild(newOption);
+                    newGroup.appendChild(option.cloneNode(true));
                 }
-            }
+            });
             if (newGroup.children.length > 0) {
                 select.appendChild(newGroup);
             }
-        }
-    }
+        });
+    });
 }
 
 function updateSpells() {
     const selectedClass = document.getElementById("charClass")?.value;
-    const level = parseInt(document.getElementById("charLevel")?.value, 10) || 1;
-    updateVisibleSpells();
+    const level = parseInt(document.getElementById("charLevel").value, 10) || 1;
     rebuildSpellSelects(selectedClass, level);
+    toggleRemoveButtons();
+}
+
+function renumberSpellSlots() {
+    const container = document.getElementById("spellContainer");
+    const slots = container.querySelectorAll(".form-row");
+    slots.forEach((row, i) => {
+        const index = i + 1;
+        row.id = `spellSlot${index}-row`;
+        const label = row.querySelector("label");
+        const select = row.querySelector("select");
+        if (label) {
+            label.textContent = `Spell ${index}`;
+            label.setAttribute("for", `spellselect${index}`);
+        }
+        if (select) {
+            select.id = `spellselect${index}`;
+            select.name = `spellselect${index}`;
+        }
+    });
+}
+
+function addSpellSlot() {
+    const container = document.getElementById("spellContainer");
+    const template = document.getElementById("spellselect");
+    const index = container.children.length + 1;
+    const outer = document.createElement("div");
+    outer.className = "basic-info";
+    const wrapper = document.createElement("div");
+    wrapper.className = "form-row";
+    wrapper.id = `spellSlot${index}-row`;
+    wrapper.style.margin = "10px auto";
+    const label = document.createElement("label");
+    label.setAttribute("for", `spellselect${index}`);
+    label.textContent = `Spell ${index}`;
+    const select = document.createElement("select");
+    select.id = `spellselect${index}`;
+    select.name = `spellselect${index}`;
+    select.innerHTML = template.innerHTML;
+    if (!select.allGroups) {
+        select.allGroups = Array.from(select.querySelectorAll("optgroup")).map(group => group.cloneNode(true));
+    }
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", () => {
+        outer.remove();
+        renumberSpellSlots();
+        toggleRemoveButtons();
+    });
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    wrapper.appendChild(removeBtn);
+    outer.appendChild(wrapper);
+    container.appendChild(outer);
+    toggleRemoveButtons();
+    rebuildSpellSelects(
+        document.getElementById("charClass").value,
+        parseInt(document.getElementById("charLevel").value, 10) || 1
+    );
+}
+
+function initializeSpells() {
+    document.getElementById("addSpellButton")?.addEventListener("click", addSpellSlot);
+    addSpellSlot();
 }
 
 function updateArmorStats() {
@@ -315,10 +358,10 @@ function updateWeaponInfo(selectId) {
 
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("charClass")?.addEventListener("change", updateVisibleSpells);
-    document.getElementById("charLevel")?.addEventListener("input", updateVisibleSpells);
     document.getElementById("charClass")?.addEventListener("change", updateSpells);
     document.getElementById("charLevel")?.addEventListener("input", updateSpells);
+    document.getElementById("charClass")?.addEventListener("change", updateArmorStats);
+    document.getElementById("charLevel")?.addEventListener("input", updateArmorStats);
     document.getElementById("armorType").addEventListener("change", updateArmorStats);
     document.getElementById("shield").addEventListener("change", updateArmorStats);
     document.getElementById("dex").addEventListener("input", updateArmorStats);
@@ -333,24 +376,11 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById(`${stat}SaveProf`)?.addEventListener('change', updateSavingThrows);
     });
-    const currentLevel = parseInt(charLevel.value, 10) || 1;
-    for (let i = 1; i <= 30; i++) {
-        const select = document.getElementById(`spellselect${i}`);
-        if (!select) continue;
-        if (!select.allGroups) {
-            select.allGroups = Array.from(select.querySelectorAll("optgroup")).map(group => {
-                const clone = group.cloneNode(true);
-                return clone;
-            });
-        }
-    }
     updateSavingThrows();
     updatePassivePerception();
     updateSkills();
-    updateSpells();
-    updateVisibleSpells();
+    initializeSpells();
     updateArmorStats();
-    filterSpellsByClassAndLevel(charClass.value, currentLevel);
 });
 
 xpInput.addEventListener('input', () => {
@@ -366,15 +396,11 @@ proficiencyBonus.addEventListener('input', () => {
 charLevel.addEventListener('input', () => {
     updateSubclass2Visibility();
     updateHitDice();
-    const level = parseInt(charLevel.value, 10) || 1;
-    filterSpellsByClassAndLevel(charClass.value, level);
 });
 
 charClass.addEventListener('change', () => {
     updateSubclass2Visibility();
     updateHitDice();
-    const level = parseInt(charLevel.value, 10) || 1;
-    filterSpellsByClassAndLevel(charClass.value, level);
 });
 
 charClass2.addEventListener('change', updateSubclass3Visibility);
