@@ -119,7 +119,7 @@ function saveToFile() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${character.name || "character"}.json`;
+    a.download = `(D&D) ${character.name || "character"}.json`;
     a.click();
     URL.revokeObjectURL(url);
 }
@@ -240,6 +240,7 @@ function loadFromFile(event) {
                 addWeapon();
                 const select = document.getElementById(`weapon${i + 1}`);
                 if (select) select.value = weaponVal;
+                updateWeaponInfo(select.id);
             });
         }
         const spellContainer = document.getElementById("spellContainer");
@@ -527,6 +528,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     addWeapon();
                     const select = document.getElementById(`weapon${i + 1}`);
                     if (select) select.value = weaponVal;
+                    updateWeaponInfo(select.id);
                 });
             }
             const spellContainer = document.getElementById("spellContainer");
