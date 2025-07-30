@@ -2,7 +2,7 @@
 function saveToFile() {
     const weapons = [];
     for (let i = 1; i <= 10; i++) {
-        const el = document.getElementById(`weapons${i}`);
+        const el = document.getElementById(`weapon${i}`);
         if (el) weapons.push(el.value);
     }
     const spells = [];
@@ -17,6 +17,7 @@ function saveToFile() {
         class2: document.getElementById("charClass2").value,
         class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
+        level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById("totalHP").value,
         background: document.getElementById("charBackground").value,
@@ -136,6 +137,7 @@ function loadFromFile(event) {
         document.getElementById("charClass2").value = data.class2 || "";
         document.getElementById("charClass3").value = data.class3 || "";
         document.getElementById("xpInput").value = data.xpInput || "";
+        document.getElementById("charLevel").value = data.level || 1;
         document.getElementById("currentHP").value = data.currentHP || "";
         document.getElementById("totalHP").value = data.totalHP || "";
         document.getElementById("charBackground").value = data.background || "";
@@ -232,14 +234,17 @@ function loadFromFile(event) {
         document.getElementById("9th").value = data.nineth || 0;
         const weaponContainer = document.getElementById("weaponContainer");
         weaponContainer.innerHTML = "";
-        data.spells.forEach((spellVal, i) => {
-            addWeapon();
-            const select = document.getElementById(`weapon${i + 1}`);
-            if (select) select.value = weaponVal;
-        });
+        weaponCount = 0;
+        if (Array.isArray(data.weapons)) {
+            data.weapons.forEach((weaponVal, i) => {
+                addWeapon();
+                const select = document.getElementById(`weapon${i + 1}`);
+                if (select) select.value = weaponVal;
+            });
+        }
         const spellContainer = document.getElementById("spellContainer");
         spellContainer.innerHTML = "";
-        data.spells.forEach((spellVal, i) => {
+        data.spells?.forEach((spellVal, i) => {
             addSpellSlot();
             const select = document.getElementById(`spellselect${i + 1}`);
             if (select) select.value = spellVal;
@@ -261,7 +266,7 @@ function loadFromFile(event) {
 function updateShareURL() {
     const weapons = [];
     for (let i = 1; i <= 10; i++) {
-        const el = document.getElementById(`weapons${i}`);
+        const el = document.getElementById(`weapon${i}`);
         if (el) weapons.push(el.value);
     }
     const spells = [];
@@ -276,6 +281,7 @@ function updateShareURL() {
         class2: document.getElementById("charClass2").value,
         class3: document.getElementById("charClass3").value,
         xpInput: document.getElementById("xpInput").value,
+        level: document.getElementById("charLevel").value,
         currentHP: document.getElementById("currentHP").value,
         totalHP: document.getElementById("totalHP").value,
         background: document.getElementById("charBackground").value,
@@ -515,14 +521,17 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("9th").value = data.nineth || 0;
             const weaponContainer = document.getElementById("weaponContainer");
             weaponContainer.innerHTML = "";
-            data.spells.forEach((spellVal, i) => {
-                addWeapon();
-                const select = document.getElementById(`weapon${i + 1}`);
-                if (select) select.value = weaponVal;
-            });
+            weaponCount = 0;
+            if (Array.isArray(data.weapons)) {
+                data.weapons.forEach((weaponVal, i) => {
+                    addWeapon();
+                    const select = document.getElementById(`weapon${i + 1}`);
+                    if (select) select.value = weaponVal;
+                });
+            }
             const spellContainer = document.getElementById("spellContainer");
             spellContainer.innerHTML = "";
-            data.spells.forEach((spellVal, i) => {
+            data.spells?.forEach((spellVal, i) => {
                 addSpellSlot();
                 const select = document.getElementById(`spellselect${i + 1}`);
                 if (select) select.value = spellVal;
@@ -537,9 +546,6 @@ window.addEventListener("DOMContentLoaded", () => {
             if (typeof updateVisibleSpells === "function") updateVisibleSpells();
             if (typeof updateSpells === "function") updateSpells();
             if (typeof updateArmorStats === "function") updateArmorStats();
-            ["weapon1", "weapon2", "weapon3"].forEach(name => {
-                if (typeof updateWeaponInfo === "function") updateWeaponInfo(name);
-            });
         } catch (e) {
             console.error("Failed to load character from URL", e);
         }
