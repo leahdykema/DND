@@ -420,6 +420,27 @@ function updateWeaponInfo(selectId) {
     document.getElementById(`${selectId}Properties`).textContent = properties;
 }
 
+function clearBtn() {
+    document.getElementById('clearBtn').addEventListener('click', function() {
+        const confirmed = confirm("Are you sure you want to clear all fields and reset to default?");
+        if (confirmed) {
+            document.getElementById('characterForm').reset();
+            const spellSlotsContainer = document.getElementById('spellContainer');
+            while (spellSlotsContainer.children.length > 1) {
+                spellSlotsContainer.removeChild(spellSlotsContainer.lastChild);
+                toggleRemoveButtons();
+            }
+            const weaponSlotsContainer = document.getElementById('weaponContainer');
+            while (weaponSlotsContainer.children.length > 1) {
+                weaponSlotsContainer.removeChild(weaponSlotsContainer.lastChild);
+                updateRemoveButtons();
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', clearBtn);
+
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("charClass")?.addEventListener("change", updateSpells);
@@ -443,9 +464,13 @@ window.addEventListener('DOMContentLoaded', () => {
     updateSavingThrows();
     updatePassivePerception();
     updateSkills();
-    initializeSpells();
     updateArmorStats();
-    addWeapon();
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasCParam = urlParams.has('c');
+    if (!hasCParam) {
+        initializeSpells();
+        addWeapon();
+    }
 });
 
 xpInput.addEventListener('input', () => {

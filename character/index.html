@@ -28,7 +28,7 @@
                     <div class="basic-info">
                         <div class="form-row">
                             <label for="charName">Name</label>
-                            <input type="text" id="charName" name="charName" required>
+                            <input type="text" id="charName" name="charName" placeholder="Unnamed Hero" required>
                         </div>
                         <div class="form-row">
                             <label for="charRace">Race</label>
@@ -1578,7 +1578,7 @@
                         </div>
                         <div class="box">
                             <label for="initiative">Initiative</label>
-                            <input type="number" id="initiative" readonly>
+                            <input type="number" id="initiative" value="0" readonly>
                         </div>
                         <div class="box" id="speedSwitcher">
                             <div class="speedNavigator">
@@ -1594,15 +1594,15 @@
                         </div>
                         <div class="box">
                             <label for="passivePerception">Passive Perception</label>
-                            <input type="number" id="passivePerception" value="" readonly>
+                            <input type="number" id="passivePerception" value="10" readonly>
                         </div>
                         <div class="box">
                             <label for="proficiencyBonus">Proficiency Bonus</label>
-                            <input type="text" id="proficiencyBonus" value="" readonly>
+                            <input type="text" id="proficiencyBonus" value="+2" readonly>
                         </div>
                         <div class="box">
                             <label for="hitDice" aria-hidden="true">Hit Dice<br>&#40;<span id="hitDiceType"></span>&#41;</label>
-                            <input type="text" id="hitDice" readonly>
+                            <input type="text" id="hitDice" value="1" readonly>
                         </div>
                     </div>
                 </fieldset>
@@ -1742,42 +1742,42 @@
                             <label for="str-2">Strength</label>
                             <div class="saving-throws">
                                <input type="checkbox" class="checkbox" id="strSaveProf">
-                                <input type="text" id="str-2" readonly>
+                                <input type="text" id="str-2" value="+0" readonly>
                             </div>
                         </div>
                         <div class="box">
                             <label for="dex-2">Dexterity</label>
                             <div class="saving-throws">
                                 <input type="checkbox" id="dexSaveProf">
-                                <input type="text" id="dex-2" readonly>
+                                <input type="text" id="dex-2" value="+0" readonly>
                             </div>
                         </div>
                         <div class="box">
                             <label for="con-2">Constitution</label>
                             <div class="saving-throws">
                                 <input type="checkbox" id="conSaveProf">
-                                <input type="text" id="con-2" readonly>
+                                <input type="text" id="con-2" value="+0" readonly>
                             </div>
                         </div>
                         <div class="box">
                             <label for="int-2">Intelligence</label>
                             <div class="saving-throws">
                                <input type="checkbox" id="intSaveProf">
-                                <input type="text" id="int-2" readonly>
+                                <input type="text" id="int-2" value="+0" readonly>
                             </div>
                         </div>
                         <div class="box">
                             <label for="wis-2">Wisdom</label>
                             <div class="saving-throws">
                                 <input type="checkbox" id="wisSaveProf">
-                                <input type="text" id="wis-2" readonly>
+                                <input type="text" id="wis-2" value="+0" readonly>
                             </div>
                         </div>
                         <div class="box">
                             <label for="cha-2">Charisma</label>
                             <div class="saving-throws">
                                 <input type="checkbox" id="chaSaveProf">
-                                <input type="text" id="cha-2" readonly>
+                                <input type="text" id="cha-2" value="+0" readonly>
                             </div>
                         </div>
                     </div>
@@ -1792,7 +1792,7 @@
                             <label for="acrobatics">Acrobatics</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="acroSaveProf" aria-label="proficiency">
-                                <input type="text" id="acrobatics" readonly>
+                                <input type="text" id="acrobatics" value="+0" readonly>
                                 <input type="checkbox" id="acroExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1800,7 +1800,7 @@
                             <label for="animalHandling">Animal Handling</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="aniHanSaveProf" aria-label="proficiency">
-                                <input type="text" id="animalHandling" readonly>
+                                <input type="text" id="animalHandling" value="+0" readonly>
                                 <input type="checkbox" id="aniHanExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1808,7 +1808,7 @@
                             <label for="arcana">Arcana</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="arcaSaveProf" aria-label="proficiency">
-                                <input type="text" id="arcana" readonly>
+                                <input type="text" id="arcana" value="+0" readonly>
                                 <input type="checkbox" id="arcaExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1816,7 +1816,7 @@
                             <label for="athletics">Athletics</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="athlSaveProf" aria-label="proficiency">
-                                <input type="text" id="athletics" readonly>
+                                <input type="text" id="athletics" value="+0" readonly>
                                 <input type="checkbox" id="athlExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1824,7 +1824,7 @@
                             <label for="deception">Deception</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="deceSaveProf" aria-label="proficiency">
-                                <input type="text" id="deception" readonly>
+                                <input type="text" id="deception" value="+0" readonly>
                                 <input type="checkbox" id="deceExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1832,7 +1832,7 @@
                             <label for="history">History</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="histSaveProf" aria-label="proficiency">
-                                <input type="text" id="history" readonly>
+                                <input type="text" id="history" value="+0" readonly>
                                 <input type="checkbox" id="histExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1840,7 +1840,7 @@
                             <label for="insight">Insight</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="insiSaveProf" aria-label="proficiency">
-                                <input type="text" id="insight" readonly>
+                                <input type="text" id="insight" value="+0" readonly>
                                 <input type="checkbox" id="insiExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1848,7 +1848,7 @@
                             <label for="intimidation">Intimidation</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="intiSaveProf" aria-label="proficiency">
-                                <input type="text" id="intimidation" readonly>
+                                <input type="text" id="intimidation" value="+0" readonly>
                                 <input type="checkbox" id="intiExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1856,7 +1856,7 @@
                             <label for="investigation">Investigation</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="inveSaveProf" aria-label="proficiency">
-                                <input type="text" id="investigation" readonly>
+                                <input type="text" id="investigation" value="+0" readonly>
                                 <input type="checkbox" id="inveExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1864,7 +1864,7 @@
                             <label for="medicine">Medicine</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="mediSaveProf" aria-label="proficiency">
-                                <input type="text" id="medicine" readonly>
+                                <input type="text" id="medicine" value="+0" readonly>
                                 <input type="checkbox" id="mediExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1872,7 +1872,7 @@
                             <label for="nature">Nature</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="natuSaveProf" aria-label="proficiency">
-                                <input type="text" id="nature" readonly>
+                                <input type="text" id="nature" value="+0" readonly>
                                 <input type="checkbox" id="natuExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1880,7 +1880,7 @@
                             <label for="perception">Perception</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="percSaveProf" aria-label="proficiency">
-                                <input type="text" id="perception" readonly>
+                                <input type="text" id="perception" value="+0" readonly>
                                 <input type="checkbox" id="percExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1888,7 +1888,7 @@
                             <label for="performance">Performance</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="perfSaveProf" aria-label="proficiency">
-                                <input type="text" id="performance" readonly>
+                                <input type="text" id="performance" value="+0" readonly>
                                 <input type="checkbox" id="perfExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1896,7 +1896,7 @@
                             <label for="persuasion">Persuasion</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="persSaveProf" aria-label="proficiency">
-                                <input type="text" id="persuasion" readonly>
+                                <input type="text" id="persuasion" value="+0" readonly>
                                 <input type="checkbox" id="persExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1904,7 +1904,7 @@
                             <label for="religion">Religion</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="reliSaveProf" aria-label="proficiency">
-                                <input type="text" id="religion" readonly>
+                                <input type="text" id="religion" value="+0" readonly>
                                 <input type="checkbox" id="reliExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1912,7 +1912,7 @@
                             <label for="sleightHand">Sleight of Hand</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="sleHanSaveProf" aria-label="proficiency">
-                                <input type="text" id="sleightHand" readonly>
+                                <input type="text" id="sleightHand" value="+0" readonly>
                                 <input type="checkbox" id="sleightHandExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1920,7 +1920,7 @@
                             <label for="stealth">Stealth</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="steaSaveProf" aria-label="proficiency">
-                                <input type="text" id="stealth" readonly>
+                                <input type="text" id="stealth" value="+0" readonly>
                                 <input type="checkbox" id="steaExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -1928,7 +1928,7 @@
                             <label for="survival">Survival</label>
                             <div class="skills">
                                 <input type="checkbox" class="checkbox" id="survSaveProf" aria-label="proficiency">
-                                <input type="text" id="survival" readonly>
+                                <input type="text" id="survival" value="+0" readonly>
                                 <input type="checkbox" id="survExpertise" aria-label="expertise">
                             </div>
                         </div>
@@ -2726,7 +2726,8 @@
                     <button class="button" type="button" onclick="saveToFile()">Save</button>
                     <label class="button" for="charUpload" role="button" tabindex="0">Reload</label>
                     <input aria-busy="" type="file" id="charUpload" accept=".json" onchange="loadFromFile(event)" style="display: none">
-                    <button class="button" type="button" onclick="updateShareURL()">Share</button>
+                    <button class="button" id="shareBtn" type="button" onclick="updateShareURL()">Share</button>
+                    <button class="button" id="clearBtn" type="button" onclick="clearBtn()">Clear</button>
                 </div>
             </fieldset>
         </form>
