@@ -1,5 +1,3 @@
-let isLoadingFromUrl = false;
-
 // Save as .json
 function saveToFile() {
     const weapons = [];

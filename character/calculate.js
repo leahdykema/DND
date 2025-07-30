@@ -422,7 +422,7 @@ function updateWeaponInfo(selectId) {
 
 function clearBtn() {
     document.getElementById('clearBtn').addEventListener('click', function() {
-        const confirmed = confirm("Are you sure you want to clear all fields and reset to default?");
+        const confirmed = confirm("Are you sure you want to clear all fields and reset to default? This action cannot be undone, so be sure you saved your character before clearing.");
         if (confirmed) {
             document.getElementById('characterForm').reset();
             const spellSlotsContainer = document.getElementById('spellContainer');
