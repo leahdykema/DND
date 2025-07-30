@@ -217,6 +217,7 @@ function rebuildSpellSelects(selectedClass, maxLevel) {
     const selects = document.querySelectorAll("#spellContainer select");
     selects.forEach(select => {
         if (!select.allGroups) return;
+        const currentValue = select.value;
         const placeholderOption = Array.from(select.options).find(opt =>
             opt.value === "" && opt.parentElement.tagName !== "OPTGROUP"
         );
@@ -242,6 +243,7 @@ function rebuildSpellSelects(selectedClass, maxLevel) {
                 select.appendChild(newGroup);
             }
         });
+        select.value = currentValue;
     });
 }
 
@@ -339,6 +341,71 @@ function updateArmorStats() {
     document.getElementById("strReq").textContent = strReq;
 }
 
+let weaponCount = 0;
+
+function addWeapon() {
+    const container = document.getElementById("weaponContainer");
+    const template = document.getElementById("weapon");
+    weaponCount++;
+    const index = weaponCount;
+    const outer = document.createElement("div");
+    outer.className = "basic-info";
+    outer.id = `weaponBlock${index}`;
+    const formRow = document.createElement("div");
+    formRow.className = "form-row";
+    const label = document.createElement("label");
+    label.setAttribute("for", `weapon${index}`);
+    label.textContent = `Weapon ${index}`;
+    const select = document.createElement("select");
+    select.id = `weapon${index}`;
+    select.name = `weapon${index}`;
+    select.innerHTML = template.innerHTML;
+    formRow.appendChild(label);
+    formRow.appendChild(select);
+    const grid = document.createElement("div");
+    grid.className = "weapon-grid";
+    grid.innerHTML = `
+        <div class="box"><label>Attack Bonus</label><output id="weapon${index}Bonus">+0</output></div>
+        <div class="box"><label>Damage</label><output id="weapon${index}Damage">-</output></div>
+        <div class="box"><label>Damage Type</label><output id="weapon${index}Type">-</output></div>
+        <div class="box"><label>Properties</label><output id="weapon${index}Properties">-</output></div>
+    `;
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.textContent = "Remove Weapon";
+    removeBtn.className = "button remove-weapon";
+    removeBtn.style.marginBottom = "20px";
+    removeBtn.onclick = () => {
+        container.removeChild(outer);
+        weaponCount--;
+        if (weaponCount < 10) {
+            document.getElementById("addBtn").style.display = "";
+        }
+        updateRemoveButtons();
+    };
+    outer.appendChild(formRow);
+    outer.appendChild(grid);
+    outer.appendChild(removeBtn);
+    container.appendChild(outer);
+    select.addEventListener("change", () => updateWeaponInfo(select.id));
+    if (weaponCount >= 10) {
+        document.getElementById("addBtn").style.display = "none";
+    }
+    updateRemoveButtons();
+}
+
+function updateRemoveButtons() {
+    const container = document.getElementById("weaponContainer");
+    const blocks = container.querySelectorAll(".basic-info");
+    const showRemove = blocks.length > 1;
+    blocks.forEach(block => {
+        const removeBtn = block.querySelector(".remove-weapon");
+        if (removeBtn) {
+            removeBtn.style.display = showRemove ? "" : "none";
+        }
+    });
+}
+
 function updateWeaponInfo(selectId) {
     const select = document.getElementById(selectId);
     const selected = select.options[select.selectedIndex];
@@ -352,9 +419,6 @@ function updateWeaponInfo(selectId) {
     document.getElementById(`${selectId}Bonus`).textContent = stat ? (statMod >= 0 ? `+${statMod}` : `${statMod}`) : "+0";
     document.getElementById(`${selectId}Properties`).textContent = properties;
 }
-["weapon1", "weapon2", "weapon3"].forEach(id => {
-    document.getElementById(id).addEventListener("change", () => updateWeaponInfo(id));
-});
 
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
@@ -381,6 +445,7 @@ window.addEventListener('DOMContentLoaded', () => {
     updateSkills();
     initializeSpells();
     updateArmorStats();
+    addWeapon();
 });
 
 xpInput.addEventListener('input', () => {

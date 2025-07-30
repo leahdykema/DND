@@ -1990,208 +1990,76 @@
                     <!-- Weapons -->
                     <fieldset>
                         <legend>Weapons</legend>
-                        <div class="basic-info">
-                            <div class="form-row">
-                                <label for="weapon1">Main Weapon</label>
-                                <select id="weapon1">
-                                    <option value="" selected disabled>&#45;&#45; Select Weapon &#45;&#45;</option>
-                                    <optgroup label="Simple Melee">
-                                        <option value="Club" data-damage="1d4" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Light">Club</option>
-                                        <option value="Dagger" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Light, Thrown">Dagger</option>
-                                        <option value="Greatclub" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Two-Handed">Greatclub</option>
-                                        <option value="Hardaxe" data-damage="1d6" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Hardaxe</option>
-                                        <option value="Javelin" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="str" data-properties="Thrown">Javelin</option>
-                                        <option value="Light Hammer" data-damage="1d4" data-type="Bludgeoning" data-range="20/60" data-stat="str" data-properties="Light, Thrown">Light Hammer</option>
-                                        <option value="Mace" data-damage="1d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Mace</option>
-                                        <option value="Quarterstaff" data-damage="1d6" data-type="bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d8)">Quarterstaff</option>
-                                        <option value="Sickle" data-damage="1d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Sickle</option>
-                                        <option value="Spear" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Spear</option>
-                                    </optgroup>
-                                    <optgroup label="Simple Ranged">
-                                        <option value="Crossbow, Light" data-damage="1d8" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Loading, Two-Handed">Crossbow, Light</option>
-                                        <option value="Dart" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Thrown">Dart</option>
-                                        <option value="Shortbow" data-damage="1d6" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Two-Handed">Shortbow</option>
-                                        <option value="Sling" data-damage="1d4" data-type="Bludgeoning" data-range="30/120" data-stat="dex" data-properties="Ammunition">Sling</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Melee">
-                                        <option value="Battleaxe" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Battleaxe</option>
-                                        <option value="Double-Bladed Scimitar" data-damage="2d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Two-Handed, Special">Double-Bladed Scimitar</option>
-                                        <option value="Flail" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Flail</option>
-                                        <option value="Glaive" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Glaive</option>
-                                        <option value="Greataxe" data-damage="1d12" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Greataxe</option>
-                                        <option value="Halberd" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Halberd</option>
-                                        <option value="Lance" data-damage="1d12" data-type="Piercing" data-range="" data-stat="str" data-properties="Reach, Special">Lance</option>
-                                        <option value="Longsword" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Longsword</option>
-                                        <option value="Maul" data-damage="2d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Maul</option>
-                                        <option value="Morningstar" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">Morningstar</option>
-                                        <option value="Pike" data-damage="1d10" data-type="Piercing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Pike</option>
-                                        <option value="Rapier" data-damage="1d8" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse">Rapier</option>
-                                        <option value="Scimitar" data-damage="1d6" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Light">Scimitar</option>
-                                        <option value="Shortsword" data-damage="1d6" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse, Light">Shortsword</option>
-                                        <option value="Trident" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Trident</option>
-                                        <option value="War, Pick" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">War, Pick</option>
-                                        <option value="Warhammer" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d10)">Warhammer</option>
-                                        <option value="Whip" data-damage="1d4" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Reach">Whip</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Ranged">
-                                        <option value="Bad News" data-damage="2d12" data-type="Piercing" data-range="200/800" data-stat="dex" data-properties="Loading, Two-Handed, Special">Bad News</option>
-                                        <option value="Blowgun" data-damage="1" data-type="Piercing" data-range="25/100" data-stat="dex" data-properties="Ammunition, Loading">Blowgun</option>
-                                        <option value="Blunderbuss" data-damage="2d8" data-type="Piercing" data-range="15/60" data-stat="dex" data-properties="Loading, Special">Blunderbuss</option>
-                                        <option value="Crossbow, Hand" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="dex" data-properties="Light, Loading">Crossbow, Hand</option>
-                                        <option value="Crossbow, Heavy" data-damage="1d10" data-type="Piercing" data-range="100/400" data-stat="dex" data-properties="Heavy, Loading, Two-Handed">Crossbow, Heavy</option>
-                                        <option value="Hand Mortar" data-damage="2d8" data-type="Fire" data-range="30/60" data-stat="dex" data-properties="Special, Loading">Hand Mortar</option>
-                                        <option value="Longbow" data-damage="1d8" data-type="Piercing" data-range="150/600" data-stat="dex" data-properties="Heavy, Two-Handed">Longbow</option>
-                                        <option value="Musket" data-damage="1d12" data-type="Piercing" data-range="120/480" data-stat="dex" data-properties="Loading, Two-Handed">Musket</option>
-                                        <option value="Net" data-damage="–" data-type="–" data-range="5/15" data-stat="dex" data-properties="Special, Thrown">Net</option>
-                                        <option value="Palm Pistol" data-damage="1d8" data-type="Piercing" data-range="40/160" data-stat="dex" data-properties="Light, Loading">Palm Pistol</option>
-                                        <option value="Pepperbox" data-damage="1d10" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Loading">Pepperbox</option>
-                                        <option value="Pistol" data-damage="1d10" data-type="Piercing" data-range="60/240" data-stat="dex" data-properties="Loading">Pistol</option>
-                                    </optgroup>
-                                </select>
+                        <div id="weaponContainer"></div>
+                        <button type="button" class="button" id="addBtn" onclick="addWeapon()" style="margin-top: 10px;">Add Weapon</button>
+                        <div>
+                            <div class="basic-info" style="display: none;">
+                                <div class="form-row">
+                                    <label for="weapon">Weapon</label>
+                                    <select id="weapon">
+                                        <option value="" selected disabled>&#45;&#45; Select Weapon &#45;&#45;</option>
+                                        <optgroup label="Simple Melee">
+                                            <option value="Club" data-damage="1d4" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Light">Club</option>
+                                            <option value="Dagger" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Light, Thrown">Dagger</option>
+                                            <option value="Greatclub" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Two-Handed">Greatclub</option>
+                                            <option value="Hardaxe" data-damage="1d6" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Hardaxe</option>
+                                            <option value="Javelin" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="str" data-properties="Thrown">Javelin</option>
+                                            <option value="Light Hammer" data-damage="1d4" data-type="Bludgeoning" data-range="20/60" data-stat="str" data-properties="Light, Thrown">Light Hammer</option>
+                                            <option value="Mace" data-damage="1d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Mace</option>
+                                            <option value="Quarterstaff" data-damage="1d6" data-type="bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d8)">Quarterstaff</option>
+                                            <option value="Sickle" data-damage="1d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Sickle</option>
+                                            <option value="Spear" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Spear</option>
+                                        </optgroup>
+                                        <optgroup label="Simple Ranged">
+                                            <option value="Crossbow, Light" data-damage="1d8" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Loading, Two-Handed">Crossbow, Light</option>
+                                            <option value="Dart" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Thrown">Dart</option>
+                                            <option value="Shortbow" data-damage="1d6" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Two-Handed">Shortbow</option>
+                                            <option value="Sling" data-damage="1d4" data-type="Bludgeoning" data-range="30/120" data-stat="dex" data-properties="Ammunition">Sling</option>
+                                        </optgroup>
+                                        <optgroup label="Martial Melee">
+                                            <option value="Battleaxe" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Battleaxe</option>
+                                            <option value="Double-Bladed Scimitar" data-damage="2d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Two-Handed, Special">Double-Bladed Scimitar</option>
+                                            <option value="Flail" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Flail</option>
+                                            <option value="Glaive" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Glaive</option>
+                                            <option value="Greataxe" data-damage="1d12" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Greataxe</option>
+                                            <option value="Halberd" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Halberd</option>
+                                            <option value="Lance" data-damage="1d12" data-type="Piercing" data-range="" data-stat="str" data-properties="Reach, Special">Lance</option>
+                                            <option value="Longsword" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Longsword</option>
+                                            <option value="Maul" data-damage="2d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Maul</option>
+                                            <option value="Morningstar" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">Morningstar</option>
+                                            <option value="Pike" data-damage="1d10" data-type="Piercing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Pike</option>
+                                            <option value="Rapier" data-damage="1d8" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse">Rapier</option>
+                                            <option value="Scimitar" data-damage="1d6" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Light">Scimitar</option>
+                                            <option value="Shortsword" data-damage="1d6" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse, Light">Shortsword</option>
+                                            <option value="Trident" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Trident</option>
+                                            <option value="War, Pick" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">War, Pick</option>
+                                            <option value="Warhammer" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d10)">Warhammer</option>
+                                            <option value="Whip" data-damage="1d4" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Reach">Whip</option>
+                                        </optgroup>
+                                        <optgroup label="Martial Ranged">
+                                            <option value="Bad News" data-damage="2d12" data-type="Piercing" data-range="200/800" data-stat="dex" data-properties="Loading, Two-Handed, Special">Bad News</option>
+                                            <option value="Blowgun" data-damage="1" data-type="Piercing" data-range="25/100" data-stat="dex" data-properties="Ammunition, Loading">Blowgun</option>
+                                            <option value="Blunderbuss" data-damage="2d8" data-type="Piercing" data-range="15/60" data-stat="dex" data-properties="Loading, Special">Blunderbuss</option>
+                                            <option value="Crossbow, Hand" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="dex" data-properties="Light, Loading">Crossbow, Hand</option>
+                                            <option value="Crossbow, Heavy" data-damage="1d10" data-type="Piercing" data-range="100/400" data-stat="dex" data-properties="Heavy, Loading, Two-Handed">Crossbow, Heavy</option>
+                                            <option value="Hand Mortar" data-damage="2d8" data-type="Fire" data-range="30/60" data-stat="dex" data-properties="Special, Loading">Hand Mortar</option>
+                                            <option value="Longbow" data-damage="1d8" data-type="Piercing" data-range="150/600" data-stat="dex" data-properties="Heavy, Two-Handed">Longbow</option>
+                                            <option value="Musket" data-damage="1d12" data-type="Piercing" data-range="120/480" data-stat="dex" data-properties="Loading, Two-Handed">Musket</option>
+                                            <option value="Net" data-damage="–" data-type="–" data-range="5/15" data-stat="dex" data-properties="Special, Thrown">Net</option>
+                                            <option value="Palm Pistol" data-damage="1d8" data-type="Piercing" data-range="40/160" data-stat="dex" data-properties="Light, Loading">Palm Pistol</option>
+                                            <option value="Pepperbox" data-damage="1d10" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Loading">Pepperbox</option>
+                                            <option value="Pistol" data-damage="1d10" data-type="Piercing" data-range="60/240" data-stat="dex" data-properties="Loading">Pistol</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="weapon-grid">
-                            <div class="box"><label>Attack Bonus</label><output id="weapon1Bonus">&#43;0</output></div>
-                            <div class="box"><label>Damage</label><output id="weapon1Damage">&#45;</output></div>
-                            <div class="box"><label>Damage Type</label><output id="weapon1Type">&#45;</output></div>
-                            <div class="box"><label>Properties</label><output id="weapon1Properties">&#45;</output></div>
-                        </div>
-                        <br>
-                        <div class="basic-info">
-                            <div class="form-row">
-                                <label for="weapon2">Ranged Weapon</label>
-                                <select id="weapon2">
-                                    <option value="" selected disabled>&#45;&#45; Select Weapon &#45;&#45;</option>
-                                    <optgroup label="Simple Melee">
-                                        <option value="Club" data-damage="1d4" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Light">Club</option>
-                                        <option value="Dagger" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Light, Thrown">Dagger</option>
-                                        <option value="Greatclub" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Two-Handed">Greatclub</option>
-                                        <option value="Hardaxe" data-damage="1d6" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Hardaxe</option>
-                                        <option value="Javelin" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="str" data-properties="Thrown">Javelin</option>
-                                        <option value="Light Hammer" data-damage="1d4" data-type="Bludgeoning" data-range="20/60" data-stat="str" data-properties="Light, Thrown">Light Hammer</option>
-                                        <option value="Mace" data-damage="1d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Mace</option>
-                                        <option value="Quarterstaff" data-damage="1d6" data-type="bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d8)">Quarterstaff</option>
-                                        <option value="Sickle" data-damage="1d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Sickle</option>
-                                        <option value="Spear" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Spear</option>
-                                    </optgroup>
-                                    <optgroup label="Simple Ranged">
-                                        <option value="Crossbow, Light" data-damage="1d8" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Loading, Two-Handed">Crossbow, Light</option>
-                                        <option value="Dart" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Thrown">Dart</option>
-                                        <option value="Shortbow" data-damage="1d6" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Two-Handed">Shortbow</option>
-                                        <option value="Sling" data-damage="1d4" data-type="Bludgeoning" data-range="30/120" data-stat="dex" data-properties="Ammunition">Sling</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Melee">
-                                        <option value="Battleaxe" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Battleaxe</option>
-                                        <option value="Double-Bladed Scimitar" data-damage="2d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Two-Handed, Special">Double-Bladed Scimitar</option>
-                                        <option value="Flail" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Flail</option>
-                                        <option value="Glaive" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Glaive</option>
-                                        <option value="Greataxe" data-damage="1d12" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Greataxe</option>
-                                        <option value="Halberd" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Halberd</option>
-                                        <option value="Lance" data-damage="1d12" data-type="Piercing" data-range="" data-stat="str" data-properties="Reach, Special">Lance</option>
-                                        <option value="Longsword" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Longsword</option>
-                                        <option value="Maul" data-damage="2d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Maul</option>
-                                        <option value="Morningstar" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">Morningstar</option>
-                                        <option value="Pike" data-damage="1d10" data-type="Piercing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Pike</option>
-                                        <option value="Rapier" data-damage="1d8" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse">Rapier</option>
-                                        <option value="Scimitar" data-damage="1d6" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Light">Scimitar</option>
-                                        <option value="Shortsword" data-damage="1d6" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse, Light">Shortsword</option>
-                                        <option value="Trident" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Trident</option>
-                                        <option value="War, Pick" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">War, Pick</option>
-                                        <option value="Warhammer" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d10)">Warhammer</option>
-                                        <option value="Whip" data-damage="1d4" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Reach">Whip</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Ranged">
-                                        <option value="Bad News" data-damage="2d12" data-type="Piercing" data-range="200/800" data-stat="dex" data-properties="Loading, Two-Handed, Special">Bad News</option>
-                                        <option value="Blowgun" data-damage="1" data-type="Piercing" data-range="25/100" data-stat="dex" data-properties="Ammunition, Loading">Blowgun</option>
-                                        <option value="Blunderbuss" data-damage="2d8" data-type="Piercing" data-range="15/60" data-stat="dex" data-properties="Loading, Special">Blunderbuss</option>
-                                        <option value="Crossbow, Hand" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="dex" data-properties="Light, Loading">Crossbow, Hand</option>
-                                        <option value="Crossbow, Heavy" data-damage="1d10" data-type="Piercing" data-range="100/400" data-stat="dex" data-properties="Heavy, Loading, Two-Handed">Crossbow, Heavy</option>
-                                        <option value="Hand Mortar" data-damage="2d8" data-type="Fire" data-range="30/60" data-stat="dex" data-properties="Special, Loading">Hand Mortar</option>
-                                        <option value="Longbow" data-damage="1d8" data-type="Piercing" data-range="150/600" data-stat="dex" data-properties="Heavy, Two-Handed">Longbow</option>
-                                        <option value="Musket" data-damage="1d12" data-type="Piercing" data-range="120/480" data-stat="dex" data-properties="Loading, Two-Handed">Musket</option>
-                                        <option value="Net" data-damage="–" data-type="–" data-range="5/15" data-stat="dex" data-properties="Special, Thrown">Net</option>
-                                        <option value="Palm Pistol" data-damage="1d8" data-type="Piercing" data-range="40/160" data-stat="dex" data-properties="Light, Loading">Palm Pistol</option>
-                                        <option value="Pepperbox" data-damage="1d10" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Loading">Pepperbox</option>
-                                        <option value="Pistol" data-damage="1d10" data-type="Piercing" data-range="60/240" data-stat="dex" data-properties="Loading">Pistol</option>
-                                    </optgroup>
-                                </select>
+                            <br>
+                            <div class="weapon-grid" style="display: none;">
+                                <div class="box"><label>Attack Bonus</label><output id="weaponBonus">&#43;0</output></div>
+                                <div class="box"><label>Damage</label><output id="weaponDamage">&#45;</output></div>
+                                <div class="box"><label>Damage Type</label><output id="weaponType">&#45;</output></div>
+                                <div class="box"><label>Properties</label><output id="weaponProperties">&#45;</output></div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="weapon-grid">
-                            <div class="box"><label>Attack Bonus</label><output id="weapon2Bonus">&#43;0</output></div>
-                            <div class="box"><label>Damage</label><output id="weapon2Damage">&#45;</output></div>
-                            <div class="box"><label>Damage Type</label><output id="weapon2Type">&#45;</output></div>
-                            <div class="box"><label>Properties</label><output id="weapon2Properties">&#45;</output></div>
-                        </div>
-                        <br>
-                        <div class="basic-info">
-                            <div class="form-row">
-                                <label for="weapon3">Backup Weapon</label>
-                                <select id="weapon3">
-                                    <option value="" selected disabled>&#45;&#45; Select Weapon &#45;&#45;</option>
-                                    <optgroup label="Simple Melee">
-                                        <option value="Club" data-damage="1d4" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Light">Club</option>
-                                        <option value="Dagger" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Light, Thrown">Dagger</option>
-                                        <option value="Greatclub" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Two-Handed">Greatclub</option>
-                                        <option value="Hardaxe" data-damage="1d6" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Hardaxe</option>
-                                        <option value="Javelin" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="str" data-properties="Thrown">Javelin</option>
-                                        <option value="Light Hammer" data-damage="1d4" data-type="Bludgeoning" data-range="20/60" data-stat="str" data-properties="Light, Thrown">Light Hammer</option>
-                                        <option value="Mace" data-damage="1d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Mace</option>
-                                        <option value="Quarterstaff" data-damage="1d6" data-type="bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d8)">Quarterstaff</option>
-                                        <option value="Sickle" data-damage="1d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Light">Sickle</option>
-                                        <option value="Spear" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Spear</option>
-                                    </optgroup>
-                                    <optgroup label="Simple Ranged">
-                                        <option value="Crossbow, Light" data-damage="1d8" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Loading, Two-Handed">Crossbow, Light</option>
-                                        <option value="Dart" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Thrown">Dart</option>
-                                        <option value="Shortbow" data-damage="1d6" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Ammunition, Two-Handed">Shortbow</option>
-                                        <option value="Sling" data-damage="1d4" data-type="Bludgeoning" data-range="30/120" data-stat="dex" data-properties="Ammunition">Sling</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Melee">
-                                        <option value="Battleaxe" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Battleaxe</option>
-                                        <option value="Double-Bladed Scimitar" data-damage="2d4" data-type="Slashing" data-range="" data-stat="str" data-properties="Two-Handed, Special">Double-Bladed Scimitar</option>
-                                        <option value="Flail" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="">Flail</option>
-                                        <option value="Glaive" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Glaive</option>
-                                        <option value="Greataxe" data-damage="1d12" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Greataxe</option>
-                                        <option value="Halberd" data-damage="1d10" data-type="Slashing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Halberd</option>
-                                        <option value="Lance" data-damage="1d12" data-type="Piercing" data-range="" data-stat="str" data-properties="Reach, Special">Lance</option>
-                                        <option value="Longsword" data-damage="1d8" data-type="Slashing" data-range="" data-stat="str" data-properties="Versatile (1d10)">Longsword</option>
-                                        <option value="Maul" data-damage="2d6" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Heavy, Two-Handed">Maul</option>
-                                        <option value="Morningstar" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">Morningstar</option>
-                                        <option value="Pike" data-damage="1d10" data-type="Piercing" data-range="" data-stat="str" data-properties="Heavy, Reach, Two-Handed">Pike</option>
-                                        <option value="Rapier" data-damage="1d8" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse">Rapier</option>
-                                        <option value="Scimitar" data-damage="1d6" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Light">Scimitar</option>
-                                        <option value="Shortsword" data-damage="1d6" data-type="Piercing" data-range="" data-stat="dex" data-properties="Finesse, Light">Shortsword</option>
-                                        <option value="Trident" data-damage="1d6" data-type="Piercing" data-range="20/60" data-stat="str" data-properties="Thrown, Versatile (1d8)">Trident</option>
-                                        <option value="War, Pick" data-damage="1d8" data-type="Piercing" data-range="" data-stat="str" data-properties="">War, Pick</option>
-                                        <option value="Warhammer" data-damage="1d8" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Versatile (1d10)">Warhammer</option>
-                                        <option value="Whip" data-damage="1d4" data-type="Slashing" data-range="" data-stat="dex" data-properties="Finesse, Reach">Whip</option>
-                                    </optgroup>
-                                    <optgroup label="Martial Ranged">
-                                        <option value="Bad News" data-damage="2d12" data-type="Piercing" data-range="200/800" data-stat="dex" data-properties="Loading, Two-Handed, Special">Bad News</option>
-                                        <option value="Blowgun" data-damage="1" data-type="Piercing" data-range="25/100" data-stat="dex" data-properties="Ammunition, Loading">Blowgun</option>
-                                        <option value="Blunderbuss" data-damage="2d8" data-type="Piercing" data-range="15/60" data-stat="dex" data-properties="Loading, Special">Blunderbuss</option>
-                                        <option value="Crossbow, Hand" data-damage="1d6" data-type="Piercing" data-range="30/120" data-stat="dex" data-properties="Light, Loading">Crossbow, Hand</option>
-                                        <option value="Crossbow, Heavy" data-damage="1d10" data-type="Piercing" data-range="100/400" data-stat="dex" data-properties="Heavy, Loading, Two-Handed">Crossbow, Heavy</option>
-                                        <option value="Hand Mortar" data-damage="2d8" data-type="Fire" data-range="30/60" data-stat="dex" data-properties="Special, Loading">Hand Mortar</option>
-                                        <option value="Longbow" data-damage="1d8" data-type="Piercing" data-range="150/600" data-stat="dex" data-properties="Heavy, Two-Handed">Longbow</option>
-                                        <option value="Musket" data-damage="1d12" data-type="Piercing" data-range="120/480" data-stat="dex" data-properties="Loading, Two-Handed">Musket</option>
-                                        <option value="Net" data-damage="–" data-type="–" data-range="5/15" data-stat="dex" data-properties="Special, Thrown">Net</option>
-                                        <option value="Palm Pistol" data-damage="1d8" data-type="Piercing" data-range="40/160" data-stat="dex" data-properties="Light, Loading">Palm Pistol</option>
-                                        <option value="Pepperbox" data-damage="1d10" data-type="Piercing" data-range="80/320" data-stat="dex" data-properties="Loading">Pepperbox</option>
-                                        <option value="Pistol" data-damage="1d10" data-type="Piercing" data-range="60/240" data-stat="dex" data-properties="Loading">Pistol</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="weapon-grid">
-                            <div class="box"><label>Attack Bonus</label><output id="weapon3Bonus">&#43;0</output></div>
-                            <div class="box"><label>Damage</label><output id="weapon3Damage">&#45;</output></div>
-                            <div class="box"><label>Damage Type</label><output id="weapon3Type">&#45;</output></div>
-                            <div class="box"><label>Properties</label><output id="weapon3Properties">&#45;</output></div>
                         </div>
                     </fieldset>
                 </div>
@@ -2278,12 +2146,8 @@
                 <!-- Spells -->
                 <fieldset>
                     <legend>Spells</legend>
-                    <div class="basic-info">
-                        <div class="form-row">
-                            <div id="spellContainer" style="width: 300px;"></div>
-                        </div>
-                        <button type="button" class="button" onclick="addSpellSlot()">Add Spell</button>
-                    </div>
+                    <div id="spellContainer"></div>
+                    <button type="button" class="button" onclick="addSpellSlot()">Add Spell</button>
                     <select name="spellselect" id="spellselect" style="display: none;">
                         <option value="" selected disabled>&#45;&#45; Select a Spell &#45;&#45;</option>
                         <optgroup label="Cantrip">

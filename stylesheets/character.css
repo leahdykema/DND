@@ -503,6 +503,10 @@ input[type="number"]::-webkit-outer-spin-button {
     a.button {
         font-size: 20px;
     }
+
+    #spellContainer .form-row label {
+        flex: 0 0 50px;
+    }
 }
 
 /* Light Theme */

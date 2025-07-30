@@ -1,5 +1,10 @@
 // Save as .json
 function saveToFile() {
+    const weapons = [];
+    for (let i = 1; i <= 10; i++) {
+        const el = document.getElementById(`weapons${i}`);
+        if (el) weapons.push(el.value);
+    }
     const spells = [];
     for (let i = 1; i <= 30; i++) {
         const el = document.getElementById(`spellselect${i}`);
@@ -97,9 +102,6 @@ function saveToFile() {
         survExpertise: document.getElementById("survExpertise").checked,
         armorType: document.getElementById("armorType").value,
         shield: document.getElementById("shield").checked,
-        weapon1: document.getElementById("weapon1").value,
-        weapon2: document.getElementById("weapon2").value,
-        weapon3: document.getElementById("weapon3").value,
         first: document.getElementById("1st").value,
         second: document.getElementById("2nd").value,
         third: document.getElementById("3rd").value,
@@ -109,6 +111,7 @@ function saveToFile() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
+        weapons: weapons,
         spells: spells
     };
     const blob = new Blob([JSON.stringify(character, null, 2)], { type: "application/json" });
@@ -218,9 +221,6 @@ function loadFromFile(event) {
         document.getElementById("survExpertise").checked = data.survExpertise;
         document.getElementById("armorType").value = data.armorType || "";
         document.getElementById("shield").checked = data.shield ;
-        document.getElementById("weapon1").value = data.weapon1 || "";
-        document.getElementById("weapon2").value = data.weapon2 || "";
-        document.getElementById("weapon3").value = data.weapon3 || "";
         document.getElementById("1st").value = data.first || 0;
         document.getElementById("2nd").value = data.second || 0;
         document.getElementById("3rd").value = data.third || 0;
@@ -230,8 +230,15 @@ function loadFromFile(event) {
         document.getElementById("7th").value = data.seventh || 0;
         document.getElementById("8th").value = data.eighth || 0;
         document.getElementById("9th").value = data.nineth || 0;
-        const container = document.getElementById("spellContainer");
-        container.innerHTML = "";
+        const weaponContainer = document.getElementById("weaponContainer");
+        weaponContainer.innerHTML = "";
+        data.spells.forEach((spellVal, i) => {
+            addWeapon();
+            const select = document.getElementById(`weapon${i + 1}`);
+            if (select) select.value = weaponVal;
+        });
+        const spellContainer = document.getElementById("spellContainer");
+        spellContainer.innerHTML = "";
         data.spells.forEach((spellVal, i) => {
             addSpellSlot();
             const select = document.getElementById(`spellselect${i + 1}`);
@@ -246,13 +253,17 @@ function loadFromFile(event) {
         updateVisibleSpells();
         updateSpells();
         updateArmorStats();
-        ["weapon1", "weapon2", "weapon3"].forEach(updateWeaponInfo);
     };
     reader.readAsText(file);
 }
 
 // Save Via URL
 function updateShareURL() {
+    const weapons = [];
+    for (let i = 1; i <= 10; i++) {
+        const el = document.getElementById(`weapons${i}`);
+        if (el) weapons.push(el.value);
+    }
     const spells = [];
     for (let i = 1; i <= 30; i++) {
         const el = document.getElementById(`spellselect${i}`);
@@ -362,6 +373,7 @@ function updateShareURL() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
+        weapons: weapons,
         spells: spells
     };
     const encoded = encodeURIComponent(btoa(JSON.stringify(character)));
@@ -501,15 +513,20 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("7th").value = data.seventh || 0;
             document.getElementById("8th").value = data.eighth || 0;
             document.getElementById("9th").value = data.nineth || 0;
-            const container = document.getElementById("spellContainer");
-            container.innerHTML = "";
-            if (Array.isArray(data.spells)) {
-                data.spells.forEach((spellVal, i) => {
-                    addSpellSlot();
-                    const select = document.getElementById(`spellselect${i + 1}`);
-                    if (select) select.value = spellVal;
-                });
-            }
+            const weaponContainer = document.getElementById("weaponContainer");
+            weaponContainer.innerHTML = "";
+            data.spells.forEach((spellVal, i) => {
+                addWeapon();
+                const select = document.getElementById(`weapon${i + 1}`);
+                if (select) select.value = weaponVal;
+            });
+            const spellContainer = document.getElementById("spellContainer");
+            spellContainer.innerHTML = "";
+            data.spells.forEach((spellVal, i) => {
+                addSpellSlot();
+                const select = document.getElementById(`spellselect${i + 1}`);
+                if (select) select.value = spellVal;
+            });
             ["str", "dex", "con", "int", "wis", "cha"].forEach(updateModifier);
             if (typeof updateSavingThrows === "function") updateSavingThrows();
             if (typeof updateSkills === "function") updateSkills();
