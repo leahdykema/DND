@@ -30,9 +30,17 @@ body {
 }
 
 h1 {
+    margin: auto;
     margin-top: 2%;
+    margin-bottom: 1%;
     padding-top: 60px;
     font-size: 80px;
+}
+
+p {
+    margin: auto;
+    margin-bottom: 2%;
+    width: 80%;
 }
 
 .nav {
@@ -72,6 +80,7 @@ fieldset {
     margin: auto;
     width: 500px;
     border: 1px solid var(--border);
+    border-radius: 10px;
 }
 
 .multi-fieldsets {
@@ -85,6 +94,7 @@ legend {
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    font-weight: bold;
 }
 
 input[type="text"]:read-only,
@@ -544,6 +554,11 @@ input[type="number"]::-webkit-outer-spin-button {
         background-color: var(--bg-light);
     }
 
+    p {
+        color: #2e2e2e99;
+        transition: all 200ms ease;
+    }
+
     input,
     select,
     #charNotes {
@@ -554,6 +569,13 @@ input[type="number"]::-webkit-outer-spin-button {
     @media (max-width: 768px) {
         html {
             background-color: var(--bg-light);
+        }
+    }
+
+    @media (hover: hover) {
+        p:hover,
+        p:focus {
+            color: var(--text-dark);
         }
     }
 }
@@ -569,6 +591,11 @@ input[type="number"]::-webkit-outer-spin-button {
         background-color: var(--bg);
     }
 
+    p {
+        color: #eae3d299;
+        transition: all 200ms ease;
+    }
+
     input,
     select,
     #charNotes {
@@ -579,6 +606,13 @@ input[type="number"]::-webkit-outer-spin-button {
     @media (max-width: 768px) {
         html {
             background-color: var(--bg);
+        }
+    }
+
+    @media (hover: hover) {
+        p:hover,
+        p:focus {
+            color: var(--text-light);
         }
     }
 }
