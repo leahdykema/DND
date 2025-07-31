@@ -62,6 +62,7 @@ const skillMap = {
     survival:          { ability: 'wis', checkbox: 'survSaveProf', expertise: 'survExpertise' }
 };
 
+let weaponCount = 0;
 const abilities = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
 const xpInput = document.getElementById('xpInput');
 const charLevel = document.getElementById('charLevel');
@@ -313,11 +314,6 @@ function addSpellSlot() {
     );
 }
 
-function initializeSpells() {
-    document.getElementById("addSpellButton")?.addEventListener("click", addSpellSlot);
-    addSpellSlot();
-}
-
 function updateArmorStats() {
     const armorSelect = document.getElementById("armorType");
     const shield = document.getElementById("shield").checked;
@@ -340,8 +336,6 @@ function updateArmorStats() {
     document.getElementById("stealth2").textContent = disadvantage ? "Disadvantage" : "Normal";
     document.getElementById("strReq").textContent = strReq;
 }
-
-let weaponCount = 0;
 
 function addWeapon() {
     const container = document.getElementById("weaponContainer");
@@ -420,6 +414,68 @@ function updateWeaponInfo(selectId) {
     document.getElementById(`${selectId}Properties`).textContent = properties;
 }
 
+function renumberFeatSlots() {
+    const container = document.getElementById("featContainer");
+    const slots = container.querySelectorAll(".form-row");
+    slots.forEach((row, i) => {
+        const index = i + 1;
+        row.id = `featSlot${index}-row`;
+        const label = row.querySelector("label");
+        const select = row.querySelector("select");
+        if (label) {
+            label.textContent = `Feat ${index}`;
+            label.setAttribute("for", `featselect${index}`);
+        }
+        if (select) {
+            select.id = `featselect${index}`;
+            select.name = `featselect${index}`;
+        }
+    });
+}
+
+function addFeatSlot(value = "") {
+    const container = document.getElementById("featContainer");
+    const template = document.getElementById("featTemplate");
+    const index = container.children.length + 1;
+    const outer = document.createElement("div");
+    outer.className = "basic-info";
+    const wrapper = document.createElement("div");
+    wrapper.className = "form-row";
+    wrapper.id = `featSlot${index}-row`;
+    wrapper.style.margin = "10px auto";
+    const label = document.createElement("label");
+    label.setAttribute("for", `featselect${index}`);
+    label.textContent = `Feat ${index}`;
+    const select = document.createElement("select");
+    select.name = `featselect${index}`;
+    select.id = `featselect${index}`;
+    select.innerHTML = template.innerHTML;
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.textContent = "Remove";
+    removeBtn.className = "button";
+    removeBtn.onclick = () => {
+        outer.remove();
+        renumberFeatSlots();
+        toggleFeatRemoveButtons();
+    };
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    wrapper.appendChild(removeBtn);
+    outer.appendChild(wrapper);
+    container.appendChild(outer);
+    toggleFeatRemoveButtons();
+}
+
+function toggleFeatRemoveButtons() {
+    const rows = document.querySelectorAll("#featContainer .form-row");
+    rows.forEach(row => {
+        const btn = row.querySelector("button");
+        btn.style.marginLeft = "20px";
+        btn.style.display = rows.length > 1 ? "inline-block" : "none";
+    });
+}
+
 function clearBtn() {
     document.getElementById('clearBtn').addEventListener('click', function() {
         const confirmed = confirm("Are you sure you want to clear all fields and reset to default? This action cannot be undone, so be sure you saved your character before clearing.");
@@ -468,7 +524,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const hasCParam = urlParams.has('c');
     if (!hasCParam) {
-        initializeSpells();
+        addFeatSlot();
+        addSpellSlot();
         addWeapon();
     }
 });

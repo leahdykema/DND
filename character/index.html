@@ -1934,8 +1934,166 @@
                         </div>
                     </div>
                 </fieldset>
-                <!-- Armor + Weapons -->
+                <!--Feat + Armor + Weapons -->
                 <div class="multi-fieldsets">
+                    <!-- Feat -->
+                    <fieldset>
+                        <legend>Feats</legend>
+                        <div id="featContainer"></div>
+                        <button type="button" class="button" onclick="addFeatSlot()" style="margin-top: 10px;">Add a Feat</button>
+                        <select name="featselect" id="featTemplate" style="display:none;">
+                            <option value="" selected disabled>&#45;&#45; Select a Feat &#45;&#45;</option>
+                            <option value="Aberrant Dragonmark">Aberrant Dragonmark</option>
+                            <option value="Aberrant Dragonmark [EB]">Aberrant Dragonmark &#91;EB&#93;</option>
+                            <option value="Acrobat">Acrobat</option>
+                            <option value="Actor">Actor</option>
+                            <option value="Adept of the Black Robes [DSDQ]">Adept of the Black Robes &#91;DSDQ&#93;</option>
+                            <option value="Adept of the Red Robes [DSDQ]">Adept of the Red Robes &#91;DSDQ&#93;</option>
+                            <option value="Adept of the White Robes [DSDQ]">Adept of the White Robes &#91;DSDQ&#93;</option>
+                            <option value="Agent of order [SatO]">Agent of Order &#91;SatO&#93;</option>
+                            <option value="Alchemist">Alchemist</option>
+                            <option value="Alert">Alert</option>
+                            <option value="Animal Handler">Animal Handler</option>
+                            <option value="Arcanist">Arcanist</option>
+                            <option value="Artificer Initiate [TCE]">Artificer Initiate &#91;TCE&#93;</option>
+                            <option value="Athlete">Athlete</option>
+                            <option value="Baleful Scion [SatO]">Baleful Scion &#91;SatO&#93;</option>
+                            <option value="Barbed Hide">Barbed Hide</option>
+                            <option value="Blade Mastery">Blade Mastery</option>
+                            <option value="Bountiful Luck">Bountiful Luck</option>
+                            <option value="Brawny">Brawny</option>
+                            <option value="Burglar">Burglar</option>
+                            <option value="Cartomancer [BMT]">Cartomance &#91;BMT&#93;</option>
+                            <option value="Charger">Charger</option>
+                            <option value="Chef [TCE]">Chef &#91;TCE&#93;</option>
+                            <option value="Cohort of Chaos [SatO]">Cohort of Chaos &#91;SatO&#93;</option>
+                            <option value="Critter Friend">Critter Friend</option>
+                            <option value="Crossbow Friend">Crossbow Friend</option>
+                            <option value="Crusher [TCE]">Crusher &#91;TCE&#93;</option>
+                            <option value="Defensive Duelist">Defensive Duelist</option>
+                            <option value="Diplomat">Diplomat</option>
+                            <option value="Divinely Favored [DSDQ]">Divinely Favored &#91;DSDQ&#93;</option>
+                            <option value="Dragon Fear">Dragon Fear</option>
+                            <option value="Dragon Hide">Dragon Hide</option>
+                            <option value="Dragon Wings">Dragon Wings</option>
+                            <option value="Drow High Magic">Drow High Magic</option>
+                            <option value="Dual Wielder">Dual Wielder</option>
+                            <option value="Dungeon Delver">Dungeon Delver</option>
+                            <option value="Durable">Durable</option>
+                            <option value="Dwarven Fortitude">Dwarven Fortitude</option>
+                            <option value="Eldritch Adept [TCE]">Elderitch Adept &#91;TCE&#93;</option>
+                            <option value="Elemental Adept">Elemental Adept</option>
+                            <option value="Elven Accurancy">Elven Accurancy</option>
+                            <option value="Ember of the Fire Giant [BGG]">Ember of the Fire Giant &#91;BGG&#93;</option>
+                            <option value="Empathic">Empathic</option>
+                            <option value="Everybody's Friend">Everybody&#39;s Friend</option>
+                            <option value="Fade Away">Fade Away</option>
+                            <option value="Fell Handed">Fell Handed</option>
+                            <option value="Fey Teleportation">Fey Teleportation</option>
+                            <option value="Fey Touched [TCE]">Fey Touched &#91;TCE&#93;</option>
+                            <option value="Fighting Initiate [TCE]">Fighting Initiate &#91;TCE&#93;</option>
+                            <option value="Flail Mastery">Flail Mastery</option>
+                            <option value="Flames of Phlegethos">Flames of Phlegethos</option>
+                            <option value="Fury of the Frost Giant [BGG]">Fury of the Frost Giant &#91;BGG&#93;</option>
+                            <option value="Gift of the Chromatic Dragon [FTD]">Gift of the Chromatic Dragon &#91;FTD&#93;</option>
+                            <option value="Gift of the Chromatic Dragon [UA]">Gift of the Chromatic Dragon &#91;UA&#93;</option>
+                            <option value="Gift of the Gem Dragon [FTD]">Gift of teh Gem Dragon &#91;FTD&#93;</option>
+                            <option value="Gift of the Gem Dragon [UA]">Gift of teh Gem Dragon &#91;UA&#93;</option>
+                            <option value="Gift of the Metallic Dragon [FTD]">Gift of the Metallic Dragon &#91;FTD&#93;</option>
+                            <option value="Gift of the Metallic Dragon [UA]">Gift of the Metallic Dragon &#91;UA&#93;</option>
+                            <option value="Gourmand">Gourmand</option>
+                            <option value="Grappler">Grappler</option>
+                            <option value="Great Weapon Master">Great Weapon Master</option>
+                            <option value="Greater Dragonmark">Greater Dragonmark</option>
+                            <option value="Grudge-Bearer">Grudge&#45;Bearer</option>
+                            <option value="Guile of the Cloud Giant [BGG]">Guile of the Cloud Giant &#91;BGG&#93;</option>
+                            <option value="Gunner [TCE]">Gunner &#91;TCE&#93;</option>
+                            <option value="Healer">Healer</option>
+                            <option value="Heavily Armored">Heavily Armored</option>
+                            <option value="Heavy Armor Master">Heavy Armor Master</option>
+                            <option value="Historian">Historian</option>
+                            <option value="Human Determination">Human Determination</option>
+                            <option value="Infernal Constitution">Infernal Cnostitution</option>
+                            <option value="Initiate of High Sorcery [DSDQ]">Initiate of High Sorcery &#91;DSDQ&#93;</option>
+                            <option value="Inspiring Leader">Inspiring Leader</option>
+                            <option value="Investigator">Investigator</option>
+                            <option value="Keen Mind">Keen Mind</option>
+                            <option value="Keenness of the Stone Giant [BGG]">Keenness of the Stone Giant &#91;BGG&#93;</option>
+                            <option value="Knight of the Crown [DSDQ]">Knight of the Crown &#91;DSDQ&#93;</option>
+                            <option value="Knight of the Rose [DSDQ]">Knight of the Rose &#91;DSDQ&#93;</option>
+                            <option value="Knight of the Sword [DSDQ]">Knight of the Sword &#91;DSDQ&#93;</option>
+                            <option value="Lightly Armored">Lightly Armored</option>
+                            <option value="Linguist">Linguist</option>
+                            <option value="Lucky">Lucky</option>
+                            <option value="Mage Slayer">Mage Slayer</option>
+                            <option value="Magic Initiate">Magic initiate</option>
+                            <option value="Martial Adept">Marial Adept</option>
+                            <option value="Master of Disguise">Master of Disguise</option>
+                            <option value="Medic">Medic</option>
+                            <option value="Medium Armor Master">Medium Armor Master</option>
+                            <option value="Menacing">Menacing</option>
+                            <option value="Metamagic Adept [TCE]">Metamagic Adept &#91;TCE&#93;</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Moderately Armored">Moderately Armored</option>
+                            <option value="Mounted Combatant">Mounted Combatant</option>
+                            <option value="Naturalist">Naturalist</option>
+                            <option value="Observant">Observant</option>
+                            <option value="Orcish Aggression">Orcish Aggression</option>
+                            <option value="Orcish Fury">Orish Fury</option>
+                            <option value="Outlands Envoy [SatO]">Outlands Envoy &#91;SatO&#93;</option>
+                            <option value="Perceptive">Perceptive</option>
+                            <option value="Performer">Performer</option>
+                            <option value="Piercer [TCE]">Piercer &#91;TCE&#93;</option>
+                            <option value="Planar Wanderer [SatO]">Plannar Wanderer &#91;SatO&#93;</option>
+                            <option value="Poisoner [TCE]">Poisoner &#91;TCE&#93;</option>
+                            <option value="Polearm Master">Polearn Master</option>
+                            <option value="Prodigy">Prodigy</option>
+                            <option value="Quick-Fingered">Quick&#45;Fingered</option>
+                            <option value="Quicksmithing">Quicksmithing</option>
+                            <option value="Resilient">Resiliant</option>
+                            <option value="Revenant Blade">Revenant Blade</option>
+                            <option value="Revenant Blade [EB]">Revenant Blade &#91;EB&#93;</option>
+                            <option value="Righteous Heritor [SatO]">Righteous Heritor &#91;SatO&#93;</option>
+                            <option value="Ritual Caster">Ritual Caster</option>
+                            <option value="Rune Shaper [BGG]">Rune Shaper &#91;BGG&#93;</option>
+                            <option value="Savage Attacker">Savage Attacker</option>
+                            <option value="Scion of the Outer Planes [SatO]">Scion of the Outer Planes &#91;SatO&#93;</option>
+                            <option value="Second Chance">Second Chance</option>
+                            <option value="Sentinel">Sentinel</option>
+                            <option value="Servo Crafting">Servo Crafting</option>
+                            <option value="Shadow Touched [TCE]">Shadow Touched &#91;TCE&#93;</option>
+                            <option value="Sharpshooter">Sharpshooter</option>
+                            <option value="Shield Master">Shield Master</option>
+                            <option value="Silver-Tongued">Silver&#45;Tongued</option>
+                            <option value="Skilled Expert [TCE]">Skilled Expert &#91;TCE&#93;</option>
+                            <option value="Skilled">Skilled</option>
+                            <option value="Skulker">Skulker</option>
+                            <option value="Slasher [TCE]">Slasher &#91;TCE&#93;</option>
+                            <option value="Soul of the Storm Giant [BGG]">Soul of the Storm Giant &#91;BGG&#93;</option>
+                            <option value="Spear Mastery">Spear Mastery</option>
+                            <option value="Spell Sniper">Spell Sniper</option>
+                            <option value="Squat Nimbleness">Squat Nimbleness</option>
+                            <option value="Squire of Solamnia [DSDQ]">Squire of Solamnia &#91;DSDQ&#93;</option>
+                            <option value="Stealthy">Stealthy</option>
+                            <option value="Strike of the Giants [BGG]">Strike of the Giant &#91;BGG&#93;</option>
+                            <option value="Strixhaven Initiate [SCC]">Strixhaven Initiate &#91;SCC&#93;</option>
+                            <option value="Strixhaven Mascot [SCC]">Strixhaven Mascot &#91;SCC&#93;</option>
+                            <option value="Survivalist">Survivalist</option>
+                            <option value="Svirfneblin Magic">Svirfneblin Magic</option>
+                            <option value="Tavern Brawler">Tavern Brawler</option>
+                            <option value="Telekinetic [TCE]">Telekinetic &#91;TCE&#93;</option>
+                            <option value="Telepathic [TCE]">Telepathic &#91;TCE&#93;</option>
+                            <option value="Theologian">Theologian</option>
+                            <option value="Tough">Tough</option>
+                            <option value="Vampiric Exultation">Vampiric Exultation</option>
+                            <option value="Vigor of the Hill Giant [BGG]">Vigor of the Hill Giant &#91;BGG&#93;</option>
+                            <option value="War Caster">War Caster</option>
+                            <option value="Weapon Master">Weapon Master</option>
+                            <option value="Wild Companion">Wild Companion</option>
+                            <option value="Wonder Maker">Wonder Maker</option>
+                            <option value="Wood Elf Magic">Wood Elf Magic</option>
+                        </select>
+                    </fieldset>
                     <!-- Armor -->
                     <fieldset>
                         <legend>Armor</legend>
@@ -1991,13 +2149,13 @@
                     <fieldset>
                         <legend>Weapons</legend>
                         <div id="weaponContainer"></div>
-                        <button type="button" class="button" id="addBtn" onclick="addWeapon()" style="margin-top: 10px;">Add Weapon</button>
+                        <button type="button" class="button" id="addBtn" onclick="addWeapon()" style="margin-top: 10px;">Add a Weapon</button>
                         <div>
                             <div class="basic-info" style="display: none;">
                                 <div class="form-row">
                                     <label for="weapon">Weapon</label>
                                     <select id="weapon">
-                                        <option value="" selected disabled>&#45;&#45; Select Weapon &#45;&#45;</option>
+                                        <option value="" selected disabled>&#45;&#45; Select a Weapon &#45;&#45;</option>
                                         <optgroup label="Simple Melee">
                                             <option value="Club" data-damage="1d4" data-type="Bludgeoning" data-range="" data-stat="str" data-properties="Light">Club</option>
                                             <option value="Dagger" data-damage="1d4" data-type="Piercing" data-range="20/60" data-stat="dex" data-properties="Finesse, Light, Thrown">Dagger</option>
@@ -2147,7 +2305,7 @@
                 <fieldset>
                     <legend>Spells</legend>
                     <div id="spellContainer"></div>
-                    <button type="button" class="button" onclick="addSpellSlot()">Add Spell</button>
+                    <button type="button" class="button" onclick="addSpellSlot()">Add a Spell</button>
                     <select name="spellselect" id="spellselect" style="display: none;">
                         <option value="" selected disabled>&#45;&#45; Select a Spell &#45;&#45;</option>
                         <optgroup label="Cantrip">

@@ -1,5 +1,10 @@
 // Save as .json
 function saveToFile() {
+    const feats = [];
+    for (let i = 1; i <= 10; i++) {
+        const el = document.getElementById(`featselect${i}`);
+        if (el && el.value.trim()) feats.push(el.value);
+    }
     const weapons = [];
     for (let i = 1; i <= 10; i++) {
         const el = document.getElementById(`weapon${i}`);
@@ -112,6 +117,7 @@ function saveToFile() {
         seventh: document.getElementById("7th").value,
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
+        feats: feats,
         weapons: weapons,
         spells: spells
     };
@@ -232,6 +238,13 @@ function loadFromFile(event) {
         document.getElementById("7th").value = data.seventh || 0;
         document.getElementById("8th").value = data.eighth || 0;
         document.getElementById("9th").value = data.nineth || 0;
+        const featContainer = document.getElementById("featContainer");
+        featContainer.innerHTML = "";
+        (data.feats || []).forEach((featVal, i) => {
+            addFeatSlot();
+            const select = document.getElementById(`featselect${i + 1}`);
+            if (select) select.value = featVal;
+        });
         const weaponContainer = document.getElementById("weaponContainer");
         weaponContainer.innerHTML = "";
         weaponCount = 0;
@@ -266,6 +279,11 @@ function loadFromFile(event) {
 // Save Via URL
 function updateShareURL() {
     try {
+        const feats = [];
+        for (let i = 1; i <= 10; i++) {
+            const el = document.getElementById(`featselect${i}`);
+            if (el && el.value.trim()) feats.push(el.value);
+        }
         const weapons = [];
         for (let i = 1; i <= 10; i++) {
             const el = document.getElementById(`weapon${i}`);
@@ -378,6 +396,7 @@ function updateShareURL() {
             seventh: document.getElementById("7th").value,
             eighth: document.getElementById("8th").value,
             nineth: document.getElementById("9th").value,
+            feats: feats,
             weapons: weapons,
             spells: spells
         };
@@ -520,6 +539,13 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("7th").value = data.seventh || 0;
             document.getElementById("8th").value = data.eighth || 0;
             document.getElementById("9th").value = data.nineth || 0;
+            const featContainer = document.getElementById("featContainer");
+            featContainer.innerHTML = "";
+            (data.feats || []).forEach((featVal, i) => {
+                addFeatSlot();
+                const select = document.getElementById(`featselect${i + 1}`);
+                if (select) select.value = featVal;
+            });
             const weaponContainer = document.getElementById("weaponContainer");
             weaponContainer.innerHTML = "";
             weaponCount = 0;
