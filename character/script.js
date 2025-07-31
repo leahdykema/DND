@@ -8,19 +8,15 @@ function getTimestamp() {
     const min = pad(d.getMinutes());
     const ampm = hour >= 12 ? "PM" : "AM";
     hour = hour % 12 || 12;
-    return `${month}-${day}-${year} - ${hour}-${min}_${ampm}`;
+    return `${month}-${day}-${year} | ${hour}.${min} ${ampm}`;
 }
 
 async function saveCharacter(character) {
-    const safeName = (character.name || "character").replace(/[^a-z0-9]/gi, '_').toLowerCase();
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `(D&D) ${safeName} - ${timestamp}.json`;
-
+    const safeName = (character.name || "character");
+    const timestamp = getTimestamp();
+    const filename = `(D&D) ${safeName} | ${timestamp}.json`;
     const jsonStr = JSON.stringify(character, null, 2);
-    // Use a Blob directly, as it's more universal than a File for this purpose
     const blob = new Blob([jsonStr], { type: 'application/json' });
-
-    // 1. The Best Experience: File System Access API (Desktop Chrome/Edge)
     if (window.showSaveFilePicker) {
         try {
             const handle = await window.showSaveFilePicker({
@@ -36,7 +32,6 @@ async function saveCharacter(character) {
             console.log('File saved successfully with showSaveFilePicker.');
             return;
         } catch (err) {
-            // AbortError is thrown if the user cancels the dialog.
             if (err.name !== 'AbortError') {
                 console.error('showSaveFilePicker failed: ', err);
             } else {
@@ -44,13 +39,11 @@ async function saveCharacter(character) {
             }
         }
     }
-    // 2. The Mobile-Friendly Approach: Web Share API (iOS, Android)
     else if (navigator.share && navigator.canShare({ files: [new File([blob], filename)] })) {
         try {
             const fileToShare = new File([blob], filename, { type: 'application/json' });
             await navigator.share({
                 files: [fileToShare],
-                title: filename,
             });
             console.log('File shared successfully with Web Share API.');
             return;
@@ -62,7 +55,6 @@ async function saveCharacter(character) {
             }
         }
     }
-    // 3. The Traditional Fallback (Desktop Browsers without SaveFilePicker)
     else {
         console.warn('Falling back to traditional download link.');
         const url = URL.createObjectURL(blob);
@@ -211,9 +203,7 @@ function buildCharacter() {
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('save-btn');
     btn.addEventListener('click', () => {
-        alert('Save button clicked');
         const character = buildCharacter();
-        alert('Built character:', character);
         saveCharacter(character);
     });
 });
