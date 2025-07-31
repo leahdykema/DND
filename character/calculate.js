@@ -62,6 +62,7 @@ const skillMap = {
     survival:          { ability: 'wis', checkbox: 'survSaveProf', expertise: 'survExpertise' }
 };
 
+let equipmentCount = 0;
 let weaponCount = 0;
 const abilities = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
 const xpInput = document.getElementById('xpInput');
@@ -337,6 +338,61 @@ function updateArmorStats() {
     document.getElementById("strReq").textContent = strReq;
 }
 
+const equipmentContainer = document.getElementById("equipmentContainer");
+
+equipmentContainer.addEventListener("click", (e) => {
+    if (e.target.matches(".equip-remove")) {
+        const wrapper = e.target.closest(".basic-info");
+        if (wrapper) {
+            wrapper.remove();
+            reindexEquipment();
+        }
+    }
+});
+
+function addEquipment(value = "") {
+    const wrappers = equipmentContainer.querySelectorAll(".basic-info");
+    const index = wrappers.length + 1;
+    const div = document.createElement("div");
+    div.className = "basic-info";
+    div.style.margin = "20px auto";
+    div.id = `equipment${index}-wrapper`;
+    div.innerHTML = `
+        <div class="form-row">
+            <label for="equipment${index}">Item ${index}</label>
+            <input type="text" id="equipment${index}" value="${value.replace(/"/g, '&quot;')}" placeholder="Add Equipment">
+            <button type="button" class="button equip-remove" style="margin-left: 20px;">Remove</button>
+        </div>
+    `;
+    equipmentContainer.appendChild(div);
+    reindexEquipment();
+}
+
+function reindexEquipment() {
+    const wrappers = Array.from(equipmentContainer.querySelectorAll(".basic-info"));
+    const count = wrappers.length;
+    equipmentCount = count;
+    wrappers.forEach((wrapper, idx) => {
+        const index = idx + 1;
+        wrapper.id = `equipment${index}-wrapper`;
+        const formRow = wrapper.querySelector(".form-row");
+        if (!formRow) return;
+        let label = formRow.querySelector("label");
+        label.setAttribute("for", `equipment${index}`);
+        label.textContent = `Item ${index}`;
+        let input = formRow.querySelector("input");
+        input.id = `equipment${index}`;
+        input.placeholder = "Add Equipment";
+        const btn = formRow.querySelector(".equip-remove");
+        btn.setAttribute("data-target", `equipment${index}-wrapper`);
+    });
+    const show = count > 1;
+    wrappers.forEach(wrapper => {
+        const btn = wrapper.querySelector(".equip-remove");
+        if (btn) btn.style.display = show ? "inline-block" : "none";
+    });
+}
+
 function addWeapon() {
     const container = document.getElementById("weaponContainer");
     const template = document.getElementById("weapon");
@@ -521,13 +577,52 @@ window.addEventListener('DOMContentLoaded', () => {
     updatePassivePerception();
     updateSkills();
     updateArmorStats();
-    const urlParams = new URLSearchParams(window.location.search);
-    const hasCParam = urlParams.has('c');
-    if (!hasCParam) {
-        addFeatSlot();
-        addSpellSlot();
-        addWeapon();
-    }
+    function parseCharacterData() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (!urlParams.has('c')) {
+    return null; // No data param
+  }
+
+  try {
+    // Base64 decode
+    const base64 = urlParams.get('c');
+    // Atob decodes Base64 to ASCII string
+    const jsonStr = atob(base64);
+
+    // Parse JSON string
+    const data = JSON.parse(jsonStr);
+
+    return data;
+  } catch (e) {
+    console.error('Failed to parse character data:', e);
+    return null;
+  }
+}
+
+const charData = parseCharacterData();
+
+if (!charData) {
+  // No data present → add all empty slots
+  addFeatSlot();
+  addEquipment();
+  addSpellSlot();
+  addWeapon();
+} else {
+  // Check if feats, equipment, spells, weapons arrays exist and have content
+
+  if (!Array.isArray(charData.feats) || charData.feats.length === 0) {
+    addFeatSlot();
+  }
+  if (!Array.isArray(charData.equipment) || charData.equipment.length === 0) {
+    addEquipment();
+  }
+  if (!Array.isArray(charData.spells) || charData.spells.length === 0) {
+    addSpellSlot();
+  }
+  if (!Array.isArray(charData.weapons) || charData.weapons.length === 0) {
+    addWeapon();
+  }
+}
 });
 
 xpInput.addEventListener('input', () => {
@@ -551,6 +646,13 @@ charClass.addEventListener('change', () => {
 });
 
 charClass2.addEventListener('change', updateSubclass3Visibility);
+
+document.addEventListener("click", (e) => {
+    if (e.target.matches(".equip-remove")) {
+        const target = e.target.getAttribute("data-target");
+        removeEquipment(target);
+    }
+});
 
 Object.entries(skillMap).forEach(([skill, { ability, checkbox, expertise }]) => {
     document.getElementById(checkbox)?.addEventListener('change', updateSkills);

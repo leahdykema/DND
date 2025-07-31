@@ -5,6 +5,11 @@ function saveToFile() {
         const el = document.getElementById(`featselect${i}`);
         if (el && el.value.trim()) feats.push(el.value);
     }
+    const equipment = [];
+    for (let i = 1; i <= equipmentCount; i++) {
+        const el = document.getElementById(`equipment${i}`);
+        if (el && el.value.trim()) equipment.push(el.value.trim());
+    }
     const weapons = [];
     for (let i = 1; i <= 10; i++) {
         const el = document.getElementById(`weapon${i}`);
@@ -118,6 +123,7 @@ function saveToFile() {
         eighth: document.getElementById("8th").value,
         nineth: document.getElementById("9th").value,
         feats: feats,
+        equipment: equipment,
         weapons: weapons,
         spells: spells
     };
@@ -245,6 +251,21 @@ function loadFromFile(event) {
             const select = document.getElementById(`featselect${i + 1}`);
             if (select) select.value = featVal;
         });
+        const equipmentContainer = document.getElementById("equipmentContainer");
+        equipmentContainer.innerHTML = "";
+        equipmentCount = 0;
+        if (Array.isArray(data.equipment)) {
+            data.equipment.forEach(val => {
+                addEquipment(val);
+            });
+        }
+        document.querySelectorAll('#equipmentContainer input[id^="equipment"]').forEach(input => {
+            if (!input.value.trim()) {
+                const wrapper = input.closest('.equipment-wrapper') || input.parentElement;
+                if (wrapper) wrapper.remove();
+            }
+        });
+        equipmentCount = document.querySelectorAll('#equipmentContainer input[id^="equipment"]').length;
         const weaponContainer = document.getElementById("weaponContainer");
         weaponContainer.innerHTML = "";
         weaponCount = 0;
@@ -283,6 +304,11 @@ function updateShareURL() {
         for (let i = 1; i <= 10; i++) {
             const el = document.getElementById(`featselect${i}`);
             if (el && el.value.trim()) feats.push(el.value);
+        }
+        const equipment = [];
+        for (let i = 1; i <= equipmentCount; i++) {
+            const el = document.getElementById(`equipment${i}`);
+            if (el && el.value.trim()) equipment.push(el.value.trim());
         }
         const weapons = [];
         for (let i = 1; i <= 10; i++) {
@@ -397,6 +423,7 @@ function updateShareURL() {
             eighth: document.getElementById("8th").value,
             nineth: document.getElementById("9th").value,
             feats: feats,
+            equipment: equipment,
             weapons: weapons,
             spells: spells
         };
@@ -546,6 +573,21 @@ window.addEventListener("DOMContentLoaded", () => {
                 const select = document.getElementById(`featselect${i + 1}`);
                 if (select) select.value = featVal;
             });
+            const equipmentContainer = document.getElementById("equipmentContainer");
+            equipmentContainer.innerHTML = "";
+            equipmentCount = 0;
+            if (Array.isArray(data.equipment)) {
+                data.equipment.forEach(val => {
+                    addEquipment(val);
+                });
+            }
+            document.querySelectorAll('#equipmentContainer input[id^="equipment"]').forEach(input => {
+                if (!input.value.trim()) {
+                    const wrapper = input.closest('.equipment-wrapper') || input.parentElement;
+                    if (wrapper) wrapper.remove();
+                }
+            });
+            equipmentCount = document.querySelectorAll('#equipmentContainer input[id^="equipment"]').length;
             const weaponContainer = document.getElementById("weaponContainer");
             weaponContainer.innerHTML = "";
             weaponCount = 0;
